@@ -38,11 +38,10 @@ store_type = st.sidebar.selectbox("Store Category", list(all_data.keys()))
 if store_type:
     df_all = all_data[store_type]
     # dynamic column detection
-    cols = df_all.columns.str.lower()
     store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
     amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
-    qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["quantity","qty"])), None)
-    item_col = next((c for c in df_all.columns if c not in [store_col, amount_col, qty_col, "timestamp"] and df_all[c].dtype == object), None)
+    qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
+    item_col = next((c for c in df_all.columns if c not in [store_col, amount_col, qty_col, "Timestamp"] and df_all[c].dtype == object), None)
 
     store_name = st.sidebar.selectbox("Store Name", sorted(df_all[store_col].dropna().unique()))
     if st.sidebar.button("Generate Report"):
@@ -63,34 +62,33 @@ if store_type:
             st.markdown("---")
 
             # compute sales by item
-sku_sales = (
-    df.groupby(item_col)
-      .agg(sales=(amount_col, 'sum'))
-      .reset_index()
-)
-n = len(sku_sales)
-top_n = max(1, math.ceil(n * 0.3))
-top_df = sku_sales.nlargest(top_n, 'sales')
-bottom_df = sku_sales.nsmallest(top_n, 'sales')
+            sku_sales = (
+                df.groupby(item_col)
+                  .agg(sales=(amount_col, 'sum'))
+                  .reset_index()
+            )
+            n = len(sku_sales)
+            top_n = max(1, math.ceil(n * 0.3))
+            top_df = sku_sales.nlargest(top_n, 'sales')
+            bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
-col1, col2 = st.columns(2)
-with col1:
-    st.subheader(f"Top {top_n} Movers (Hot-Selling)")
-    chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
-        x=alt.X("sales:Q", title="Sales"),
-        y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-    ).properties(height=300)
-    st.altair_chart(chart_top, use_container_width=True)
-with col2:
-    st.subheader(f"Bottom {top_n} Movers (Slow)")
-    chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
-        x=alt.X("sales:Q", title="Sales"),
-        y=alt.Y(f"{item_col}:N", sort='x', title=None)
-    ).properties(height=300)
-    st.altair_chart(chart_bot, use_container_width=True)
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader(f"Top {top_n} Movers (Hot-Selling)")
+                chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+                    x=alt.X("sales:Q", title="Sales"),
+                    y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+                ).properties(height=300)
+                st.altair_chart(chart_top, use_container_width=True)
+            with col2:
+                st.subheader(f"Bottom {top_n} Movers (Slow)")
+                chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+                    x=alt.X("sales:Q", title="Sales"),
+                    y=alt.Y(f"{item_col}:N", sort='x', title=None)
+                ).properties(height=300)
+                st.altair_chart(chart_bot, use_container_width=True)
 
             # prepare context for AI
-            inv = None
             if qty_col:
                 inv = (
                     df.groupby(item_col)[qty_col]
@@ -151,7 +149,6 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
                 st.error("Failed to parse SKU recommendations.")
                 sku_data = {"top_recos": [], "bottom_recos": []}
 
-            # render
             with col1:
                 st.markdown("**Top SKU Recommendations**")
                 for item in sku_data.get("top_recos", []):
@@ -164,7 +161,5 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
                     for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
             st.markdown("---")
-
-        # SIDEBAR AI PANEL simplified (omitted for brevity)
 
 
