@@ -9,7 +9,7 @@ client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # --- APP CONFIG ---
 st.set_page_config(page_title="PinePulse - Weekly Store Pulse", layout="wide")
-st.title("📊 Weekly Store Pulse")
+st.title("Weekly Store Pulse")
 
 # --- DATA PATHS & LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), "data")
@@ -37,27 +37,27 @@ if store_type:
     location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
 
     if st.button("Generate Store Pulse"):
-        # Build AI prompt
+        # Build AI prompt without emojis for clarity
         pulse_prompt = f"""
-📊 Weekly Store Pulse: {store_type} Store — {location}
+Weekly Store Pulse: {store_type} Store — {location}
 (Analyzed from recent 20 days of transaction data)
 
-🔥 Hot-Selling SKUs (Restock Urgently)
+Hot-Selling SKUs (Restock Urgently)
 [List top SKUs by velocity with bullet points and actionable restock guidance]
 
-🧊 Cold Movers (Consider Discount/Bundling)
+Cold Movers (Consider Discount/Bundling)
 [List slowest moving SKUs with bullet points and promotion suggestions]
 
-📅 Footfall Patterns & Opportunity Slots
+Footfall Patterns & Opportunity Slots
 [Highlight slowest days/hours and suggested promos]
 
-🌐 External Signals & Trends
+External Signals & Trends
 [Call out external trends relevant to inventory or weather]
 
-📦 Projected Next-Month Sales Forecast
+Projected Next-Month Sales Forecast
 [Give % forecasts per category]
 
-🔁 AI Nudges to Action This Week
+AI Nudges to Action This Week
 [Checklist of top 3-5 actionable nudges]
 """
         with st.spinner("Generating AI-driven pulse report..."):
@@ -71,15 +71,16 @@ if store_type:
                 max_tokens=600,
             )
         raw = response.choices[0].message.content.strip()
-        # parse sections by emoji headers
-        pattern = r"(🔥[^\n]*|🧊[^\n]*|📅[^\n]*|🌐[^\n]*|📦[^\n]*|🔁[^\n]*)([\s\S]*?)(?=(🔥|🧊|📅|🌐|📦|🔁)|$)"
-        matches = re.findall(pattern, raw)
-        for header, body, _ in matches:
-            st.subheader(header)
-            # list each line in body as markdown bullet
-            for line in body.strip().split('\n'):
-                text = line.lstrip('- ').strip()
-                if text:
+        # parse sections by header lines
+        pattern = r"^([A-Za-z].+[A-Za-z])\n((?:-[^\n]*\n?)+)"  # header then bullet lines
+        sections = re.findall(pattern, raw, flags=re.MULTILINE)
+        # layout in two columns for a minimal UI
+        col1, col2 = st.columns(2)
+        for idx, (header, body) in enumerate(sections):
+            target = col1 if idx < len(sections)/2 else col2
+            with target:
+                st.subheader(header)
+                for line in body.strip().split("\n"):
+                    text = line.lstrip('- ').strip()
                     st.markdown(f"- {text}")
-
 
