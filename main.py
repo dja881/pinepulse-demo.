@@ -61,7 +61,7 @@ if store_type:
             m3.metric("Unique Products", unique_items)
             st.markdown("---")
 
-            # compute sales by item
+            # compute sales by item (SKU level)
             sku_sales = (
                 df.groupby(item_col)
                   .agg(sales=(amount_col, 'sum'))
@@ -74,14 +74,14 @@ if store_type:
 
             col1, col2 = st.columns(2)
             with col1:
-                st.subheader(f"Top {top_n} Movers (Hot-Selling)")
+                st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
                 chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
                     x=alt.X("sales:Q", title="Sales"),
                     y=alt.Y(f"{item_col}:N", sort='-x', title=None)
                 ).properties(height=300)
                 st.altair_chart(chart_top, use_container_width=True)
             with col2:
-                st.subheader(f"Bottom {top_n} Movers (Slow)")
+                st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
                 chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
                     x=alt.X("sales:Q", title="Sales"),
                     y=alt.Y(f"{item_col}:N", sort='x', title=None)
@@ -161,5 +161,4 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
                     for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
             st.markdown("---")
-
 
