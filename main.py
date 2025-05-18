@@ -125,7 +125,7 @@ if st.sidebar.button("Generate Report"):
         txn_count=('Transaction ID', 'count')
     ).reset_index()
 
-    sku_prompt = f"""
+    sku_prompt = f'''
 You are a retail analyst tasked with understanding why certain products are performing better or worse than others.
 Your goal is to reason through the differences using data (velocity, stock, sales) and potential trends such as:
 - payment preferences (e.g. UPI vs card)
@@ -148,7 +148,6 @@ Explain why each product might be performing the way it is — using logical rea
 If applicable, identify any seasonality, regional or pricing trends.
 
 Respond only with valid JSON in this format:
-```json
 {
   "top_recos": [
     {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]}
@@ -160,7 +159,6 @@ Respond only with valid JSON in this format:
   "product_insights": ["product insight 1", "product insight 2"],
   "payment_insights": ["payment behavior 1", "payment behavior 2"]
 }
-```
 """
 
     with st.spinner("Generating product recommendations and AI insights..."):
