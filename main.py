@@ -110,8 +110,12 @@ if st.sidebar.button("Generate Report"):
 
     def build_ctx(df_sku):
         ctx = df_sku.merge(inv, on=item_col, how='left')
-        if cat_col:
-            ctx = ctx.merge(df[[item_col, cat_col]].drop_duplicates(), on=item_col, how='left')
+        if cat_col and cat_col in df.columns:
+            try:
+                cat_data = df[[item_col, cat_col]].drop_duplicates()
+                ctx = ctx.merge(cat_data, on=item_col, how='left')
+            except Exception as e:
+                st.warning(f"Could not enrich with category info: {e}")
         ctx['velocity'] = (ctx['sales'] / days).round(1)
         ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
         return ctx.to_dict(orient='records')
