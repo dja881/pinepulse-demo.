@@ -22,7 +22,7 @@ csv_paths = {
 
 # --- CACHEABLE DATA LOADING ---
 @st.cache_data
- def load_data(paths):
+ def load_data(paths):  # removed unexpected indent
     data = {}
     for name, path in paths.items():
         if os.path.isfile(path):
@@ -36,7 +36,7 @@ data_by_type = load_data(csv_paths)
 
 # --- AI-BASED SCHEMA DETECTION ---
 @st.cache_data(ttl=3600)
- def detect_schema(sample_csv: str) -> dict:
+def detect_schema(sample_csv: str) -> dict:
     prompt = f"""
 You're a smart data analyst. Given this CSV sample, tell me:
 1. The column that represents the transaction amount.
