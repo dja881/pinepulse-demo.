@@ -188,7 +188,7 @@ Avoid technical terms like 'days_supply'; instead say things like 'stock may be 
 
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", []):
+    for insight in sku_data.get("insights", [])[:5]:
         st.markdown(f"- {insight}")
 
     st.markdown("### Product Insights")
