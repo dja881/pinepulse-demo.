@@ -7,11 +7,12 @@ import altair as alt
 import json
 
 # --- INITIALIZE AI CLIENT ---
+# Use the gpt-4.1-nano model for AI calls
 client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # --- APP CONFIG ---
 st.set_page_config(
-    page_title="PinePulse - Interactive Store Dashboard",
+    page_title="PinePulse - Interactive Store Dashboard (gpt-4.1-nano)",
     layout="wide"
 )
 st.title("📊 PinePulse - Weekly Store Pulse Dashboard")
@@ -52,6 +53,7 @@ if store_type:
         unique_products = df["Product Name"].nunique()
         c_main, c_sidebar = st.columns([3, 1])
 
+        # Main dashboard area
         with c_main:
             m1, m2, m3 = st.columns(3)
             m1.metric("Total Sales", f"₹{total_sales:,.0f}")
@@ -59,154 +61,108 @@ if store_type:
             m3.metric("Unique Products", unique_products)
             st.markdown("---")
 
-            # Top/Bottom SKU charts
+            # Compute top/bottom 30% SKUs
             sku_sales = df.groupby("Product Name")["Txn Amount (₹)"].sum().reset_index()
             n = len(sku_sales)
             top_n = max(1, math.ceil(n * 0.3))
             top_df = sku_sales.nlargest(top_n, "Txn Amount (₹)")
             bottom_df = sku_sales.nsmallest(top_n, "Txn Amount (₹)")
 
+            # Charts
             col1, col2 = st.columns(2)
             with col1:
                 st.subheader("Top 30% Movers (Hot-Selling SKUs)")
-                chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
-                    x=alt.X("Txn Amount (₹):Q", title="Sales (₹)"),
-                    y=alt.Y("Product Name:N", sort="-x", title=None)
-                ).properties(height=300)
-                st.altair_chart(chart_top, use_container_width=True)
+                st.altair_chart(
+                    alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+                        x=alt.X("Txn Amount (₹):Q", title="Sales (₹)"),
+                        y=alt.Y("Product Name:N", sort="-x", title=None)
+                    ).properties(height=300), use_container_width=True
+                )
             with col2:
-                st.subheader("Bottom 30% Movers (Cold SKUs)")
-                chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
-                    x=alt.X("Txn Amount (₹):Q", title="Sales (₹)"),
-                    y=alt.Y("Product Name:N", sort="x", title=None)
-                ).properties(height=300)
-                st.altair_chart(chart_bot, use_container_width=True)
-
-            # --- AI SKU RECOMMENDATIONS ---
-            # Build detailed context from our top/bottom 30% dataframes
-            top_info = (
-                top_df
-                .rename(columns={'Txn Amount (₹)': 'sales'})
-                [['Product Name', 'sales']]
-                .to_dict(orient='records')
-            )
-            bottom_info = (
-                bottom_df
-                .rename(columns={'Txn Amount (₹)': 'sales'})
-                [['Product Name', 'sales']]
-                .to_dict(orient='records')
-            )
-
-            sku_prompt = f"""
-You are a data-driven retail analyst. Here are our hot-selling SKUs (top 30%) with their total sales over the period:
-{json.dumps(top_info, indent=2)}
-
-And here are our cold SKUs (bottom 30%) with their total sales:
-{json.dumps(bottom_info, indent=2)}
-
-For each hot-selling SKU, recommend exactly one action to sustain and further optimize its performance (e.g., adjust reorder quantity, run a targeted promo, etc.).
-For each cold SKU, recommend exactly one action to boost its sales (e.g., bundling strategy, discount tiers, repositioning on shelf).
-
-Return a JSON object with two keys:
-  "top_recos": [{"sku": string, "action": string}, …],
-  "bottom_recos": [{"sku": string, "action": string}, …]
-"""
-
-            with st.spinner("Generating SKU recommendations..."):
-                resp = client.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": "You output valid JSON only."},
-                        {"role": "user",   "content": sku_prompt}
-                    ],
-                    temperature=0.5,
-                    max_tokens=200,
+                st.subheader("Bottom 30% Movers (Slow SKUs)")
+                st.altair_chart(
+                    alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+                        x=alt.X("Txn Amount (₹):Q", title="Sales (₹)"),
+                        y=alt.Y("Product Name:N", sort="x", title=None)
+                    ).properties(height=300), use_container_width=True
                 )
 
+            # --- AI SKU RECOMMENDATIONS ---
+            inv_counts = df.groupby("Product Name")["Quantity"].sum().reset_index().rename(columns={"Quantity":"quantity"})
+            top_info = top_df.merge(inv_counts, on="Product Name").to_dict(orient='records')
+            bottom_info = bottom_df.merge(inv_counts, on="Product Name").to_dict(orient='records')
+
+            sku_prompt = f"""
+You are a data-driven retail analyst. Below are top 30% SKUs and bottom 30% SKUs with their total sales and quantities:
+
+Top SKUs:
+{json.dumps(top_info, indent=2)}
+
+Slow SKUs:
+{json.dumps(bottom_info, indent=2)}
+
+For each Top SKU, provide 3 distinct recommendations to sustain high sales (e.g., optimal reorder level, targeted promotion, shelf placement).
+For each Slow SKU, provide 3 distinct recommendations to boost sales (e.g., bundle offers, discount tiers, repositioning on shelf).
+
+Return a JSON object with keys 'top_recos' and 'bottom_recos'.
+"""
+            with st.spinner("Generating SKU recommendations with gpt-4.1-nano..."):
+                resp = client.chat.completions.create(
+                    model="gpt-4.1-nano",
+                    messages=[
+                        {"role":"system","content":"Output valid JSON only."},
+                        {"role":"user","content":sku_prompt}
+                    ],
+                    temperature=0.6,
+                    max_tokens=300,
+                )
             try:
                 sku_data = json.loads(resp.choices[0].message.content)
-            except Exception:
+            except:
                 st.error("Failed to parse SKU recommendations.")
                 sku_data = {"top_recos": [], "bottom_recos": []}
 
-            # Render recommendations under charts
             with col1:
-                st.markdown("**Hot-Mover Actions**")
+                st.markdown("**Top SKU Recommendations**")
                 for item in sku_data.get("top_recos", []):
-                    st.markdown(f"- **{item['sku']}**: {item['action']}")
+                    st.write(f"**{item['sku']}**")
+                    for rec in item.get("recommendations", []):
+                        st.write(f"- {rec}")
             with col2:
-                st.markdown("**Cold-SKU Actions**")
+                st.markdown("**Slow SKU Recommendations**")
                 for item in sku_data.get("bottom_recos", []):
-                    st.markdown(f"- **{item['sku']}**: {item['action']}")
+                    st.write(f"**{item['sku']}**")
+                    for rec in item.get("recommendations", []):
+                        st.write(f"- {rec}")
 
             st.markdown("---")
-
-            # Footfall patterns
-            df["Weekday"] = df["Timestamp"].dt.day_name()
-            df["Hour"] = df["Timestamp"].dt.hour
-            by_day = df.groupby("Weekday").size().reset_index(name="count")
-            order = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-            by_day["Weekday"] = pd.Categorical(by_day["Weekday"], categories=order, ordered=True)
-            by_day = by_day.sort_values("Weekday")
-            by_hour = df.groupby("Hour").size().reset_index(name="count")
-            c3, c4 = st.columns(2)
-            with c3:
-                st.subheader("Transactions by Day")
-                st.altair_chart(
-                    alt.Chart(by_day).mark_line(point=True).encode(
-                        x="Weekday:N",
-                        y="count:Q"
-                    ).properties(height=250),
-                    use_container_width=True
-                )
-            with c4:
-                st.subheader("Transactions by Hour")
-                st.altair_chart(
-                    alt.Chart(by_hour).mark_line(point=True).encode(
-                        x="Hour:O",
-                        y="count:Q"
-                    ).properties(height=250),
-                    use_container_width=True
-                )
-
-            st.markdown("---")
-            # Category mix
-            cat_mix = df.groupby("Product Category")["Txn Amount (₹)"].sum().reset_index()
-            st.subheader("Category Revenue Mix")
-            st.altair_chart(
-                alt.Chart(cat_mix).mark_arc().encode(
-                    theta="Txn Amount (₹):Q",
-                    color="Product Category:N"
-                ).properties(height=300),
-                use_container_width=True
-            )
 
         # --- SIDEBAR AI PANEL: 1-3-3 FORMAT ---
         with c_sidebar:
             st.subheader("AI Insight")
             insight_prompt = (
-                f"Provide one concise insight about {store_name} based on {num_txn} transactions over the past 20 days."
+                f"Provide one concise insight about {store_name} based on {num_txn} transactions over the past 20 days, referencing sales trends and inventory levels."
             )
             resp_insight = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4.1-nano",
                 messages=[
-                    {"role": "system", "content": "You are a professional retail analyst. Provide a single-sentence insight."},
-                    {"role": "user", "content": insight_prompt}
+                    {"role":"system","content":"Provide a single-sentence data-driven insight."},
+                    {"role":"user","content":insight_prompt}
                 ],
                 temperature=0.7,
-                max_tokens=50
+                max_tokens=60
             )
-            insight = resp_insight.choices[0].message.content.strip()
-            st.info(insight)
+            st.info(resp_insight.choices[0].message.content.strip())
 
+            # Forecast metrics
             st.subheader("Next-Month Sales Forecast")
             forecast_prompt = (
-                f"Give 3 bullet forecast percentage changes for key categories at {store_name}. Return JSON: {json.dumps({'views': []})}"
+                f"Given the transaction and inventory data for {store_name}, forecast 3 category-level % changes for next month. Return JSON: {{'forecast': [{{'category':'','change':'%'}}]}}"
             )
             resp_forecast = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4.1-nano",
                 messages=[
-                    {"role":"system","content":"Output valid JSON with 3 forecast items."},
+                    {"role":"system","content":"Output valid JSON with key 'forecast'."},
                     {"role":"user","content":forecast_prompt}
                 ],
                 temperature=0.7,
@@ -215,23 +171,23 @@ Return a JSON object with two keys:
             try:
                 forecast_data = json.loads(resp_forecast.choices[0].message.content)
             except:
-                forecast_data = {"views": []}
-            cols = st.columns(3)
-            for idx, item in enumerate(forecast_data.get("views", [])):
-                cols[idx].metric(item.get("category", ""), item.get("change", ""))
+                forecast_data = {"forecast": []}
+            fcols = st.columns(3)
+            for i, f in enumerate(forecast_data.get("forecast", [])):
+                fcols[i].metric(f.get("category", ""), f.get("change", ""))
 
             st.subheader("AI Nudges to Action")
             nudges_prompt = (
-                f"List 3 top actionable recommendations for {store_name} this week. Return JSON: {json.dumps({'nudges': []})}"
+                f"Using transaction, inventory, and typical external trends (e.g., weather), provide 3 actionable recommendations for {store_name} this week. Return JSON: {{'nudges': ['...']}}"
             )
             resp_nudges = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4.1-nano",
                 messages=[
-                    {"role":"system","content":"Output valid JSON with 3 nudges."},
+                    {"role":"system","content":"Output valid JSON with key 'nudges'."},
                     {"role":"user","content":nudges_prompt}
                 ],
                 temperature=0.7,
-                max_tokens=80
+                max_tokens=100
             )
             try:
                 nudges_data = json.loads(resp_nudges.choices[0].message.content)
@@ -239,4 +195,3 @@ Return a JSON object with two keys:
                 nudges_data = {"nudges": []}
             for n in nudges_data.get("nudges", []):
                 st.write(f"- {n}")
-
