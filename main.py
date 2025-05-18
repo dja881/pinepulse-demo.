@@ -138,9 +138,9 @@ Slow SKU Context:
             insights['category_insights'] = all_ins[:3]
         if not insights.get('product_insights') and len(all_ins) > 3:
             insights['product_insights'] = all_ins[3:6]
-    except:[0].message.content)
-    except:
+    except Exception:
         st.error('Failed to parse insights.')
+        insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
         insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
 
         # Category chart & insights
