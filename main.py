@@ -148,6 +148,7 @@ Explain why each product might be performing the way it is — using logical rea
 If applicable, identify any seasonality, regional or pricing trends.
 
 Respond only with valid JSON in this format:
+```json
 {
   "top_recos": [
     {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]}
@@ -159,6 +160,7 @@ Respond only with valid JSON in this format:
   "product_insights": ["product insight 1", "product insight 2"],
   "payment_insights": ["payment behavior 1", "payment behavior 2"]
 }
+```
 """
 
     with st.spinner("Generating product recommendations and AI insights..."):
