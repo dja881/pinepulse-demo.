@@ -112,12 +112,12 @@ if st.sidebar.button("Generate Report"):
 
     product_summary = df.groupby("Product Name").agg(
         total_sales=(amount_col, 'sum'),
-        num_txns=('Transaction ID', 'count')
+        num_txns=('Store Name', 'count')  # use something guaranteed to exist
     ).sort_values("total_sales", ascending=False).reset_index()
 
     payment_summary = df.groupby(["Payment Mode", "Card Type"]).agg(
         total_sales=(amount_col, 'sum'),
-        txn_count=('Transaction ID', 'count')
+        txn_count=(amount_col, 'count')
     ).reset_index()
 
     category_summary = df.groupby("Category").agg(total_sales=(amount_col, 'sum')).sort_values("total_sales", ascending=False).reset_index()
@@ -150,6 +150,7 @@ Slow SKU Context:
             temperature=0.3,
             max_tokens=1200
         )
+    st.text(resp.choices[0].message.content)  # Debug output
     try:
         sku_data = json.loads(resp.choices[0].message.content)
     except:
@@ -160,7 +161,6 @@ Slow SKU Context:
             "insights": []
         }
 
-    # === INSIGHTS FIRST ===
     st.markdown("### Category Insights")
     for insight in sku_data.get("category_insights", [])[:3]:
         if isinstance(insight, dict):
@@ -176,7 +176,6 @@ Slow SKU Context:
         if isinstance(insight, str):
             st.markdown(f"- {insight.strip()}")
 
-    # === CHARTS AFTER INSIGHTS ===
     col1, col2 = st.columns(2)
     with col1:
         st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
@@ -194,7 +193,7 @@ Slow SKU Context:
         ).properties(height=300)
         st.altair_chart(chart_bot, use_container_width=True)
 
-    # === CATEGORY TABLE ===
     st.markdown("### Category-Level Summary Table")
     st.dataframe(category_summary, use_container_width=True)
+
 
