@@ -69,6 +69,7 @@ st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
 if st.sidebar.button("Generate Report"):
+    sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}  # Safe default
     df = df_all.loc[:, ~df_all.columns.duplicated()]
     total_sales = df[amount_col].sum()
     num_txn = len(df)
@@ -89,9 +90,19 @@ if st.sidebar.button("Generate Report"):
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**Top SKU Recommendations**")
+        for item in sku_data.get("top_recos", []):
+            if isinstance(item, dict):
+                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
+                for rec in item.get("recommendations", []):
+                    st.write(f"- {rec}")
             
     with col2:
         st.markdown("**Slow SKU Recommendations**")
+        for item in sku_data.get("bottom_recos", []):
+            if isinstance(item, dict):
+                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
+                for rec in item.get("recommendations", []):
+                    st.write(f"- {rec}")
             
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
@@ -105,5 +116,4 @@ if st.sidebar.button("Generate Report"):
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:5]:
         st.write(f"- {insight}")
-
 
