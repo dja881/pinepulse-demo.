@@ -201,11 +201,15 @@ Limit product_insights to 3 key points (focused on revenue or inventory), and pa
             
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", [])[:5]:
-        if isinstance(insight, list):
-            insight = ''.join(insight)
-        if isinstance(insight, str) and len(insight.strip()) > 5:
-            st.markdown(f"- {insight.strip()}")
+    insights = sku_data.get("insights", [])[:5]
+    if not insights:
+        st.info("No AI forecasts generated.")
+    else:
+        for insight in insights:
+            if isinstance(insight, list):
+                insight = ''.join(insight)
+            if isinstance(insight, str) and len(insight.strip()) > 5:
+                st.markdown(f"- {insight.strip()}")
 
     st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:3]:
