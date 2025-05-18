@@ -32,7 +32,7 @@ def load_data():
 
 all_data = load_data()
 
-# --- SIDEBAR: CHOOSE DATA SOURCE ---
+# --- SIDEBAR CONFIG ---
 st.sidebar.header("Configuration")
 data_source = st.sidebar.radio("Choose Data Source:", ["Use Demo Store Data", "Upload Your Own CSV"])
 
@@ -53,18 +53,17 @@ days = st.sidebar.selectbox("Look at data from past...", [7, 14, 30], index=0)
 cutoff = pd.Timestamp.now() - pd.Timedelta(days=days)
 df_all = df_all[df_all["Timestamp"] >= cutoff]
 
-# --- AUTO-DETECT COLUMNS ---
+# --- COLUMN DETECTION ---
 store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
-amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
-qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
-item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
+amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount", "price", "total"])), None)
+qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining", "stock", "quantity", "qty"])), None)
+item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name", "product", "sku"]) and df_all[c].dtype == object), None)
+cat_col = next((c for c in df_all.columns if "category" in c.lower()), None)
 
-# --- STORE FILTER (only if demo data) ---
 if store_col and data_source == "Use Demo Store Data":
     store_name = st.sidebar.selectbox("Store Name", sorted(df_all[store_col].dropna().unique()))
     df_all = df_all[df_all[store_col] == store_name]
 
-# --- SHOW FIRST 30 ROWS ---
 st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
@@ -80,40 +79,114 @@ if st.sidebar.button("Generate Report"):
     m3.metric("Unique Products", unique_items)
     st.markdown("---")
 
+    # --- CATEGORY LEVEL ANALYSIS ---
+    if cat_col:
+        st.subheader("📊 Category-Level Analysis")
+        cat_sales = df.groupby(cat_col).agg(sales=(amount_col, 'sum')).reset_index()
+        top_cat = cat_sales.nlargest(math.ceil(len(cat_sales) * 0.3), 'sales')
+        bottom_cat = cat_sales.nsmallest(math.ceil(len(cat_sales) * 0.3), 'sales')
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**Top Categories**")
+            st.altair_chart(
+                alt.Chart(top_cat).mark_bar(color="#4CAF50").encode(
+                    x=alt.X("sales:Q", title="Sales"),
+                    y=alt.Y(f"{cat_col}:N", sort='-x')
+                ).properties(height=300),
+                use_container_width=True
+            )
+        with col2:
+            st.markdown("**Cold Categories**")
+            st.altair_chart(
+                alt.Chart(bottom_cat).mark_bar(color="#FFA500").encode(
+                    x=alt.X("sales:Q", title="Sales"),
+                    y=alt.Y(f"{cat_col}:N", sort='x')
+                ).properties(height=300),
+                use_container_width=True
+            )
+
+        cat_prompt = f"""
+You are a retail analyst. Provide 3 strategic recommendations per category.
+
+Hot Categories:
+{json.dumps(top_cat.to_dict(orient='records'), indent=2)}
+
+Cold Categories:
+{json.dumps(bottom_cat.to_dict(orient='records'), indent=2)}
+
+Then give 4 insights on:
+1. Category trends
+2. External events
+3. Inventory risks
+4. Planning for next month
+
+Return JSON with keys: 'top_cat_recos', 'bottom_cat_recos', 'insights'
+"""
+        with st.spinner("Analyzing categories..."):
+            cat_resp = client.chat.completions.create(
+                model="gpt-4.1-mini",
+                messages=[{"role": "system", "content": "Output valid JSON only."}, {"role": "user", "content": cat_prompt}],
+                temperature=0.3,
+                max_tokens=800
+            )
+        try:
+            cat_data = json.loads(cat_resp.choices[0].message.content)
+        except:
+            st.error("Failed to parse category insights.")
+            cat_data = {"top_cat_recos": [], "bottom_cat_recos": [], "insights": []}
+
+        with col1:
+            st.markdown("**Top Category Recommendations**")
+            for cat in cat_data.get("top_cat_recos", []):
+                st.write(f"**{cat['category']}**")
+                for rec in cat.get("recommendations", []): st.write(f"- {rec}")
+        with col2:
+            st.markdown("**Cold Category Recommendations**")
+            for cat in cat_data.get("bottom_cat_recos", []):
+                st.write(f"**{cat['category']}**")
+                for rec in cat.get("recommendations", []): st.write(f"- {rec}")
+        st.markdown("### 🧠 Category Forecasts")
+        for insight in cat_data.get("insights", []):
+            st.markdown(f"- {insight}")
+
+        st.divider()
+
+    # --- SKU LEVEL ANALYSIS ---
+    st.subheader("📦 Product-Level Analysis")
     sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
-    n = len(sku_sales)
-    top_n = max(1, math.ceil(n * 0.3))
-    top_df = sku_sales.nlargest(top_n, 'sales')
-    bottom_df = sku_sales.nsmallest(top_n, 'sales')
+    top_df = sku_sales.nlargest(math.ceil(len(sku_sales) * 0.3), 'sales')
+    bottom_df = sku_sales.nsmallest(math.ceil(len(sku_sales) * 0.3), 'sales')
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-        chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_top, use_container_width=True)
+        st.markdown("**Top Products**")
+        st.altair_chart(
+            alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+                x=alt.X("sales:Q", title="Sales"),
+                y=alt.Y(f"{item_col}:N", sort='-x')
+            ).properties(height=300),
+            use_container_width=True
+        )
     with col2:
-        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
-        chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_bot, use_container_width=True)
+        st.markdown("**Slow Products**")
+        st.altair_chart(
+            alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+                x=alt.X("sales:Q", title="Sales"),
+                y=alt.Y(f"{item_col}:N", sort='x')
+            ).properties(height=300),
+            use_container_width=True
+        )
 
     if qty_col:
-        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
+        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col: 'quantity'})
     else:
         inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
 
     def build_ctx(df_sku):
         ctx = df_sku.merge(inv, on=item_col, how='left')
         ctx['velocity'] = (ctx['sales'] / days).round(1)
-        ctx['days_supply'] = ctx.apply(
-            lambda r: round(r['quantity'] / r['velocity'], 1) if r['quantity'] and r['velocity'] else None,
-            axis=1
-        )
+        ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
         return ctx.to_dict(orient='records')
 
     top_context = build_ctx(top_df)
@@ -126,9 +199,9 @@ if st.sidebar.button("Generate Report"):
         "velocity": 150,
         "days_supply": 0.7,
         "recommendations": [
-            "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
-            "Schedule a 10% promo during peak hours to boost sales.",
-            "Place at checkout for visibility to maximize impulse buys."
+            "Parle-G Biscuit is overstocked — reduce to ~3 days of supply.",
+            "Run a 10% discount promo during weekday afternoons.",
+            "Move this SKU to eye-level shelf space for visibility."
         ]
     }
 
@@ -138,24 +211,25 @@ You are a data-driven retail analyst. Follow the example schema:
 
 Now top SKUs context:
 {json.dumps(top_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high' or 'running low soon'. Mention specific SKUs where helpful.
+Give 3 clear recommendations per product. Use product names. Avoid jargon.
 
-Slow SKUs context:
+Now slow SKUs context:
 {json.dumps(bottom_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid jargon. Mention specific SKUs where helpful.
+Same as above.
 
-Then give 4 AI insights about:
-1. Trends in sales and demand patterns,
-2. External signals (e.g. weather, festivals),
-3. Inventory risks or opportunities at the SKU level,
-4. Recommendations for next month’s prep.
+Also give 4 AI insights:
+1. Demand trends (with SKUs),
+2. Seasonal signals,
+3. Stock issues,
+4. Suggestions for next month
 
-Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
+Return JSON with 'top_recos', 'bottom_recos', 'insights'
 """
-    with st.spinner("Generating SKU recommendations and AI insights..."):
+
+    with st.spinner("Analyzing products..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
-            messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
+            messages=[{"role": "system", "content": "Output valid JSON only."}, {"role": "user", "content": sku_prompt}],
             temperature=0.3,
             max_tokens=800
         )
@@ -176,8 +250,8 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
             st.write(f"**{item['sku']}**")
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
-    st.markdown("---")
-    st.markdown("### AI Forecasts & Strategy Nudges")
+    st.markdown("### 🔮 Product Forecasts")
     for insight in sku_data.get("insights", []):
         st.markdown(f"- {insight}")
+
 
