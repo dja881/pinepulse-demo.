@@ -102,7 +102,6 @@ if st.sidebar.button("Generate Report"):
         ).properties(height=300)
         st.altair_chart(chart_bot, use_container_width=True)
 
-    # Inventory context
     if qty_col:
         inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
     else:
@@ -120,7 +119,6 @@ if st.sidebar.button("Generate Report"):
     top_context = build_ctx(top_df)
     bottom_context = build_ctx(bottom_df)
 
-    # Additional data summaries
     product_summary = df.groupby("Product Name").agg(
         total_sales=(amount_col, 'sum'),
         num_txns=('Transaction ID', 'count')
@@ -165,41 +163,23 @@ Slow SKU Context:
         sku_data = json.loads(resp.choices[0].message.content)
     except:
         st.error("Failed to parse SKU recommendations.")
-        sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
+        sku_data = {
+            "category_insights": [],
+            "product_insights": [],
+            "insights": []
+        }
 
-    with col1:
-        st.markdown("**Top SKU Recommendations**")
-        for item in sku_data.get("top_recos", []):
-            st.write(f"**{item['sku']}**")
-            for rec in item.get("recommendations", []): st.write(f"- {rec}")
-    with col2:
-        st.markdown("**Slow SKU Recommendations**")
-        for item in sku_data.get("bottom_recos", []):
-            st.write(f"**{item['sku']}**")
-            for rec in item.get("recommendations", []): st.write(f"- {rec}")
-
-    st.markdown("---")
-    st.markdown("### Category Insights")
+    st.markdown("### 📊 Category Insights")
     for insight in sku_data.get("category_insights", [])[:3]:
         if isinstance(insight, dict):
             st.markdown(f"- {insight.get('insight', '')}")
 
-    st.markdown("### Product Insights")
+    st.markdown("### 🎯 Product Insights")
     for insight in sku_data.get("product_insights", [])[:3]:
         if isinstance(insight, dict):
             st.markdown(f"- {insight.get('insight', '')}")
 
-    st.markdown("### AI Forecasts & Strategy Nudges")
+    st.markdown("### 🤖 AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", [])[:3]:
         if isinstance(insight, str):
             st.markdown(f"- {insight.strip()}")
-
-    st.markdown("### Product Insights")
-    for insight in sku_data.get("product_insights", [])[:3]:
-        if isinstance(insight, dict):
-            st.markdown(f"- {insight.get('insight', '')}")
-
-    st.markdown("### Payment Insights")
-    for insight in sku_data.get("payment_insights", [])[:3]:
-        if isinstance(insight, dict):
-            st.markdown(f"- {insight.get('insight', '')}")
