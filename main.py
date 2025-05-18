@@ -110,14 +110,13 @@ if st.sidebar.button("Generate Report"):
 
     def build_ctx(df_sku):
         ctx = df_sku.merge(inv, on=item_col, how='left')
-        if cat_col and cat_col in df.columns:
-            try:
-                df_unique = df.loc[:, ~df.columns.duplicated()]
-                if cat_col in df_unique.columns:
-                    cat_data = df_unique[[item_col, cat_col]].drop_duplicates()
-                    ctx = ctx.merge(cat_data, on=item_col, how='left')
-            except Exception as e:
-                st.warning(f"Could not enrich with category info: {e}")
+        try:
+            df_unique = df.loc[:, ~df.columns.duplicated()]
+            if cat_col and cat_col in df_unique.columns:
+                cat_data = df_unique[[item_col, cat_col]].drop_duplicates()
+                ctx = ctx.merge(cat_data, on=item_col, how='left')
+        except Exception as e:
+            st.warning(f"Could not enrich with category info: {e}")
         ctx['velocity'] = (ctx['sales'] / days).round(1)
         ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
         return ctx.to_dict(orient='records')
@@ -187,4 +186,3 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", []):
         st.markdown(f"- {insight}")
-
