@@ -193,6 +193,7 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     for insight in sku_data.get("insights", [])[:5]:
     st.write(f"- {insight}")
 
+
     st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:5]:
         st.write(f"- {insight}")
