@@ -1,151 +1,201 @@
 Transaction ID,Terminal ID,Merchant ID,Store Name,Location,Timestamp,Card Type,Masked Card No,Auth Code,Txn Amount (₹),Txn Type,Product Category,Product SKU,Product Name,Inventory ID,Response Code,Settlement Date,Status,Payment Mode,EMI Plan (months),Cashback (₹),Scheme Code,Remaining Stock
-SWATXN1001,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:34:00,Mastercard,**** **** 4330,368943,0,Reversal,First Aid,CHE005,Bandage Roll,INV47089,00,,Reversed,Debit Card,0,0,-,29
-SWATXN1002,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:11:00,RuPay,**** **** 2453,199455,25,Sale,Medicines,CHE001,Paracetamol Strip,INV96014,00,2025-05-18,Success,Debit Card,0,0,-,23
-SWATXN1003,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:27:00,Amex,**** **** 5458,265635,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV25246,00,2025-05-18,Success,Credit Card,0,0,-,10
-SWATXN1004,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:27:00,RuPay,**** **** 8165,347154,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV17064,00,2025-05-18,Success,Credit Card,0,0,-,18
-SWATXN1005,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:36:00,RuPay,**** **** 1047,101684,199,Sale,Equipment,CHE004,Digital Thermometer,INV10424,00,2025-05-18,Success,Debit Card,0,0,-,21
-SWATXN1006,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:03:00,Visa,**** **** 2292,604456,199,Sale,Equipment,CHE004,Digital Thermometer,INV97292,00,2025-05-18,Success,Debit Card,0,0,-,20
-SWATXN1007,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:20:00,Amex,**** **** 9899,297079,30,Sale,First Aid,CHE005,Bandage Roll,INV33578,00,2025-05-18,Success,Credit Card,0,0,-,28
-SWATXN1008,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:36:00,RuPay,**** **** 4260,713195,0,Void,Medicines,CHE001,Paracetamol Strip,INV88316,00,,Voided,Credit Card,0,0,-,24
-SWATXN1009,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:55:00,Mastercard,**** **** 8655,822461,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV48958,00,2025-05-18,Success,Debit Card,0,0,-,17
-SWATXN1010,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:30:00,Visa,**** **** 7495,473110,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV92290,00,2025-05-18,Success,Debit Card,0,0,-,16
-SWATXN1011,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:07:00,Visa,**** **** 3363,686404,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV62837,00,2025-05-18,Success,Debit Card,0,0,-,15
-SWATXN1012,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:46:00,Mastercard,**** **** 2400,654590,0,Reversal,First Aid,CHE005,Bandage Roll,INV87637,00,,Reversed,Credit Card,0,0,-,29
-SWATXN1013,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:39:00,Visa,**** **** 5012,870990,30,Sale,First Aid,CHE005,Bandage Roll,INV17644,00,2025-05-18,Success,Credit Card,0,0,-,28
-SWATXN1014,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:12:00,RuPay,**** **** 9270,982737,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV29592,00,2025-05-18,Success,Debit Card,0,0,-,14
-SWATXN1015,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Visa,**** **** 6948,200920,199,Sale,Equipment,CHE004,Digital Thermometer,INV77926,00,2025-05-18,Success,Credit Card,0,0,-,19
-SWATXN1016,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:18:00,Amex,**** **** 9473,134491,199,Sale,Equipment,CHE004,Digital Thermometer,INV81506,00,2025-05-18,Success,Debit Card,0,0,-,18
-SWATXN1017,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:31:00,Mastercard,**** **** 7207,704191,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV44777,00,2025-05-18,Success,Debit Card,0,0,-,9
-SWATXN1018,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:29:00,Mastercard,**** **** 3441,611246,199,Sale,Equipment,CHE004,Digital Thermometer,INV78195,00,2025-05-18,Success,Debit Card,0,0,-,17
-SWATXN1019,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:25:00,Amex,**** **** 7476,622771,30,Sale,First Aid,CHE005,Bandage Roll,INV22685,00,2025-05-18,Success,Debit Card,0,0,-,27
-SWATXN1020,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:57:00,Visa,**** **** 4235,738380,0,Void,Medicines,CHE001,Paracetamol Strip,INV49816,00,,Voided,Debit Card,0,0,-,25
-SWATXN1021,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:05:00,RuPay,**** **** 2951,285153,30,Sale,First Aid,CHE005,Bandage Roll,INV54868,00,2025-05-18,Success,Credit Card,0,0,-,26
-SWATXN1022,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:48:00,Amex,**** **** 3549,805706,30,Sale,First Aid,CHE005,Bandage Roll,INV89195,00,2025-05-18,Success,Debit Card,0,0,-,25
-SWATXN1023,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:20:00,Visa,**** **** 4654,499161,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV84257,00,2025-05-18,Success,Credit Card,0,0,-,13
-SWATXN1024,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:37:00,Amex,**** **** 5658,574184,30,Sale,First Aid,CHE005,Bandage Roll,INV43289,00,2025-05-18,Success,Debit Card,0,0,-,24
-SWATXN1025,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:33:00,Mastercard,**** **** 5844,323100,30,Sale,First Aid,CHE005,Bandage Roll,INV25912,00,2025-05-18,Success,Debit Card,0,0,-,23
-SWATXN1026,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:54:00,Amex,**** **** 5099,143285,199,Sale,Equipment,CHE004,Digital Thermometer,INV52569,00,2025-05-18,Success,Credit Card,0,0,-,16
-SWATXN1027,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:11:00,Visa,**** **** 1703,182288,0,Reversal,Medicines,CHE002,Cough Syrup 100ml,INV54537,00,,Reversed,Credit Card,0,0,-,14
-SWATXN1028,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:32:00,RuPay,**** **** 2787,826687,25,Sale,Medicines,CHE001,Paracetamol Strip,INV56719,00,2025-05-18,Success,Debit Card,0,0,-,24
-SWATXN1029,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:37:00,Mastercard,**** **** 6364,418905,30,Sale,First Aid,CHE005,Bandage Roll,INV77876,00,2025-05-18,Success,Debit Card,0,0,-,22
-SWATXN1030,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:47:00,RuPay,**** **** 9961,414363,0,Void,First Aid,CHE005,Bandage Roll,INV87752,00,,Voided,Credit Card,0,0,-,23
-SWATXN1031,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:51:00,RuPay,**** **** 4736,242521,199,Sale,Equipment,CHE004,Digital Thermometer,INV16299,00,2025-05-18,Success,Credit Card,0,0,-,15
-SWATXN1032,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:25:00,Visa,**** **** 4297,878096,25,Sale,Medicines,CHE001,Paracetamol Strip,INV11757,00,2025-05-18,Success,Debit Card,0,0,-,23
-SWATXN1033,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:00:00,Visa,**** **** 5818,316053,25,Sale,Medicines,CHE001,Paracetamol Strip,INV39754,00,2025-05-18,Success,Credit Card,0,0,-,22
-SWATXN1034,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:34:00,Amex,**** **** 9026,853101,199,Sale,Equipment,CHE004,Digital Thermometer,INV10269,00,2025-05-18,Success,Debit Card,0,0,-,14
-SWATXN1035,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:57:00,RuPay,**** **** 1998,653971,199,Sale,Equipment,CHE004,Digital Thermometer,INV17629,00,2025-05-18,Success,Debit Card,0,0,-,13
-SWATXN1036,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:57:00,RuPay,**** **** 2571,343143,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV60009,00,2025-05-18,Success,Credit Card,0,0,-,8
-SWATXN1037,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:32:00,Visa,**** **** 3171,664127,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV12025,00,2025-05-18,Success,Debit Card,0,0,-,7
-SWATXN1038,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:17:00,RuPay,**** **** 9792,169474,199,Sale,Equipment,CHE004,Digital Thermometer,INV21352,00,2025-05-18,Success,Credit Card,0,0,-,12
-SWATXN1039,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:30:00,Amex,**** **** 3198,773391,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV88837,00,,Reversed,Debit Card,0,0,-,23
-SWATXN1040,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:20:00,Amex,**** **** 7348,692119,199,Sale,Equipment,CHE004,Digital Thermometer,INV80231,00,2025-05-18,Success,Credit Card,0,0,-,11
-SWATXN1041,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:41:00,Mastercard,**** **** 7159,843946,30,Sale,First Aid,CHE005,Bandage Roll,INV60008,00,2025-05-18,Success,Debit Card,0,0,-,22
-SWATXN1042,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:23:00,Visa,**** **** 8284,186767,0,Void,Medicines,CHE002,Cough Syrup 100ml,INV80486,00,,Voided,Credit Card,0,0,-,15
-SWATXN1043,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:26:00,Visa,**** **** 8704,976081,0,Reversal,Personal Care,CHE003,Hand Sanitizer 200ml,INV84923,00,,Reversed,Credit Card,0,0,-,8
-SWATXN1044,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:00:00,Amex,**** **** 4037,153009,30,Sale,First Aid,CHE005,Bandage Roll,INV69364,00,2025-05-18,Success,Debit Card,0,0,-,21
-SWATXN1045,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:58:00,Mastercard,**** **** 2638,613600,0,Void,Personal Care,CHE003,Hand Sanitizer 200ml,INV94813,00,,Voided,Credit Card,0,0,-,9
-SWATXN1046,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:24:00,Amex,**** **** 8066,982531,30,Sale,First Aid,CHE005,Bandage Roll,INV43932,00,2025-05-18,Success,Debit Card,0,0,-,20
-SWATXN1047,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:08:00,RuPay,**** **** 1780,340014,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV62533,00,2025-05-18,Success,Credit Card,0,0,-,14
-SWATXN1048,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:06:00,Amex,**** **** 8262,668526,0,Void,First Aid,CHE005,Bandage Roll,INV29958,00,,Voided,Debit Card,0,0,-,21
-SWATXN1049,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:39:00,Amex,**** **** 5283,738553,199,Sale,Equipment,CHE004,Digital Thermometer,INV70737,00,2025-05-18,Success,Credit Card,0,0,-,10
-SWATXN1050,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:50:00,Mastercard,**** **** 8742,401413,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV25082,00,2025-05-18,Success,Debit Card,0,0,-,13
-SWATXN1051,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:52:00,Visa,**** **** 6166,233402,30,Sale,First Aid,CHE005,Bandage Roll,INV14690,00,2025-05-18,Success,Credit Card,0,0,-,20
-SWATXN1052,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:44:00,Visa,**** **** 1943,610969,30,Sale,First Aid,CHE005,Bandage Roll,INV16736,00,2025-05-18,Success,Debit Card,0,0,-,19
-SWATXN1053,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:23:00,Visa,**** **** 4207,662974,199,Sale,Equipment,CHE004,Digital Thermometer,INV56607,00,2025-05-18,Success,Credit Card,0,0,-,9
-SWATXN1054,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:46:00,Amex,**** **** 1810,172577,30,Sale,First Aid,CHE005,Bandage Roll,INV91039,00,2025-05-18,Success,Credit Card,0,0,-,18
-SWATXN1055,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:00:00,RuPay,**** **** 6075,733615,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV50121,00,2025-05-18,Success,Debit Card,0,0,-,12
-SWATXN1056,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:18:00,RuPay,**** **** 2193,800414,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV46523,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1057,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:43:00,RuPay,**** **** 4894,433797,25,Sale,Medicines,CHE001,Paracetamol Strip,INV28744,00,2025-05-18,Success,Credit Card,0,0,-,22
-SWATXN1058,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:31:00,Visa,**** **** 7112,936996,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV58081,00,2025-05-18,Success,Debit Card,0,0,-,7
-SWATXN1059,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:50:00,Visa,**** **** 8918,631896,0,Reversal,Equipment,CHE004,Digital Thermometer,INV79554,00,,Reversed,Debit Card,0,0,-,10
-SWATXN1060,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:44:00,RuPay,**** **** 9766,106507,199,Sale,Equipment,CHE004,Digital Thermometer,INV10990,00,2025-05-18,Success,Credit Card,0,0,-,9
-SWATXN1061,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:48:00,Mastercard,**** **** 7099,739378,199,Sale,Equipment,CHE004,Digital Thermometer,INV76501,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1062,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:49:00,Mastercard,**** **** 7295,778413,199,Sale,Equipment,CHE004,Digital Thermometer,INV49476,00,2025-05-18,Success,Debit Card,0,0,-,7
-SWATXN1063,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:53:00,Amex,**** **** 4884,280065,25,Sale,Medicines,CHE001,Paracetamol Strip,INV88037,00,2025-05-18,Success,Debit Card,0,0,-,21
-SWATXN1064,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:20:00,Visa,**** **** 2994,660177,30,Sale,First Aid,CHE005,Bandage Roll,INV75354,00,2025-05-18,Success,Credit Card,0,0,-,17
-SWATXN1065,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:35:00,Visa,**** **** 4485,437167,30,Sale,First Aid,CHE005,Bandage Roll,INV31817,00,2025-05-18,Success,Credit Card,0,0,-,16
-SWATXN1066,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:48:00,RuPay,**** **** 8964,295388,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV43155,00,2025-05-18,Success,Credit Card,0,0,-,6
-SWATXN1067,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Amex,**** **** 8296,496301,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV84787,00,2025-05-18,Success,Debit Card,0,0,-,5
-SWATXN1068,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:39:00,Visa,**** **** 4366,579898,199,Sale,Equipment,CHE004,Digital Thermometer,INV48252,00,2025-05-18,Success,Debit Card,0,0,-,6
-SWATXN1069,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:08:00,Visa,**** **** 2249,265230,199,Sale,Equipment,CHE004,Digital Thermometer,INV85161,00,2025-05-18,Success,Credit Card,0,0,-,5
-SWATXN1070,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Amex,**** **** 2532,271174,25,Sale,Medicines,CHE001,Paracetamol Strip,INV58857,00,2025-05-18,Success,Credit Card,0,0,-,20
-SWATXN1071,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:33:00,Mastercard,**** **** 3357,789036,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV60916,00,2025-05-18,Success,Debit Card,0,0,-,4
-SWATXN1072,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:23:00,RuPay,**** **** 3517,902073,25,Sale,Medicines,CHE001,Paracetamol Strip,INV50707,00,2025-05-18,Success,Debit Card,0,0,-,19
-SWATXN1073,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:20:00,Visa,**** **** 4977,677017,199,Sale,Equipment,CHE004,Digital Thermometer,INV76592,00,2025-05-18,Success,Credit Card,0,0,-,4
-SWATXN1074,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:50:00,Amex,**** **** 7162,578854,25,Sale,Medicines,CHE001,Paracetamol Strip,INV67964,00,2025-05-18,Success,Debit Card,0,0,-,18
-SWATXN1075,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:15:00,RuPay,**** **** 7409,504876,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV84923,00,2025-05-18,Success,Debit Card,0,0,-,11
-SWATXN1076,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:22:00,Mastercard,**** **** 8526,150311,30,Sale,First Aid,CHE005,Bandage Roll,INV92984,00,2025-05-18,Success,Credit Card,0,0,-,15
-SWATXN1077,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:42:00,Visa,**** **** 1931,677728,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV21192,00,2025-05-18,Success,Credit Card,0,0,-,10
-SWATXN1078,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:06:00,Visa,**** **** 7765,304678,0,Void,Medicines,CHE001,Paracetamol Strip,INV13371,00,,Voided,Debit Card,0,0,-,19
-SWATXN1079,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:03:00,Amex,**** **** 5459,715579,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV67064,00,2025-05-18,Success,Credit Card,0,0,-,9
-SWATXN1080,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:01:00,Mastercard,**** **** 3762,604137,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV57237,00,2025-05-18,Success,Debit Card,0,0,-,3
-SWATXN1081,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:02:00,Amex,**** **** 7595,197881,25,Sale,Medicines,CHE001,Paracetamol Strip,INV80925,00,2025-05-18,Success,Credit Card,0,0,-,18
-SWATXN1082,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:30:00,RuPay,**** **** 2205,213408,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV30147,00,2025-05-18,Success,Credit Card,0,0,-,2
-SWATXN1083,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:47:00,RuPay,**** **** 2822,303894,25,Sale,Medicines,CHE001,Paracetamol Strip,INV84277,00,2025-05-18,Success,Debit Card,0,0,-,17
-SWATXN1084,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:18:00,Visa,**** **** 5882,804992,30,Sale,First Aid,CHE005,Bandage Roll,INV47511,00,2025-05-18,Success,Credit Card,0,0,-,14
-SWATXN1085,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:29:00,RuPay,**** **** 6418,793580,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV19007,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1086,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:19:00,Mastercard,**** **** 7209,947204,25,Sale,Medicines,CHE001,Paracetamol Strip,INV39317,00,2025-05-18,Success,Credit Card,0,0,-,16
-SWATXN1087,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:31:00,RuPay,**** **** 7646,626152,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV24564,00,2025-05-18,Success,Debit Card,0,0,-,1
-SWATXN1088,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:53:00,Visa,**** **** 3640,422762,199,Sale,Equipment,CHE004,Digital Thermometer,INV87050,00,2025-05-18,Success,Debit Card,0,0,-,3
-SWATXN1089,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:11:00,Mastercard,**** **** 9168,405630,30,Sale,First Aid,CHE005,Bandage Roll,INV37199,00,2025-05-18,Success,Credit Card,0,0,-,13
-SWATXN1090,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:47:00,Amex,**** **** 2835,686246,25,Sale,Medicines,CHE001,Paracetamol Strip,INV71287,00,2025-05-18,Success,Credit Card,0,0,-,15
-SWATXN1091,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:42:00,RuPay,**** **** 6404,298037,25,Sale,Medicines,CHE001,Paracetamol Strip,INV83720,00,2025-05-18,Success,Credit Card,0,0,-,14
-SWATXN1092,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:31:00,Mastercard,**** **** 2794,750779,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV20266,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1093,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:43:00,Mastercard,**** **** 3614,583147,25,Sale,Medicines,CHE001,Paracetamol Strip,INV14826,00,2025-05-18,Success,Credit Card,0,0,-,13
-SWATXN1094,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:38:00,Amex,**** **** 1772,968494,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV71457,00,2025-05-18,Success,Debit Card,0,0,-,7
-SWATXN1095,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:37:00,Amex,**** **** 1606,565702,25,Sale,Medicines,CHE001,Paracetamol Strip,INV28068,00,2025-05-18,Success,Debit Card,0,0,-,12
-SWATXN1096,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:44:00,Visa,**** **** 3805,733709,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV82210,00,2025-05-18,Success,Credit Card,0,0,-,6
-SWATXN1097,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:46:00,Amex,**** **** 5802,228316,0,Void,Personal Care,CHE003,Hand Sanitizer 200ml,INV47442,00,,Voided,Debit Card,0,0,-,1
-SWATXN1098,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:40:00,Visa,**** **** 2875,346102,0,Reversal,Personal Care,CHE003,Hand Sanitizer 200ml,INV89890,00,,Reversed,Credit Card,0,0,-,2
-SWATXN1099,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:41:00,Mastercard,**** **** 6254,231560,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV75931,00,2025-05-18,Success,Credit Card,0,0,-,1
-SWATXN1100,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:34:00,Mastercard,**** **** 8320,152345,25,Sale,Medicines,CHE001,Paracetamol Strip,INV24715,00,2025-05-18,Success,Debit Card,0,0,-,11
-SWATXN1101,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:24:00,Amex,**** **** 1161,151836,25,Sale,Medicines,CHE001,Paracetamol Strip,INV19242,00,2025-05-18,Success,Credit Card,0,0,-,10
-SWATXN1102,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:16:00,Amex,**** **** 2226,221245,30,Sale,First Aid,CHE005,Bandage Roll,INV47721,00,2025-05-18,Success,Credit Card,0,0,-,12
-SWATXN1103,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:19:00,Amex,**** **** 9425,718236,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV58500,00,2025-05-18,Success,Debit Card,0,0,-,5
-SWATXN1104,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:25:00,Amex,**** **** 8376,153051,25,Sale,Medicines,CHE001,Paracetamol Strip,INV38358,00,2025-05-18,Success,Debit Card,0,0,-,9
-SWATXN1105,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:08:00,Mastercard,**** **** 5765,615545,199,Sale,Equipment,CHE004,Digital Thermometer,INV57247,00,2025-05-18,Success,Credit Card,0,0,-,2
-SWATXN1106,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:43:00,RuPay,**** **** 5345,622767,199,Sale,Equipment,CHE004,Digital Thermometer,INV84843,00,2025-05-18,Success,Debit Card,0,0,-,1
-SWATXN1107,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:42:00,RuPay,**** **** 7534,506399,199,Sale,Equipment,CHE004,Digital Thermometer,INV49598,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1108,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:13:00,Mastercard,**** **** 2235,309983,30,Sale,First Aid,CHE005,Bandage Roll,INV30077,00,2025-05-18,Success,Debit Card,0,0,-,11
-SWATXN1109,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:52:00,RuPay,**** **** 9457,209626,25,Sale,Medicines,CHE001,Paracetamol Strip,INV22400,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1110,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:28:00,Amex,**** **** 7859,439443,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV15902,00,2025-05-18,Success,Credit Card,0,0,-,4
-SWATXN1111,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:34:00,Visa,**** **** 9537,377026,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV31936,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1112,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:45:00,RuPay,**** **** 1872,826157,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV38288,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1113,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:40:00,Mastercard,**** **** 8136,749913,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV74415,00,2025-05-18,Success,Debit Card,0,0,-,3
-SWATXN1114,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:29:00,RuPay,**** **** 6773,359158,199,Sale,Equipment,CHE004,Digital Thermometer,INV17934,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1115,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:29:00,Mastercard,**** **** 4267,593470,30,Sale,First Aid,CHE005,Bandage Roll,INV63624,00,2025-05-18,Success,Debit Card,0,0,-,10
-SWATXN1116,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:30:00,Amex,**** **** 4613,995245,30,Sale,First Aid,CHE005,Bandage Roll,INV34736,00,2025-05-18,Success,Debit Card,0,0,-,9
-SWATXN1117,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:25:00,Amex,**** **** 7077,359065,30,Sale,First Aid,CHE005,Bandage Roll,INV28027,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1118,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:33:00,Amex,**** **** 2605,538784,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV35743,00,2025-05-18,Success,Debit Card,0,0,-,2
-SWATXN1119,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:39:00,Mastercard,**** **** 9182,684339,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV46932,00,2025-05-18,Success,Credit Card,0,0,-,1
-SWATXN1120,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:11:00,Visa,**** **** 6426,837615,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV71137,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1121,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:07:00,RuPay,**** **** 5677,456557,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV86560,00,,Reversed,Debit Card,0,0,-,9
-SWATXN1122,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:47:00,Mastercard,**** **** 3611,167817,25,Sale,Medicines,CHE001,Paracetamol Strip,INV99259,00,2025-05-18,Success,Debit Card,0,0,-,8
-SWATXN1123,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:14:00,Visa,**** **** 2504,590108,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV34290,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1124,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,RuPay,**** **** 3194,787655,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV55835,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1125,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:12:00,Visa,**** **** 8221,841392,30,Sale,First Aid,CHE005,Bandage Roll,INV77842,00,2025-05-18,Success,Credit Card,0,0,-,7
-SWATXN1126,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:52:00,Mastercard,**** **** 8914,737517,25,Sale,Medicines,CHE001,Paracetamol Strip,INV50292,00,2025-05-18,Success,Debit Card,0,0,-,7
-SWATXN1127,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:51:00,RuPay,**** **** 4757,255259,25,Sale,Medicines,CHE001,Paracetamol Strip,INV60843,00,2025-05-18,Success,Credit Card,0,0,-,6
-SWATXN1128,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:46:00,Visa,**** **** 5457,458628,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV85180,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1129,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:52:00,Amex,**** **** 6366,243742,30,Sale,First Aid,CHE005,Bandage Roll,INV11388,00,2025-05-18,Success,Credit Card,0,0,-,6
-SWATXN1130,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:36:00,Visa,**** **** 9158,105871,25,Sale,Medicines,CHE001,Paracetamol Strip,INV37702,00,2025-05-18,Success,Debit Card,0,0,-,5
-SWATXN1131,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:24:00,Visa,**** **** 8436,559263,25,Sale,Medicines,CHE001,Paracetamol Strip,INV17619,00,2025-05-18,Success,Debit Card,0,0,-,4
-SWATXN1132,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:41:00,Amex,**** **** 3342,229618,0,Reversal,Equipment,CHE004,Digital Thermometer,INV67394,00,,Reversed,Credit Card,0,0,-,1
-SWATXN1133,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:40:00,Amex,**** **** 7797,281428,30,Sale,First Aid,CHE005,Bandage Roll,INV10987,00,2025-05-18,Success,Credit Card,0,0,-,5
-SWATXN1134,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:38:00,RuPay,**** **** 4443,591641,25,Sale,Medicines,CHE001,Paracetamol Strip,INV14704,00,2025-05-18,Success,Debit Card,0,0,-,3
-SWATXN1135,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:10:00,Amex,**** **** 8405,577372,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV32003,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1136,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:18:00,Amex,**** **** 6203,682895,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV44234,00,,Reversed,Credit Card,0,0,-,4
-SWATXN1137,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:26:00,Mastercard,**** **** 1661,422290,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV50759,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1138,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:46:00,RuPay,**** **** 3823,399072,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV54396,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1139,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:33:00,Mastercard,**** **** 7892,531928,199,Sale,Equipment,CHE004,Digital Thermometer,INV37427,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1140,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:48:00,Visa,**** **** 6469,206043,199,Sale,Equipment,CHE004,Digital Thermometer,INV95983,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1141,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:53:00,Mastercard,**** **** 9563,731549,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV97593,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1142,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:11:00,Mastercard,**** **** 3020,342596,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV76511,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1143,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:01:00,RuPay,**** **** 5897,987822,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV53548,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1144,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:12:00,Mastercard,**** **** 9056,397656,199,Sale,Equipment,CHE004,Digital Thermometer,INV50428,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1145,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:13:00,Mastercard,**** **** 2680,868229,199,Sale,Equipment,CHE004,Digital Thermometer,INV47798,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1146,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:50:00,RuPay,**** **** 4154,341181,199,Sale,Equipment,CHE004,Digital Thermometer,INV38533,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1147,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:56:00,Mastercard,**** **** 9465,955301,0,Reversal,Medicines,CHE002,Cough Syrup 100ml,INV77411,00,,Reversed,Credit Card,0,0,-,1
-SWATXN1148,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:28:00,RuPay,**** **** 9634,278699,199,Sale,Equipment,CHE004,Digital Thermometer,INV71048,00,2025-05-18,Success,Debit Card,0,0,-,0
-SWATXN1149,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:39:00,Amex,**** **** 6874,214658,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV95082,00,2025-05-18,Success,Credit Card,0,0,-,0
-SWATXN1150,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:31:00,RuPay,**** **** 4977,482211,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV28292,00,2025-05-18,Success,Debit Card,0,0,-,0
+CHETXN1000,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 02:00:38,RuPay,**** **** 1328,757651,106,Purchase,Pharma,PARACETAMO,Paracetamol,INV19739,0,2025-05-01,Success,Credit Card,0,0,-,8
+CHETXN1001,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 14:25:38,Mastercard,**** **** 9551,412794,451,Purchase,Pharma,VITAMIN_C,Vitamin C,INV43509,0,2025-04-24,Success,Credit Card,0,0,-,43
+CHETXN1002,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 09:47:38,RuPay,**** **** 6226,319571,435,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV48483,0,2025-05-05,Success,UPI,0,0,-,13
+CHETXN1003,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-18 05:07:38,RuPay,**** **** 7376,455416,224,Purchase,Pharma,VITAMIN_C,Vitamin C,INV92756,0,2025-05-19,Success,Debit Card,0,0,-,24
+CHETXN1004,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 15:20:38,Visa,**** **** 7066,789011,208,Purchase,Pharma,ANTACID,Antacid,INV29597,0,2025-05-13,Success,Debit Card,0,0,-,36
+CHETXN1005,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 19:44:38,Mastercard,**** **** 9495,496223,237,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV17743,0,2025-04-29,Success,UPI,0,0,-,45
+CHETXN1006,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 12:42:38,Mastercard,**** **** 9830,637563,324,Purchase,Pharma,ANTACID,Antacid,INV49658,0,2025-04-22,Success,UPI,0,0,-,18
+CHETXN1007,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 12:44:38,RuPay,**** **** 6213,976172,455,Purchase,Pharma,PARACETAMO,Paracetamol,INV49091,0,2025-04-30,Success,Credit Card,0,0,-,26
+CHETXN1008,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 21:26:38,Visa,**** **** 2409,616963,263,Purchase,Pharma,VITAMIN_C,Vitamin C,INV30197,0,2025-04-30,Success,Debit Card,0,0,-,42
+CHETXN1009,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 09:36:38,RuPay,**** **** 9800,372953,361,Purchase,Pharma,VITAMIN_C,Vitamin C,INV46075,0,2025-05-03,Success,UPI,0,0,-,7
+CHETXN1010,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 00:02:38,Mastercard,**** **** 7688,218059,425,Purchase,Pharma,PARACETAMO,Paracetamol,INV85167,0,2025-05-04,Success,Debit Card,0,0,-,5
+CHETXN1011,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 09:30:38,Visa,**** **** 1770,999359,316,Purchase,Pharma,PARACETAMO,Paracetamol,INV36969,0,2025-05-17,Success,Credit Card,0,0,-,29
+CHETXN1012,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 14:31:38,Visa,**** **** 8434,576670,335,Purchase,Pharma,ANTACID,Antacid,INV57927,0,2025-05-10,Success,Debit Card,0,0,-,16
+CHETXN1013,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-14 02:33:38,Mastercard,**** **** 1781,238402,95,Purchase,Pharma,FACE_MASK,Face Mask,INV59637,0,2025-05-15,Success,Credit Card,0,0,-,49
+CHETXN1014,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 20:47:38,RuPay,**** **** 4689,309356,404,Purchase,Pharma,ANTACID,Antacid,INV87229,0,2025-04-22,Success,UPI,0,0,-,40
+CHETXN1015,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 14:19:38,RuPay,**** **** 1836,291074,113,Purchase,Pharma,FACE_MASK,Face Mask,INV18424,0,2025-05-06,Success,Credit Card,0,0,-,46
+CHETXN1016,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 10:15:38,Visa,**** **** 8118,925480,97,Purchase,Pharma,ANTACID,Antacid,INV34649,0,2025-05-12,Success,Credit Card,0,0,-,11
+CHETXN1017,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 23:18:38,RuPay,**** **** 4888,974772,285,Purchase,Pharma,FACE_MASK,Face Mask,INV17501,0,2025-05-08,Success,Credit Card,0,0,-,42
+CHETXN1018,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 15:04:38,Visa,**** **** 7234,528070,296,Purchase,Pharma,PARACETAMO,Paracetamol,INV93851,0,2025-05-13,Success,Credit Card,0,0,-,25
+CHETXN1019,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 04:35:38,Visa,**** **** 1821,953020,416,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV31072,0,2025-04-25,Success,UPI,0,0,-,15
+CHETXN1020,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 19:35:38,Mastercard,**** **** 8176,109659,346,Purchase,Pharma,VITAMIN_C,Vitamin C,INV49840,0,2025-05-17,Success,Credit Card,0,0,-,8
+CHETXN1021,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 07:19:38,Mastercard,**** **** 7982,975507,154,Purchase,Pharma,PARACETAMO,Paracetamol,INV10145,0,2025-05-05,Success,Credit Card,0,0,-,9
+CHETXN1022,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-27 05:28:38,Mastercard,**** **** 9041,880334,183,Purchase,Pharma,PARACETAMO,Paracetamol,INV97704,0,2025-04-28,Success,UPI,0,0,-,24
+CHETXN1023,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 22:21:38,RuPay,**** **** 4990,251172,395,Purchase,Pharma,FACE_MASK,Face Mask,INV58731,0,2025-05-08,Success,Debit Card,0,0,-,41
+CHETXN1024,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 04:50:38,Visa,**** **** 9882,304415,275,Purchase,Pharma,VITAMIN_C,Vitamin C,INV43739,0,2025-04-20,Success,Credit Card,0,0,-,44
+CHETXN1025,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 04:19:38,Mastercard,**** **** 9532,221403,264,Purchase,Pharma,FACE_MASK,Face Mask,INV24332,0,2025-05-02,Success,UPI,0,0,-,7
+CHETXN1026,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 03:35:38,Visa,**** **** 7762,304379,194,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV71674,0,2025-05-07,Success,Debit Card,0,0,-,25
+CHETXN1027,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-25 05:44:38,RuPay,**** **** 2411,636599,305,Purchase,Pharma,ANTACID,Antacid,INV38004,0,2025-04-26,Success,UPI,0,0,-,37
+CHETXN1028,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-10 10:57:38,RuPay,**** **** 3742,287359,384,Purchase,Pharma,PARACETAMO,Paracetamol,INV57988,0,2025-05-11,Success,Credit Card,0,0,-,10
+CHETXN1029,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 17:50:38,RuPay,**** **** 6357,405477,276,Purchase,Pharma,FACE_MASK,Face Mask,INV57885,0,2025-05-09,Success,UPI,0,0,-,46
+CHETXN1030,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 04:11:38,RuPay,**** **** 3860,118377,150,Purchase,Pharma,PARACETAMO,Paracetamol,INV38742,0,2025-05-07,Success,UPI,0,0,-,42
+CHETXN1031,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-20 19:32:38,Mastercard,**** **** 3792,813834,368,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV84123,0,2025-04-21,Success,UPI,0,0,-,7
+CHETXN1032,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-20 09:20:38,RuPay,**** **** 5323,391819,298,Purchase,Pharma,FACE_MASK,Face Mask,INV84110,0,2025-04-21,Success,Credit Card,0,0,-,48
+CHETXN1033,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 18:44:38,Visa,**** **** 5072,116215,170,Purchase,Pharma,ANTACID,Antacid,INV90080,0,2025-05-04,Success,Credit Card,0,0,-,30
+CHETXN1034,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 07:12:38,Visa,**** **** 9676,319926,358,Purchase,Pharma,VITAMIN_C,Vitamin C,INV77298,0,2025-05-08,Success,Debit Card,0,0,-,10
+CHETXN1035,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 23:16:38,RuPay,**** **** 4822,954559,421,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV99542,0,2025-04-27,Success,UPI,0,0,-,8
+CHETXN1036,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 03:52:38,Visa,**** **** 5616,797285,475,Purchase,Pharma,PARACETAMO,Paracetamol,INV48767,0,2025-05-01,Success,UPI,0,0,-,35
+CHETXN1037,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 12:41:38,RuPay,**** **** 5791,134125,447,Purchase,Pharma,FACE_MASK,Face Mask,INV86884,0,2025-05-12,Success,Credit Card,0,0,-,6
+CHETXN1038,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 11:52:38,Mastercard,**** **** 9940,641998,243,Purchase,Pharma,FACE_MASK,Face Mask,INV90932,0,2025-04-30,Success,Debit Card,0,0,-,41
+CHETXN1039,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 14:01:38,Visa,**** **** 5626,250631,314,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV50329,0,2025-05-17,Success,Debit Card,0,0,-,16
+CHETXN1040,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 12:29:38,RuPay,**** **** 6514,674653,119,Purchase,Pharma,ANTACID,Antacid,INV87085,0,2025-04-29,Success,Credit Card,0,0,-,22
+CHETXN1041,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 02:50:38,Mastercard,**** **** 2166,821204,295,Purchase,Pharma,VITAMIN_C,Vitamin C,INV39925,0,2025-05-03,Success,Debit Card,0,0,-,47
+CHETXN1042,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 09:51:38,Visa,**** **** 9021,695679,252,Purchase,Pharma,ANTACID,Antacid,INV41102,0,2025-05-07,Success,Credit Card,0,0,-,32
+CHETXN1043,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 17:33:38,Mastercard,**** **** 6994,393041,268,Purchase,Pharma,VITAMIN_C,Vitamin C,INV47073,0,2025-05-13,Success,Debit Card,0,0,-,19
+CHETXN1044,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 03:58:38,Visa,**** **** 5127,992266,175,Purchase,Pharma,PARACETAMO,Paracetamol,INV81936,0,2025-04-25,Success,Credit Card,0,0,-,29
+CHETXN1045,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 20:05:38,RuPay,**** **** 6482,104611,310,Purchase,Pharma,ANTACID,Antacid,INV53917,0,2025-05-13,Success,Debit Card,0,0,-,37
+CHETXN1046,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 18:57:38,Mastercard,**** **** 1558,696333,266,Purchase,Pharma,FACE_MASK,Face Mask,INV74127,0,2025-04-22,Success,Credit Card,0,0,-,39
+CHETXN1047,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-17 09:53:38,Mastercard,**** **** 4616,830414,177,Purchase,Pharma,VITAMIN_C,Vitamin C,INV10383,0,2025-05-18,Success,Debit Card,0,0,-,29
+CHETXN1048,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 05:26:38,Mastercard,**** **** 4999,173111,468,Purchase,Pharma,VITAMIN_C,Vitamin C,INV69594,0,2025-05-17,Success,Credit Card,0,0,-,27
+CHETXN1049,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 23:28:38,Mastercard,**** **** 7909,773520,466,Purchase,Pharma,ANTACID,Antacid,INV39945,0,2025-04-29,Success,Credit Card,0,0,-,34
+CHETXN1050,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 15:17:38,RuPay,**** **** 8843,742675,300,Purchase,Pharma,FACE_MASK,Face Mask,INV36524,0,2025-04-25,Success,Credit Card,0,0,-,17
+CHETXN1051,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 20:46:38,Mastercard,**** **** 4135,364417,260,Purchase,Pharma,FACE_MASK,Face Mask,INV95650,0,2025-05-03,Success,UPI,0,0,-,21
+CHETXN1052,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 01:15:38,Visa,**** **** 1822,595245,445,Purchase,Pharma,VITAMIN_C,Vitamin C,INV30875,0,2025-05-12,Success,UPI,0,0,-,5
+CHETXN1053,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-15 13:43:38,RuPay,**** **** 6484,401881,363,Purchase,Pharma,ANTACID,Antacid,INV77183,0,2025-05-16,Success,Debit Card,0,0,-,32
+CHETXN1054,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 11:05:38,Visa,**** **** 2234,718960,313,Purchase,Pharma,PARACETAMO,Paracetamol,INV16652,0,2025-04-20,Success,Debit Card,0,0,-,32
+CHETXN1055,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 21:13:38,RuPay,**** **** 6011,914447,405,Purchase,Pharma,ANTACID,Antacid,INV20323,0,2025-04-27,Success,Debit Card,0,0,-,48
+CHETXN1056,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 07:51:38,Mastercard,**** **** 2389,349662,422,Purchase,Pharma,PARACETAMO,Paracetamol,INV51360,0,2025-05-13,Success,UPI,0,0,-,9
+CHETXN1057,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-14 12:55:38,Visa,**** **** 4359,995525,445,Purchase,Pharma,FACE_MASK,Face Mask,INV45055,0,2025-05-15,Success,Debit Card,0,0,-,22
+CHETXN1058,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 15:59:38,Mastercard,**** **** 8702,248909,281,Purchase,Pharma,FACE_MASK,Face Mask,INV47406,0,2025-04-24,Success,Credit Card,0,0,-,19
+CHETXN1059,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 00:29:38,Mastercard,**** **** 6752,730804,263,Purchase,Pharma,PARACETAMO,Paracetamol,INV93363,0,2025-04-29,Success,Debit Card,0,0,-,6
+CHETXN1060,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 15:33:38,RuPay,**** **** 5887,213531,211,Purchase,Pharma,VITAMIN_C,Vitamin C,INV95400,0,2025-04-29,Success,Credit Card,0,0,-,14
+CHETXN1061,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 15:45:38,Visa,**** **** 1197,139638,329,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV73712,0,2025-05-17,Success,UPI,0,0,-,25
+CHETXN1062,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 01:35:38,Mastercard,**** **** 5449,571088,369,Purchase,Pharma,FACE_MASK,Face Mask,INV22828,0,2025-04-23,Success,UPI,0,0,-,16
+CHETXN1063,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 02:19:38,Visa,**** **** 7095,320363,384,Purchase,Pharma,VITAMIN_C,Vitamin C,INV99410,0,2025-05-01,Success,Debit Card,0,0,-,17
+CHETXN1064,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 01:57:38,Mastercard,**** **** 3296,479982,383,Purchase,Pharma,ANTACID,Antacid,INV92820,0,2025-05-09,Success,Credit Card,0,0,-,17
+CHETXN1065,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 03:51:38,RuPay,**** **** 1143,702254,182,Purchase,Pharma,PARACETAMO,Paracetamol,INV95847,0,2025-05-04,Success,Debit Card,0,0,-,5
+CHETXN1066,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 14:41:38,Mastercard,**** **** 5114,761326,397,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV92341,0,2025-05-09,Success,UPI,0,0,-,32
+CHETXN1067,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-15 11:51:38,Mastercard,**** **** 5480,320651,411,Purchase,Pharma,PARACETAMO,Paracetamol,INV82857,0,2025-05-16,Success,Debit Card,0,0,-,8
+CHETXN1068,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 01:19:38,Visa,**** **** 8640,819912,253,Purchase,Pharma,ANTACID,Antacid,INV18009,0,2025-04-22,Success,Credit Card,0,0,-,5
+CHETXN1069,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 17:48:38,Visa,**** **** 8462,224366,266,Purchase,Pharma,VITAMIN_C,Vitamin C,INV54748,0,2025-04-22,Success,UPI,0,0,-,44
+CHETXN1070,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-10 07:23:38,Mastercard,**** **** 2265,863072,238,Purchase,Pharma,VITAMIN_C,Vitamin C,INV49935,0,2025-05-11,Success,Debit Card,0,0,-,22
+CHETXN1071,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 06:40:38,Visa,**** **** 4745,945251,414,Purchase,Pharma,FACE_MASK,Face Mask,INV76215,0,2025-05-08,Success,Debit Card,0,0,-,31
+CHETXN1072,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-15 02:46:38,Mastercard,**** **** 1261,585767,344,Purchase,Pharma,ANTACID,Antacid,INV53843,0,2025-05-16,Success,Debit Card,0,0,-,30
+CHETXN1073,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 08:37:38,RuPay,**** **** 9883,692907,155,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV67002,0,2025-05-12,Success,UPI,0,0,-,45
+CHETXN1074,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 16:06:38,Visa,**** **** 7126,983083,460,Purchase,Pharma,PARACETAMO,Paracetamol,INV86444,0,2025-05-04,Success,Debit Card,0,0,-,19
+CHETXN1075,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 19:48:38,RuPay,**** **** 9585,978040,100,Purchase,Pharma,ANTACID,Antacid,INV55679,0,2025-05-13,Success,Credit Card,0,0,-,50
+CHETXN1076,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 06:01:38,RuPay,**** **** 8474,717097,53,Purchase,Pharma,ANTACID,Antacid,INV69551,0,2025-04-27,Success,UPI,0,0,-,45
+CHETXN1077,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 21:27:38,Mastercard,**** **** 1353,143024,219,Purchase,Pharma,VITAMIN_C,Vitamin C,INV88058,0,2025-04-27,Success,UPI,0,0,-,33
+CHETXN1078,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-13 07:57:38,RuPay,**** **** 9488,336754,327,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV44680,0,2025-05-14,Success,Credit Card,0,0,-,43
+CHETXN1079,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 23:00:38,RuPay,**** **** 1686,184863,88,Purchase,Pharma,ANTACID,Antacid,INV81148,0,2025-04-30,Success,Credit Card,0,0,-,28
+CHETXN1080,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 21:16:38,Visa,**** **** 3156,730836,367,Purchase,Pharma,PARACETAMO,Paracetamol,INV69843,0,2025-05-01,Success,UPI,0,0,-,30
+CHETXN1081,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-17 12:40:38,Mastercard,**** **** 4792,366852,475,Purchase,Pharma,ANTACID,Antacid,INV14232,0,2025-05-18,Success,Debit Card,0,0,-,40
+CHETXN1082,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 22:43:38,RuPay,**** **** 6010,656617,218,Purchase,Pharma,PARACETAMO,Paracetamol,INV62343,0,2025-05-08,Success,Debit Card,0,0,-,42
+CHETXN1083,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 10:57:38,Visa,**** **** 6472,417015,500,Purchase,Pharma,FACE_MASK,Face Mask,INV64838,0,2025-04-24,Success,Credit Card,0,0,-,26
+CHETXN1084,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-13 16:02:38,RuPay,**** **** 6525,290433,332,Purchase,Pharma,VITAMIN_C,Vitamin C,INV33235,0,2025-05-14,Success,Credit Card,0,0,-,39
+CHETXN1085,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 22:31:38,Mastercard,**** **** 3284,313236,286,Purchase,Pharma,ANTACID,Antacid,INV55234,0,2025-05-13,Success,Debit Card,0,0,-,49
+CHETXN1086,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 06:10:38,Visa,**** **** 5096,786153,355,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV61095,0,2025-04-23,Success,Debit Card,0,0,-,13
+CHETXN1087,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 10:40:38,Visa,**** **** 9480,660597,198,Purchase,Pharma,VITAMIN_C,Vitamin C,INV92122,0,2025-04-20,Success,UPI,0,0,-,39
+CHETXN1088,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 19:09:38,RuPay,**** **** 4092,483250,397,Purchase,Pharma,ANTACID,Antacid,INV71824,0,2025-05-08,Success,Debit Card,0,0,-,41
+CHETXN1089,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 15:34:38,RuPay,**** **** 2576,492181,425,Purchase,Pharma,VITAMIN_C,Vitamin C,INV70799,0,2025-05-03,Success,Credit Card,0,0,-,7
+CHETXN1090,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 13:29:38,RuPay,**** **** 8122,271636,149,Purchase,Pharma,VITAMIN_C,Vitamin C,INV67656,0,2025-05-13,Success,Credit Card,0,0,-,6
+CHETXN1091,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 14:05:38,Visa,**** **** 7109,597539,421,Purchase,Pharma,VITAMIN_C,Vitamin C,INV72768,0,2025-04-25,Success,UPI,0,0,-,26
+CHETXN1092,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 19:40:38,Mastercard,**** **** 3853,295492,399,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV63954,0,2025-05-03,Success,UPI,0,0,-,17
+CHETXN1093,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 01:12:38,Visa,**** **** 3579,616022,434,Purchase,Pharma,VITAMIN_C,Vitamin C,INV39322,0,2025-05-10,Success,UPI,0,0,-,7
+CHETXN1094,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-13 22:30:38,Visa,**** **** 7922,297232,497,Purchase,Pharma,ANTACID,Antacid,INV88478,0,2025-05-14,Success,UPI,0,0,-,50
+CHETXN1095,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 23:32:38,Mastercard,**** **** 5568,462574,323,Purchase,Pharma,ANTACID,Antacid,INV22293,0,2025-05-10,Success,Debit Card,0,0,-,45
+CHETXN1096,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 15:37:38,RuPay,**** **** 3853,513079,331,Purchase,Pharma,FACE_MASK,Face Mask,INV30741,0,2025-05-08,Success,Debit Card,0,0,-,20
+CHETXN1097,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 10:27:38,Mastercard,**** **** 5737,781817,467,Purchase,Pharma,FACE_MASK,Face Mask,INV58140,0,2025-05-03,Success,Credit Card,0,0,-,50
+CHETXN1098,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 03:31:38,RuPay,**** **** 5916,499875,306,Purchase,Pharma,PARACETAMO,Paracetamol,INV80384,0,2025-05-10,Success,UPI,0,0,-,11
+CHETXN1099,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 08:47:38,Mastercard,**** **** 9545,560800,383,Purchase,Pharma,FACE_MASK,Face Mask,INV56859,0,2025-05-05,Success,Credit Card,0,0,-,31
+CHETXN1100,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 00:30:38,RuPay,**** **** 2845,450738,106,Purchase,Pharma,PARACETAMO,Paracetamol,INV44758,0,2025-05-17,Success,Credit Card,0,0,-,42
+CHETXN1101,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 21:43:38,Mastercard,**** **** 8058,766998,285,Purchase,Pharma,ANTACID,Antacid,INV40204,0,2025-05-07,Success,Credit Card,0,0,-,48
+CHETXN1102,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 15:08:38,Mastercard,**** **** 7394,735417,381,Purchase,Pharma,VITAMIN_C,Vitamin C,INV92516,0,2025-04-22,Success,Debit Card,0,0,-,45
+CHETXN1103,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 05:00:38,RuPay,**** **** 3002,859638,434,Purchase,Pharma,VITAMIN_C,Vitamin C,INV78326,0,2025-05-05,Success,Debit Card,0,0,-,29
+CHETXN1104,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 09:06:38,Visa,**** **** 5347,820423,431,Purchase,Pharma,ANTACID,Antacid,INV29963,0,2025-05-10,Success,UPI,0,0,-,23
+CHETXN1105,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 03:54:38,Mastercard,**** **** 1333,985894,272,Purchase,Pharma,FACE_MASK,Face Mask,INV35303,0,2025-04-24,Success,UPI,0,0,-,28
+CHETXN1106,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 06:27:38,Mastercard,**** **** 3086,698650,84,Purchase,Pharma,FACE_MASK,Face Mask,INV89548,0,2025-04-24,Success,UPI,0,0,-,46
+CHETXN1107,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 03:22:38,RuPay,**** **** 4128,162397,465,Purchase,Pharma,PARACETAMO,Paracetamol,INV64612,0,2025-05-04,Success,Credit Card,0,0,-,24
+CHETXN1108,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 21:35:38,Visa,**** **** 6969,979901,127,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV84408,0,2025-04-30,Success,Credit Card,0,0,-,39
+CHETXN1109,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-10 13:18:38,Mastercard,**** **** 9880,624734,458,Purchase,Pharma,FACE_MASK,Face Mask,INV81892,0,2025-05-11,Success,UPI,0,0,-,42
+CHETXN1110,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 05:31:38,Mastercard,**** **** 8175,365420,372,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV88225,0,2025-05-07,Success,UPI,0,0,-,30
+CHETXN1111,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 22:36:38,Mastercard,**** **** 7589,160220,392,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV72559,0,2025-05-09,Success,Debit Card,0,0,-,18
+CHETXN1112,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 12:54:38,Visa,**** **** 8675,719888,471,Purchase,Pharma,PARACETAMO,Paracetamol,INV62491,0,2025-05-13,Success,UPI,0,0,-,20
+CHETXN1113,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 21:15:38,RuPay,**** **** 1974,755013,383,Purchase,Pharma,VITAMIN_C,Vitamin C,INV49976,0,2025-04-29,Success,UPI,0,0,-,26
+CHETXN1114,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 19:10:38,Visa,**** **** 1796,855907,192,Purchase,Pharma,ANTACID,Antacid,INV90249,0,2025-05-17,Success,UPI,0,0,-,23
+CHETXN1115,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 23:03:38,Mastercard,**** **** 6750,808652,387,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV79585,0,2025-05-01,Success,UPI,0,0,-,22
+CHETXN1116,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-25 20:44:38,Mastercard,**** **** 7275,287173,330,Purchase,Pharma,ANTACID,Antacid,INV96290,0,2025-04-26,Success,Debit Card,0,0,-,15
+CHETXN1117,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 23:05:38,Visa,**** **** 3812,667542,414,Purchase,Pharma,VITAMIN_C,Vitamin C,INV66260,0,2025-04-20,Success,Debit Card,0,0,-,37
+CHETXN1118,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 08:03:38,RuPay,**** **** 2734,974585,326,Purchase,Pharma,FACE_MASK,Face Mask,INV83731,0,2025-05-02,Success,Debit Card,0,0,-,8
+CHETXN1119,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 05:14:38,Mastercard,**** **** 2056,536657,127,Purchase,Pharma,ANTACID,Antacid,INV89931,0,2025-05-05,Success,Debit Card,0,0,-,50
+CHETXN1120,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 03:12:38,Visa,**** **** 8815,660437,448,Purchase,Pharma,VITAMIN_C,Vitamin C,INV73197,0,2025-04-20,Success,Debit Card,0,0,-,20
+CHETXN1121,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 14:40:38,RuPay,**** **** 5980,308818,447,Purchase,Pharma,PARACETAMO,Paracetamol,INV39399,0,2025-05-05,Success,UPI,0,0,-,23
+CHETXN1122,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 22:55:38,RuPay,**** **** 4336,191527,320,Purchase,Pharma,VITAMIN_C,Vitamin C,INV52841,0,2025-05-01,Success,Debit Card,0,0,-,10
+CHETXN1123,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 18:26:38,Mastercard,**** **** 9105,858491,296,Purchase,Pharma,PARACETAMO,Paracetamol,INV62701,0,2025-05-07,Success,Credit Card,0,0,-,45
+CHETXN1124,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 23:42:38,RuPay,**** **** 9388,466651,400,Purchase,Pharma,FACE_MASK,Face Mask,INV44020,0,2025-04-27,Success,UPI,0,0,-,10
+CHETXN1125,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 05:31:38,Visa,**** **** 4822,669512,105,Purchase,Pharma,FACE_MASK,Face Mask,INV21139,0,2025-04-25,Success,Credit Card,0,0,-,49
+CHETXN1126,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 18:07:38,Mastercard,**** **** 3063,537887,159,Purchase,Pharma,FACE_MASK,Face Mask,INV49349,0,2025-04-23,Success,Debit Card,0,0,-,25
+CHETXN1127,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-14 10:14:38,Mastercard,**** **** 6670,361786,91,Purchase,Pharma,PARACETAMO,Paracetamol,INV91890,0,2025-05-15,Success,Debit Card,0,0,-,30
+CHETXN1128,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 06:07:38,RuPay,**** **** 3014,323594,356,Purchase,Pharma,FACE_MASK,Face Mask,INV21659,0,2025-05-01,Success,Debit Card,0,0,-,16
+CHETXN1129,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 16:23:38,Mastercard,**** **** 7464,831605,204,Purchase,Pharma,VITAMIN_C,Vitamin C,INV95267,0,2025-05-06,Success,Debit Card,0,0,-,20
+CHETXN1130,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 10:57:38,Mastercard,**** **** 2494,955695,197,Purchase,Pharma,ANTACID,Antacid,INV17210,0,2025-05-06,Success,Credit Card,0,0,-,45
+CHETXN1131,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 03:32:38,Visa,**** **** 2964,616629,388,Purchase,Pharma,VITAMIN_C,Vitamin C,INV63320,0,2025-04-23,Success,UPI,0,0,-,50
+CHETXN1132,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-21 10:46:38,Mastercard,**** **** 2198,369349,170,Purchase,Pharma,FACE_MASK,Face Mask,INV95852,0,2025-04-22,Success,Credit Card,0,0,-,37
+CHETXN1133,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 20:29:38,RuPay,**** **** 3033,367140,147,Purchase,Pharma,ANTACID,Antacid,INV73858,0,2025-05-02,Success,Credit Card,0,0,-,17
+CHETXN1134,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 07:13:38,Mastercard,**** **** 9148,856541,478,Purchase,Pharma,ANTACID,Antacid,INV36651,0,2025-04-27,Success,Credit Card,0,0,-,15
+CHETXN1135,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 02:34:38,Mastercard,**** **** 5830,835975,339,Purchase,Pharma,PARACETAMO,Paracetamol,INV81887,0,2025-05-07,Success,Credit Card,0,0,-,22
+CHETXN1136,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 01:56:38,RuPay,**** **** 9805,185607,430,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV98427,0,2025-05-17,Success,UPI,0,0,-,19
+CHETXN1137,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-27 07:44:38,Mastercard,**** **** 7531,939133,409,Purchase,Pharma,ANTACID,Antacid,INV21047,0,2025-04-28,Success,UPI,0,0,-,27
+CHETXN1138,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 23:52:38,RuPay,**** **** 8441,510116,57,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV96562,0,2025-05-13,Success,Credit Card,0,0,-,41
+CHETXN1139,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 00:38:38,RuPay,**** **** 6367,214002,356,Purchase,Pharma,ANTACID,Antacid,INV63140,0,2025-05-08,Success,UPI,0,0,-,5
+CHETXN1140,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-17 01:42:38,RuPay,**** **** 4294,725193,374,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV12910,0,2025-05-18,Success,UPI,0,0,-,10
+CHETXN1141,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 21:24:38,Visa,**** **** 2281,575103,200,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV99517,0,2025-04-30,Success,UPI,0,0,-,48
+CHETXN1142,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-16 22:36:38,Mastercard,**** **** 3659,455380,210,Purchase,Pharma,PARACETAMO,Paracetamol,INV40633,0,2025-05-17,Success,Debit Card,0,0,-,50
+CHETXN1143,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-20 16:41:38,Visa,**** **** 3622,536468,240,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV76387,0,2025-04-21,Success,Debit Card,0,0,-,26
+CHETXN1144,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-18 05:20:38,Visa,**** **** 8559,462672,327,Purchase,Pharma,VITAMIN_C,Vitamin C,INV40429,0,2025-05-19,Success,Credit Card,0,0,-,18
+CHETXN1145,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-17 21:10:38,Mastercard,**** **** 9790,979674,247,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV97558,0,2025-05-18,Success,Debit Card,0,0,-,24
+CHETXN1146,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 21:04:38,RuPay,**** **** 1297,395548,479,Purchase,Pharma,PARACETAMO,Paracetamol,INV42205,0,2025-04-30,Success,Debit Card,0,0,-,12
+CHETXN1147,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 17:25:38,RuPay,**** **** 1676,220674,270,Purchase,Pharma,FACE_MASK,Face Mask,INV10792,0,2025-05-01,Success,Credit Card,0,0,-,46
+CHETXN1148,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 07:11:38,Mastercard,**** **** 2718,449927,468,Purchase,Pharma,VITAMIN_C,Vitamin C,INV62982,0,2025-05-07,Success,Debit Card,0,0,-,46
+CHETXN1149,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 09:21:38,RuPay,**** **** 1555,330619,318,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV98456,0,2025-05-13,Success,Debit Card,0,0,-,49
+CHETXN1150,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-12 09:25:38,RuPay,**** **** 5142,199107,237,Purchase,Pharma,ANTACID,Antacid,INV94834,0,2025-05-13,Success,Credit Card,0,0,-,10
+CHETXN1151,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 12:05:38,RuPay,**** **** 7504,315337,106,Purchase,Pharma,VITAMIN_C,Vitamin C,INV51372,0,2025-05-01,Success,Credit Card,0,0,-,29
+CHETXN1152,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-06 14:59:38,RuPay,**** **** 6152,615590,95,Purchase,Pharma,ANTACID,Antacid,INV78637,0,2025-05-07,Success,UPI,0,0,-,24
+CHETXN1153,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-15 19:50:38,Visa,**** **** 7493,834966,437,Purchase,Pharma,ANTACID,Antacid,INV55969,0,2025-05-16,Success,UPI,0,0,-,23
+CHETXN1154,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 13:37:38,RuPay,**** **** 7624,907088,261,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV21172,0,2025-05-04,Success,Credit Card,0,0,-,46
+CHETXN1155,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 13:12:38,Visa,**** **** 8521,982663,106,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV13480,0,2025-05-01,Success,UPI,0,0,-,31
+CHETXN1156,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 06:53:38,RuPay,**** **** 2229,547476,195,Purchase,Pharma,ANTACID,Antacid,INV13012,0,2025-04-27,Success,UPI,0,0,-,42
+CHETXN1157,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 11:28:38,RuPay,**** **** 2233,641401,118,Purchase,Pharma,ANTACID,Antacid,INV39743,0,2025-04-27,Success,Debit Card,0,0,-,37
+CHETXN1158,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 23:26:38,RuPay,**** **** 5090,865214,496,Purchase,Pharma,PARACETAMO,Paracetamol,INV83887,0,2025-04-23,Success,UPI,0,0,-,22
+CHETXN1159,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 20:16:38,Visa,**** **** 3535,173581,456,Purchase,Pharma,ANTACID,Antacid,INV97384,0,2025-04-20,Success,Credit Card,0,0,-,31
+CHETXN1160,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 03:18:38,Mastercard,**** **** 5631,239793,128,Purchase,Pharma,VITAMIN_C,Vitamin C,INV25054,0,2025-05-09,Success,Debit Card,0,0,-,40
+CHETXN1161,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-20 03:00:38,Visa,**** **** 4979,349416,274,Purchase,Pharma,PARACETAMO,Paracetamol,INV32960,0,2025-04-21,Success,Debit Card,0,0,-,41
+CHETXN1162,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-10 13:34:38,Visa,**** **** 6206,603197,85,Purchase,Pharma,ANTACID,Antacid,INV83498,0,2025-05-11,Success,Credit Card,0,0,-,49
+CHETXN1163,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 22:21:38,Visa,**** **** 5980,308611,51,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV95365,0,2025-05-06,Success,Debit Card,0,0,-,9
+CHETXN1164,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 01:42:38,RuPay,**** **** 8839,101072,215,Purchase,Pharma,VITAMIN_C,Vitamin C,INV24543,0,2025-04-23,Success,Debit Card,0,0,-,5
+CHETXN1165,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 02:19:38,Visa,**** **** 5956,305104,62,Purchase,Pharma,VITAMIN_C,Vitamin C,INV96999,0,2025-05-06,Success,UPI,0,0,-,18
+CHETXN1166,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 05:52:38,Mastercard,**** **** 7505,165556,155,Purchase,Pharma,ANTACID,Antacid,INV66659,0,2025-05-10,Success,UPI,0,0,-,10
+CHETXN1167,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 19:06:38,Mastercard,**** **** 1594,694603,54,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV29134,0,2025-04-23,Success,Credit Card,0,0,-,31
+CHETXN1168,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 08:22:38,Mastercard,**** **** 7700,530594,388,Purchase,Pharma,ANTACID,Antacid,INV54110,0,2025-05-03,Success,UPI,0,0,-,38
+CHETXN1169,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-03 12:52:38,Mastercard,**** **** 4173,385815,298,Purchase,Pharma,ANTACID,Antacid,INV59380,0,2025-05-04,Success,Credit Card,0,0,-,12
+CHETXN1170,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 07:13:38,Visa,**** **** 3509,562076,166,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV86841,0,2025-05-06,Success,Credit Card,0,0,-,21
+CHETXN1171,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-24 20:50:38,Visa,**** **** 7108,936592,124,Purchase,Pharma,VITAMIN_C,Vitamin C,INV48942,0,2025-04-25,Success,Credit Card,0,0,-,50
+CHETXN1172,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-07 00:43:38,RuPay,**** **** 1899,919998,330,Purchase,Pharma,FACE_MASK,Face Mask,INV19289,0,2025-05-08,Success,Credit Card,0,0,-,25
+CHETXN1173,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 04:38:38,Mastercard,**** **** 4607,635507,390,Purchase,Pharma,VITAMIN_C,Vitamin C,INV10720,0,2025-04-24,Success,Credit Card,0,0,-,18
+CHETXN1174,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 23:59:38,Mastercard,**** **** 1404,593163,456,Purchase,Pharma,FACE_MASK,Face Mask,INV42478,0,2025-05-09,Success,Credit Card,0,0,-,40
+CHETXN1175,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 07:58:38,RuPay,**** **** 9256,378110,382,Purchase,Pharma,PARACETAMO,Paracetamol,INV20549,0,2025-05-02,Success,UPI,0,0,-,50
+CHETXN1176,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-22 00:39:38,Visa,**** **** 2681,228642,318,Purchase,Pharma,ANTACID,Antacid,INV38774,0,2025-04-23,Success,Debit Card,0,0,-,17
+CHETXN1177,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-09 08:51:38,Mastercard,**** **** 7853,830426,485,Purchase,Pharma,ANTACID,Antacid,INV33128,0,2025-05-10,Success,Credit Card,0,0,-,26
+CHETXN1178,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-20 11:03:38,Visa,**** **** 6006,941945,454,Purchase,Pharma,ANTACID,Antacid,INV91752,0,2025-04-21,Success,UPI,0,0,-,24
+CHETXN1179,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-27 15:11:38,RuPay,**** **** 7881,755385,201,Purchase,Pharma,VITAMIN_C,Vitamin C,INV39659,0,2025-04-28,Success,Credit Card,0,0,-,49
+CHETXN1180,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 07:56:38,Mastercard,**** **** 7665,948661,424,Purchase,Pharma,FACE_MASK,Face Mask,INV74171,0,2025-05-02,Success,Credit Card,0,0,-,40
+CHETXN1181,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-27 15:06:38,Visa,**** **** 9507,479564,237,Purchase,Pharma,VITAMIN_C,Vitamin C,INV50790,0,2025-04-28,Success,Debit Card,0,0,-,12
+CHETXN1182,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 17:02:38,RuPay,**** **** 8699,274240,355,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV98873,0,2025-05-12,Success,Debit Card,0,0,-,24
+CHETXN1183,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-11 16:09:38,RuPay,**** **** 9350,322225,283,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV50821,0,2025-05-12,Success,Debit Card,0,0,-,50
+CHETXN1184,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-28 16:30:38,Visa,**** **** 3171,276685,301,Purchase,Pharma,FACE_MASK,Face Mask,INV49864,0,2025-04-29,Success,UPI,0,0,-,16
+CHETXN1185,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-14 21:03:38,RuPay,**** **** 7243,934941,57,Purchase,Pharma,ANTACID,Antacid,INV83876,0,2025-05-15,Success,Credit Card,0,0,-,27
+CHETXN1186,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-02 23:08:38,Visa,**** **** 8725,104080,260,Purchase,Pharma,FACE_MASK,Face Mask,INV82038,0,2025-05-03,Success,Debit Card,0,0,-,26
+CHETXN1187,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 07:56:38,Visa,**** **** 5158,390080,257,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV26597,0,2025-05-02,Success,Credit Card,0,0,-,33
+CHETXN1188,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-29 20:04:38,Visa,**** **** 8960,979335,276,Purchase,Pharma,ANTACID,Antacid,INV75676,0,2025-04-30,Success,Debit Card,0,0,-,34
+CHETXN1189,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-15 14:58:38,Mastercard,**** **** 2755,283374,270,Purchase,Pharma,FACE_MASK,Face Mask,INV41858,0,2025-05-16,Success,UPI,0,0,-,17
+CHETXN1190,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-13 00:20:38,Mastercard,**** **** 5094,361731,338,Purchase,Pharma,PARACETAMO,Paracetamol,INV62522,0,2025-05-14,Success,Debit Card,0,0,-,21
+CHETXN1191,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-05 19:50:38,Mastercard,**** **** 4413,920562,241,Purchase,Pharma,PARACETAMO,Paracetamol,INV14040,0,2025-05-06,Success,Credit Card,0,0,-,11
+CHETXN1192,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-19 11:06:38,Visa,**** **** 5637,301455,171,Purchase,Pharma,PARACETAMO,Paracetamol,INV12706,0,2025-04-20,Success,Credit Card,0,0,-,40
+CHETXN1193,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-04 01:42:38,RuPay,**** **** 7422,569500,450,Purchase,Pharma,VITAMIN_C,Vitamin C,INV12239,0,2025-05-05,Success,Credit Card,0,0,-,29
+CHETXN1194,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-30 17:48:38,Visa,**** **** 2942,299747,172,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV34698,0,2025-05-01,Success,Credit Card,0,0,-,17
+CHETXN1195,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-08 07:31:38,Visa,**** **** 1021,594757,258,Purchase,Pharma,ANTACID,Antacid,INV48509,0,2025-05-09,Success,Debit Card,0,0,-,30
+CHETXN1196,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-27 21:36:38,RuPay,**** **** 3456,657673,284,Purchase,Pharma,PARACETAMO,Paracetamol,INV45820,0,2025-04-28,Success,Debit Card,0,0,-,38
+CHETXN1197,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-23 10:24:38,RuPay,**** **** 5693,858303,444,Purchase,Pharma,PARACETAMO,Paracetamol,INV75263,0,2025-04-24,Success,UPI,0,0,-,34
+CHETXN1198,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-05-01 17:46:38,Mastercard,**** **** 8697,716006,319,Purchase,Pharma,FACE_MASK,Face Mask,INV13883,0,2025-05-02,Success,UPI,0,0,-,25
+CHETXN1199,CHETERM001,CHEMERCH001,HealthPlus Chemist,Pune,2025-04-26 03:14:38,Visa,**** **** 9205,584726,436,Purchase,Pharma,COUGH_SYRU,Cough Syrup,INV72180,0,2025-04-27,Success,UPI,0,0,-,34
