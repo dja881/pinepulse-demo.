@@ -94,15 +94,22 @@ if st.sidebar.button("Generate Report"):
     bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
     col1, col2 = st.columns(2)
-    with col1:
-    st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-    chart_top = alt.Chart(top_df).mark_bar().encode(
-        x=alt.X("sales:Q", title="Sales"),
-        y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-    ).properties(height=300)
-    st.altair_chart(chart_top, use_container_width=True)
 
-with col2:
+    with col1:
+        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+        chart_top = alt.Chart(top_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_top, use_container_width=True)
+
+    with col2:
+        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_bot, use_container_width=True)
     st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
     chart_bot = alt.Chart(bottom_df).mark_bar().encode(
         x=alt.X("sales:Q", title="Sales"),
