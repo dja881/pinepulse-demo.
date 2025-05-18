@@ -169,17 +169,18 @@ Slow SKU Context:
             "insights": []
         }
 
-    st.markdown("### 📊 Category Insights")
+    # === FINAL CLEAN OUTPUT ORDER ===
+    st.markdown("### Category Insights")
     for insight in sku_data.get("category_insights", [])[:3]:
         if isinstance(insight, dict):
             st.markdown(f"- {insight.get('insight', '')}")
 
-    st.markdown("### 🎯 Product Insights")
+    st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:3]:
         if isinstance(insight, dict):
             st.markdown(f"- {insight.get('insight', '')}")
 
-    st.markdown("### 🤖 AI Forecasts & Strategy Nudges")
+    st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", [])[:3]:
         if isinstance(insight, str):
             st.markdown(f"- {insight.strip()}")
