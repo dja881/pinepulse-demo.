@@ -70,7 +70,8 @@ st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
 if st.sidebar.button("Generate Report"):
-    df = df_all
+    # Deduplicate columns to avoid non-unique labels
+df = df_all.loc[:, ~df_all.columns.duplicated()]
     total_sales = df[amount_col].sum()
     num_txn = len(df)
     unique_items = df[item_col].nunique()
