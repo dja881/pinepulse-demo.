@@ -14,10 +14,10 @@ st.title("Weekly Store Pulse")
 # --- DATA PATHS & LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), "data")
 csv_paths = {
-    "Kirana":   os.path.join(DATA_DIR, "Kirana_Store_Transactions_v2.csv"),
-    "Chemist":  os.path.join(DATA_DIR, "Chemist_Store_Transactions_v2.csv"),
-    "Cafe":     os.path.join(DATA_DIR, "Cafe_Store_Transactions_v2.csv"),
-    "Clothes":  os.path.join(DATA_DIR, "Clothes_Store_Transactions_v2.csv"),
+    "Kirana": os.path.join(DATA_DIR, "Kirana_Store_Transactions_v2.csv"),
+    "Chemist": os.path.join(DATA_DIR, "Chemist_Store_Transactions_v2.csv"),
+    "Cafe": os.path.join(DATA_DIR, "Cafe_Store_Transactions_v2.csv"),
+    "Clothes": os.path.join(DATA_DIR, "Clothes_Store_Transactions_v2.csv"),
 }
 
 @st.cache_data
@@ -37,7 +37,6 @@ if store_type:
     location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
 
     if st.button("Generate Store Pulse"):
-        # Build AI prompt without emojis for clarity
         pulse_prompt = f"""
 Weekly Store Pulse: {store_type} Store — {location}
 (Analyzed from recent 20 days of transaction data)
@@ -64,23 +63,23 @@ AI Nudges to Action This Week
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are a data-driven retail analyst."},
+                    {"role": "system", "content": "You are a professional data-driven retail analyst. Provide the report with plain headings and bullet points, no emojis."},
                     {"role": "user", "content": pulse_prompt}
                 ],
                 temperature=0.7,
                 max_tokens=600,
             )
         raw = response.choices[0].message.content.strip()
-        # parse sections by header lines
-        pattern = r"^([A-Za-z].+[A-Za-z])\n((?:-[^\n]*\n?)+)"  # header then bullet lines
-        sections = re.findall(pattern, raw, flags=re.MULTILINE)
-        # layout in two columns for a minimal UI
-        col1, col2 = st.columns(2)
-        for idx, (header, body) in enumerate(sections):
-            target = col1 if idx < len(sections)/2 else col2
-            with target:
-                st.subheader(header)
-                for line in body.strip().split("\n"):
-                    text = line.lstrip('- ').strip()
-                    st.markdown(f"- {text}")
+        # parse sections: header lines separated by blank line from bullets
+        sections = re.split(r"(?m)^(?=[A-Z].*\n)", raw)
+        for section in sections:
+            lines = section.strip().splitlines()
+            if not lines:
+                continue
+            header = lines[0].strip()
+            body_lines = [l.strip('- ').strip() for l in lines[1:] if l.startswith('-')]
+            with st.expander(header, expanded=False):
+                for item in body_lines:
+                    st.write(f"• {item}")
+
 
