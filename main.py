@@ -69,11 +69,16 @@ st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
 if st.sidebar.button("Generate Report"):
-    # --- Build AI Prompt ---
     df = df_all.loc[:, ~df_all.columns.duplicated()]
     total_sales = df[amount_col].sum()
     num_txn = len(df)
     unique_items = df[item_col].nunique()
+
+    m1, m2, m3 = st.columns(3)
+    m1.metric("Total Sales", f"₹{total_sales:,.0f}")
+    m2.metric("Transactions", num_txn)
+    m3.metric("Unique Products", unique_items)
+    st.markdown("---")
 
     sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
     n = len(sku_sales)
@@ -81,6 +86,23 @@ if st.sidebar.button("Generate Report"):
     top_df = sku_sales.nlargest(top_n, 'sales')
     bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+        chart_top = alt.Chart(top_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_top, use_container_width=True)
+    with col2:
+        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_bot, use_container_width=True)
+
+    # Inventory context
     if qty_col:
         inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
     else:
@@ -98,6 +120,7 @@ if st.sidebar.button("Generate Report"):
     top_context = build_ctx(top_df)
     bottom_context = build_ctx(bottom_df)
 
+    # Additional data summaries
     product_summary = df.groupby("Product Name").agg(
         total_sales=(amount_col, 'sum'),
         num_txns=('Transaction ID', 'count')
@@ -136,148 +159,43 @@ Payment Summary:
 {json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
 
 Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
-Limit product_insights to 3 key points (focused on revenue or inventory), and payment_insights to 3 key points that reveal customer behavior — e.g., UPI usage, credit card preference, potential for loyalty programs, or digital payment enablement. Avoid technical terms like 'days_supply'; use natural phrasing.
+Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high'.
 """
 
-    # AI block begins
+    with st.spinner("Generating SKU recommendations and AI insights..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
-            messages=[
-                {"role": "system", "content": "Output valid JSON only."},
-                {"role": "user", "content": sku_prompt}
-            ],
+            messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
             temperature=0.3,
             max_tokens=1200
         )
+    try:
         sku_data = json.loads(resp.choices[0].message.content)
-
-        df = df_all.loc[:, ~df_all.columns.duplicated()]
-        total_sales = df[amount_col].sum()
-        num_txn = len(df)
-        unique_items = df[item_col].nunique()
-
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Total Sales", f"₹{total_sales:,.0f}")
-        m2.metric("Transactions", num_txn)
-        m3.metric("Unique Products", unique_items)
-        st.markdown("---")
-
-        sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
-        n = len(sku_sales)
-        top_n = max(1, math.ceil(n * 0.3))
-        top_df = sku_sales.nlargest(top_n, 'sales')
-        bottom_df = sku_sales.nsmallest(top_n, 'sales')
-
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("**Top SKU Recommendations**")
-            chart_top = alt.Chart(top_df).mark_bar().encode(
-                x=alt.X("sales:Q", title="Sales"),
-                y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-            ).properties(height=300)
-            st.altair_chart(chart_top, use_container_width=True)
-            for item in sku_data.get("top_recos", []):
-                if isinstance(item, dict):
-                    st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                    for rec in item.get("recommendations", []):
-                        st.write(f"- {rec}")
-
-        with col2:
-            st.markdown("**Slow SKU Recommendations**")
-            chart_bot = alt.Chart(bottom_df).mark_bar().encode(
-                x=alt.X("sales:Q", title="Sales"),
-                y=alt.Y(f"{item_col}:N", sort='x', title=None)
-            ).properties(height=300)
-            st.altair_chart(chart_bot, use_container_width=True)
-            for item in sku_data.get("bottom_recos", []):
-                if isinstance(item, dict):
-                    st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                    for rec in item.get("recommendations", []):
-                        st.write(f"- {rec}")
-
-        st.markdown("---")
-        st.markdown("### AI Forecasts & Strategy Nudges")
-        insights = sku_data.get("insights", [])[:5]
-        if not insights:
-            st.info("No AI forecasts generated.")
-        else:
-            for insight in insights:
-                if isinstance(insight, list):
-                    insight = ''.join(insight)
-                if isinstance(insight, str) and len(insight.strip()) > 5:
-                    st.markdown(f"- {insight.strip()}")
-
-        st.markdown("### Product Insights")
-        for insight in sku_data.get("product_insights", [])[:3]:
-            st.markdown(f"- {insight}")
-
-        st.markdown("### Payment Insights")
-        for insight in sku_data.get("payment_insights", [])[:3]:
-            st.markdown(f"- {insight}")
-    except Exception as e:
-        st.error("Failed to generate AI insights. Showing empty output.")
+    except:
+        st.error("Failed to parse SKU recommendations.")
         sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
-    df = df_all.loc[:, ~df_all.columns.duplicated()]
-    total_sales = df[amount_col].sum()
-    num_txn = len(df)
-    unique_items = df[item_col].nunique()
 
-    m1, m2, m3 = st.columns(3)
-    m1.metric("Total Sales", f"₹{total_sales:,.0f}")
-    m2.metric("Transactions", num_txn)
-    m3.metric("Unique Products", unique_items)
-    st.markdown("---")
-
-    sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
-    n = len(sku_sales)
-    top_n = max(1, math.ceil(n * 0.3))
-    top_df = sku_sales.nlargest(top_n, 'sales')
-    bottom_df = sku_sales.nsmallest(top_n, 'sales')
-
-    col1, col2 = st.columns(2)
     with col1:
         st.markdown("**Top SKU Recommendations**")
-        chart_top = alt.Chart(top_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_top, use_container_width=True)
         for item in sku_data.get("top_recos", []):
-            if isinstance(item, dict):
-                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                for rec in item.get("recommendations", []):
-                    st.write(f"- {rec}")
-            
+            st.write(f"**{item['sku']}**")
+            for rec in item.get("recommendations", []): st.write(f"- {rec}")
     with col2:
         st.markdown("**Slow SKU Recommendations**")
-        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_bot, use_container_width=True)
         for item in sku_data.get("bottom_recos", []):
-            if isinstance(item, dict):
-                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                for rec in item.get("recommendations", []):
-                    st.write(f"- {rec}")
-            
+            st.write(f"**{item['sku']}**")
+            for rec in item.get("recommendations", []): st.write(f"- {rec}")
+
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
-    insights = sku_data.get("insights", [])[:5]
-    if not insights:
-        st.info("No AI forecasts generated.")
-    else:
-        for insight in insights:
-            if isinstance(insight, list):
-                insight = ''.join(insight)
-            if isinstance(insight, str) and len(insight.strip()) > 5:
-                st.markdown(f"- {insight.strip()}")
+    for insight in sku_data.get("insights", [3]):
+        st.markdown(f"- {insight}")
 
     st.markdown("### Product Insights")
-    for insight in sku_data.get("product_insights", [])[:3]:
+    for insight in sku_data.get("product_insights", [3]):
         st.markdown(f"- {insight}")
 
     st.markdown("### Payment Insights")
-    for insight in sku_data.get("payment_insights", [])[:3]:
+    for insight in sku_data.get("payment_insights", [3]):
         st.markdown(f"- {insight}")
 
