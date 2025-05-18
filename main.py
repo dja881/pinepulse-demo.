@@ -33,7 +33,6 @@ all_data = load_data(csv_paths)
 store_type = st.selectbox("Select Store Category", list(all_data.keys()))
 if store_type:
     df = all_data[store_type]
-    # Show CSV preview so users understand data
     st.subheader("🔎 CSV Data Preview (first 20 rows):")
     st.dataframe(df.head(20))
 
@@ -41,9 +40,6 @@ if store_type:
     location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
 
     if st.button("Generate Store Pulse"):
-        # Prepare sample for AI prompt
-        sample_csv = df.sort_values(by='Timestamp', ascending=False).head(20).to_csv(index=False)
-
         # Build AI prompt matching desired output structure
         pulse_prompt = f"""
 📊 Weekly Store Pulse: {store_type} Store — {location}
@@ -66,11 +62,6 @@ if store_type:
 
 🔁 AI Nudges to Action This Week
 [Checklist of top 3-5 actionable nudges]
-
-Data sample (first 20 rows):
-{sample_csv}
-
-Provide the answer exactly in markdown as above.
 """
         with st.spinner("Generating AI-driven pulse report..."):
             response = client.chat.completions.create(
@@ -84,3 +75,4 @@ Provide the answer exactly in markdown as above.
             )
         # Display the AI-generated report
         st.markdown(response.choices[0].message.content.strip())
+
