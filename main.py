@@ -89,19 +89,20 @@ if st.sidebar.button("Generate Report"):
     col1, col2 = st.columns(2)
     with col1:
         st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-        chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+        chart_top = alt.Chart(top_df).mark_bar().encode(
             x=alt.X("sales:Q", title="Sales"),
             y=alt.Y(f"{item_col}:N", sort='-x', title=None)
         ).properties(height=300)
         st.altair_chart(chart_top, use_container_width=True)
     with col2:
         st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
-        chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
             x=alt.X("sales:Q", title="Sales"),
             y=alt.Y(f"{item_col}:N", sort='x', title=None)
         ).properties(height=300)
         st.altair_chart(chart_bot, use_container_width=True)
 
+    # Inventory context
     if qty_col:
         inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
     else:
@@ -119,51 +120,60 @@ if st.sidebar.button("Generate Report"):
     top_context = build_ctx(top_df)
     bottom_context = build_ctx(bottom_df)
 
-    example = {
-        "sku": "Parle-G Biscuit (500g)",
-        "sales": 3000,
-        "quantity": 100,
-        "velocity": 150,
-        "days_supply": 0.7,
-        "recommendations": [
-            "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
-            "Schedule a 10% promo during peak hours to boost sales.",
-            "Place at checkout for visibility to maximize impulse buys."
-        ]
-    }
+    # Additional data summaries
+    product_summary = df.groupby("Product Name").agg(
+        total_sales=(amount_col, 'sum'),
+        num_txns=('Transaction ID', 'count')
+    ).sort_values("total_sales", ascending=False).reset_index()
+
+    payment_summary = df.groupby(["Payment Mode", "Card Type"]).agg(
+        total_sales=(amount_col, 'sum'),
+        txn_count=('Transaction ID', 'count')
+    ).reset_index()
 
     sku_prompt = f"""
 You are a data-driven retail analyst. Follow the example schema:
-{json.dumps(example, indent=2)}
+{json.dumps({
+    "sku": "Parle-G Biscuit (500g)",
+    "sales": 3000,
+    "quantity": 100,
+    "velocity": 150,
+    "days_supply": 0.7,
+    "recommendations": [
+        "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
+        "Schedule a 10% promo during peak hours to boost sales.",
+        "Place at checkout for visibility to maximize impulse buys."
+    ]
+}, indent=2)}
 
-Now top SKUs context:
+Top SKUs context:
 {json.dumps(top_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high' or 'running low soon'. Mention specific SKUs where helpful.
 
 Slow SKUs context:
 {json.dumps(bottom_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid jargon. Mention specific SKUs where helpful.
 
-Then give 4 AI insights about:
-1. Trends in sales and demand patterns,
-2. External signals (e.g. weather, festivals),
-3. Inventory risks or opportunities at the SKU level,
-4. Recommendations for next month’s prep.
+Product-Level Summary:
+{json.dumps(product_summary.to_dict(orient="records"), indent=2)}
 
-Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
+Payment Summary:
+{json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
+
+Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
+Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high'.
 """
+
     with st.spinner("Generating SKU recommendations and AI insights..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
             messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
             temperature=0.3,
-            max_tokens=800
+            max_tokens=1200
         )
     try:
         sku_data = json.loads(resp.choices[0].message.content)
     except:
         st.error("Failed to parse SKU recommendations.")
-        sku_data = {"top_recos": [], "bottom_recos": [], "insights": []}
+        sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
 
     with col1:
         st.markdown("**Top SKU Recommendations**")
@@ -179,5 +189,13 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", []):
+        st.markdown(f"- {insight}")
+
+    st.markdown("### Product Insights")
+    for insight in sku_data.get("product_insights", []):
+        st.markdown(f"- {insight}")
+
+    st.markdown("### Payment Insights")
+    for insight in sku_data.get("payment_insights", []):
         st.markdown(f"- {insight}")
 
