@@ -58,6 +58,7 @@ store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
 amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
 qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
 item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
+cat_col = next((c for c in df_all.columns if "category" in c.lower()), None)
 
 # --- STORE FILTER (only if demo data) ---
 if store_col and data_source == "Use Demo Store Data":
@@ -109,6 +110,8 @@ if st.sidebar.button("Generate Report"):
 
     def build_ctx(df_sku):
         ctx = df_sku.merge(inv, on=item_col, how='left')
+        if cat_col:
+            ctx = ctx.merge(df[[item_col, cat_col]].drop_duplicates(), on=item_col, how='left')
         ctx['velocity'] = (ctx['sales'] / days).round(1)
         ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
         return ctx.to_dict(orient='records')
@@ -122,6 +125,7 @@ if st.sidebar.button("Generate Report"):
         "quantity": 100,
         "velocity": 150,
         "days_supply": 0.7,
+        "category": "Snacks",
         "recommendations": [
             "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
             "Schedule a 10% promo during peak hours to boost sales.",
@@ -135,16 +139,16 @@ You are a data-driven retail analyst. Follow the example schema:
 
 Now top SKUs context:
 {json.dumps(top_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high' or 'running low soon'.
+Provide exactly 3 data-backed "recommendations" per SKU. Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high' or 'running low soon'. Mention specific SKUs and categories where helpful.
 
 Slow SKUs context:
 {json.dumps(bottom_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU. Avoid jargon.
+Provide exactly 3 data-backed "recommendations" per SKU. Avoid jargon. Mention specific SKUs and categories where helpful.
 
 Then give 4 AI insights about:
-1. Trends in sales and demand patterns,
+1. Trends in sales and demand patterns (mention key products/categories),
 2. External signals (e.g. weather, festivals),
-3. Inventory risks or opportunities,
+3. Inventory risks or opportunities at the SKU or category level,
 4. Recommendations for next month’s prep.
 
 Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
@@ -177,5 +181,4 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", []):
         st.markdown(f"- {insight}")
-
 
