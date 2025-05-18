@@ -69,6 +69,76 @@ st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
 if st.sidebar.button("Generate Report"):
+    # --- Build AI Prompt ---
+    df = df_all.loc[:, ~df_all.columns.duplicated()]
+    total_sales = df[amount_col].sum()
+    num_txn = len(df)
+    unique_items = df[item_col].nunique()
+
+    sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
+    n = len(sku_sales)
+    top_n = max(1, math.ceil(n * 0.3))
+    top_df = sku_sales.nlargest(top_n, 'sales')
+    bottom_df = sku_sales.nsmallest(top_n, 'sales')
+
+    if qty_col:
+        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
+    else:
+        inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
+
+    def build_ctx(df_sku):
+        ctx = df_sku.merge(inv, on=item_col, how='left')
+        ctx['velocity'] = (ctx['sales'] / days).round(1)
+        ctx['days_supply'] = ctx.apply(
+            lambda r: round(r['quantity'] / r['velocity'], 1) if r['quantity'] and r['velocity'] else None,
+            axis=1
+        )
+        return ctx.to_dict(orient='records')
+
+    top_context = build_ctx(top_df)
+    bottom_context = build_ctx(bottom_df)
+
+    product_summary = df.groupby("Product Name").agg(
+        total_sales=(amount_col, 'sum'),
+        num_txns=('Transaction ID', 'count')
+    ).sort_values("total_sales", ascending=False).reset_index()
+
+    payment_summary = df.groupby(["Payment Mode", "Card Type"]).agg(
+        total_sales=(amount_col, 'sum'),
+        txn_count=('Transaction ID', 'count')
+    ).reset_index()
+
+    sku_prompt = f"""
+You are a data-driven retail analyst. Follow the example schema:
+{json.dumps({
+    "sku": "Parle-G Biscuit (500g)",
+    "sales": 3000,
+    "quantity": 100,
+    "velocity": 150,
+    "days_supply": 0.7,
+    "recommendations": [
+        "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
+        "Schedule a 10% promo during peak hours to boost sales.",
+        "Place at checkout for visibility to maximize impulse buys."
+    ]
+}, indent=2)}
+
+Top SKUs context:
+{json.dumps(top_context, indent=2)}
+
+Slow SKUs context:
+{json.dumps(bottom_context, indent=2)}
+
+Product-Level Summary:
+{json.dumps(product_summary.to_dict(orient="records"), indent=2)}
+
+Payment Summary:
+{json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
+
+Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
+Limit product_insights and payment_insights to 5 key points each. Avoid technical terms like 'days_supply'; use natural phrasing.
+"""
+
     # AI block begins
     try:
         with st.spinner("Generating SKU recommendations and AI insights..."):
