@@ -150,12 +150,10 @@ If applicable, identify any seasonality, regional or pricing trends.
 Respond only with valid JSON in this format:
 {
   "top_recos": [
-    {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]},
-    ...
+    {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]}
   ],
   "bottom_recos": [
-    {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]},
-    ...
+    {"sku": "Product Name", "recommendations": ["rec 1", "rec 2", "rec 3"]}
   ],
   "insights": ["trend insight 1", "insight 2", "insight 3", "insight 4"],
   "product_insights": ["product insight 1", "product insight 2"],
@@ -199,5 +197,3 @@ Respond only with valid JSON in this format:
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", []):
         st.markdown(f"- {insight}")
-
-
