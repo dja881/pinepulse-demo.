@@ -113,8 +113,9 @@ if st.sidebar.button("Generate Report"):
         if cat_col and cat_col in df.columns:
             try:
                 df_unique = df.loc[:, ~df.columns.duplicated()]
-                cat_data = df_unique[[item_col, cat_col]].drop_duplicates()
-                ctx = ctx.merge(cat_data, on=item_col, how='left')
+                if cat_col in df_unique.columns:
+                    cat_data = df_unique[[item_col, cat_col]].drop_duplicates()
+                    ctx = ctx.merge(cat_data, on=item_col, how='left')
             except Exception as e:
                 st.warning(f"Could not enrich with category info: {e}")
         ctx['velocity'] = (ctx['sales'] / days).round(1)
