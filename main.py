@@ -186,16 +186,24 @@ Avoid technical terms like 'days_supply'; instead say things like 'stock may be 
             st.write(f"**{item['sku']}**")
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
-    st.markdown("---")
+
+
+  st.markdown("---") 
     st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", [3]):
-        st.markdown(f"- {insight}")
+    insights = sku_data.get("insights", [])[:5]
+    if not insights:
+        st.info("No AI forecasts generated.")
+    else:
+        for insight in insights:
+            if isinstance(insight, list):
+                insight = ''.join(insight)
+            if isinstance(insight, str) and len(insight.strip()) > 5:
+                st.markdown(f"- {insight.strip()}")
 
     st.markdown("### Product Insights")
-    for insight in sku_data.get("product_insights", [3]):
+    for insight in sku_data.get("product_insights", [])[:3]:
         st.markdown(f"- {insight}")
 
     st.markdown("### Payment Insights")
-    for insight in sku_data.get("payment_insights", [3]):
+    for insight in sku_data.get("payment_insights", [])[:3]:
         st.markdown(f"- {insight}")
-
