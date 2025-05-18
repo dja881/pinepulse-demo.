@@ -57,7 +57,8 @@ df_all = df_all[df_all["Timestamp"] >= cutoff]
 store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
 amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
 qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
-item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
+product_col = next((c for c in df_all.columns if "product name" in c.lower()), None)
+item_col = product_col
 
 # --- STORE FILTER (only if demo data) ---
 if store_col and data_source == "Use Demo Store Data":
@@ -88,21 +89,20 @@ if st.sidebar.button("Generate Report"):
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+        st.subheader(f"Top {top_n} Movers (Hot-Selling Products)")
         chart_top = alt.Chart(top_df).mark_bar().encode(
             x=alt.X("sales:Q", title="Sales"),
             y=alt.Y(f"{item_col}:N", sort='-x', title=None)
         ).properties(height=300)
         st.altair_chart(chart_top, use_container_width=True)
     with col2:
-        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+        st.subheader(f"Bottom {top_n} Movers (Cold Products)")
         chart_bot = alt.Chart(bottom_df).mark_bar().encode(
             x=alt.X("sales:Q", title="Sales"),
             y=alt.Y(f"{item_col}:N", sort='x', title=None)
         ).properties(height=300)
         st.altair_chart(chart_bot, use_container_width=True)
 
-    # Inventory context
     if qty_col:
         inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
     else:
@@ -120,49 +120,27 @@ if st.sidebar.button("Generate Report"):
     top_context = build_ctx(top_df)
     bottom_context = build_ctx(bottom_df)
 
-    # Additional data summaries
-    product_summary = df.groupby("Product Name").agg(
-        total_sales=(amount_col, 'sum'),
-        num_txns=('Transaction ID', 'count')
-    ).sort_values("total_sales", ascending=False).reset_index()
-
     payment_summary = df.groupby(["Payment Mode", "Card Type"]).agg(
         total_sales=(amount_col, 'sum'),
         txn_count=('Transaction ID', 'count')
     ).reset_index()
 
     sku_prompt = f"""
-You are a data-driven retail analyst. Follow the example schema:
-{json.dumps({
-    "sku": "Parle-G Biscuit (500g)",
-    "sales": 3000,
-    "quantity": 100,
-    "velocity": 150,
-    "days_supply": 0.7,
-    "recommendations": [
-        "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
-        "Schedule a 10% promo during peak hours to boost sales.",
-        "Place at checkout for visibility to maximize impulse buys."
-    ]
-}, indent=2)}
-
-Top SKUs context:
+You are a data-driven retail analyst.
+Top Products context:
 {json.dumps(top_context, indent=2)}
 
-Slow SKUs context:
+Slow Products context:
 {json.dumps(bottom_context, indent=2)}
-
-Product-Level Summary:
-{json.dumps(product_summary.to_dict(orient="records"), indent=2)}
 
 Payment Summary:
 {json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
 
 Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
-Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high'.
+Avoid technical terms like 'days_supply'; use clear, customer-facing language.
 """
 
-    with st.spinner("Generating SKU recommendations and AI insights..."):
+    with st.spinner("Generating product recommendations and AI insights..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
             messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
@@ -172,16 +150,16 @@ Avoid technical terms like 'days_supply'; instead say things like 'stock may be 
     try:
         sku_data = json.loads(resp.choices[0].message.content)
     except:
-        st.error("Failed to parse SKU recommendations.")
+        st.error("Failed to parse AI insights.")
         sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
 
     with col1:
-        st.markdown("**Top SKU Recommendations**")
+        st.markdown("**Top Product Recommendations**")
         for item in sku_data.get("top_recos", []):
             st.write(f"**{item['sku']}**")
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
     with col2:
-        st.markdown("**Slow SKU Recommendations**")
+        st.markdown("**Slow Product Recommendations**")
         for item in sku_data.get("bottom_recos", []):
             st.write(f"**{item['sku']}**")
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
@@ -198,4 +176,5 @@ Avoid technical terms like 'days_supply'; instead say things like 'stock may be 
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", []):
         st.markdown(f"- {insight}")
+
 
