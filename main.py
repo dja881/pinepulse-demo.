@@ -175,6 +175,11 @@ Limit product_insights to 3 key points (focused on revenue or inventory), and pa
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**Top SKU Recommendations**")
+        chart_top = alt.Chart(top_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_top, use_container_width=True)
         for item in sku_data.get("top_recos", []):
             if isinstance(item, dict):
                 st.write(f"**{item.get('sku', 'Unknown SKU')}**")
@@ -183,6 +188,11 @@ Limit product_insights to 3 key points (focused on revenue or inventory), and pa
             
     with col2:
         st.markdown("**Slow SKU Recommendations**")
+        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_bot, use_container_width=True)
         for item in sku_data.get("bottom_recos", []):
             if isinstance(item, dict):
                 st.write(f"**{item.get('sku', 'Unknown SKU')}**")
