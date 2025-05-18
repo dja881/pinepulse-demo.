@@ -63,32 +63,31 @@ if store_type:
             st.markdown("---")
 
             # compute sales by item
-            sku_sales = (
-                df.groupby(item_col)[amount_col]
-                  .sum()
-                  .reset_index()
-                  .rename(columns={amount_col: 'sales'})
-            )
-            n = len(sku_sales)
-            top_n = max(1, math.ceil(n * 0.3))
-            top_df = sku_sales.nlargest(top_n, 'sales')
-            bottom_df = sku_sales.nsmallest(top_n, 'sales')
+sku_sales = (
+    df.groupby(item_col)
+      .agg(sales=(amount_col, 'sum'))
+      .reset_index()
+)
+n = len(sku_sales)
+top_n = max(1, math.ceil(n * 0.3))
+top_df = sku_sales.nlargest(top_n, 'sales')
+bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
-            col1, col2 = st.columns(2)
-            with col1:
-                st.subheader(f"Top {top_n} Movers (Hot-Selling)")
-                chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
-                    x=alt.X("sales:Q", title="Sales"),
-                    y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-                ).properties(height=300)
-                st.altair_chart(chart_top, use_container_width=True)
-            with col2:
-                st.subheader(f"Bottom {top_n} Movers (Slow)")
-                chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
-                    x=alt.X("sales:Q", title="Sales"),
-                    y=alt.Y(f"{item_col}:N", sort='x', title=None)
-                ).properties(height=300)
-                st.altair_chart(chart_bot, use_container_width=True)
+col1, col2 = st.columns(2)
+with col1:
+    st.subheader(f"Top {top_n} Movers (Hot-Selling)")
+    chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+        x=alt.X("sales:Q", title="Sales"),
+        y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+    ).properties(height=300)
+    st.altair_chart(chart_top, use_container_width=True)
+with col2:
+    st.subheader(f"Bottom {top_n} Movers (Slow)")
+    chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+        x=alt.X("sales:Q", title="Sales"),
+        y=alt.Y(f"{item_col}:N", sort='x', title=None)
+    ).properties(height=300)
+    st.altair_chart(chart_bot, use_container_width=True)
 
             # prepare context for AI
             inv = None
