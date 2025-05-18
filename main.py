@@ -71,5 +71,3 @@ AI Nudges to Action This Week
         # Render markdown directly for a clean, professional look
         st.markdown(report_md)
 
-
-
