@@ -21,7 +21,7 @@ csv_paths = {
 }
 
 @st.cache_data
- def load_data():
+def load_data():
     data = {}
     for name, path in csv_paths.items():
         if os.path.isfile(path):
