@@ -93,41 +93,8 @@ if st.sidebar.button("Generate Report"):
     top_df = sku_sales.nlargest(top_n, 'sales')
     bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
-    # === FINAL CLEAN OUTPUT ORDER ===
-    st.markdown("### Category Insights")
-    for insight in sku_data.get("category_insights", [])[:3]:
-        if isinstance(insight, dict):
-            st.markdown(f"- {insight.get('insight', '')}")
-
-    st.markdown("### Product Insights")
-    for insight in sku_data.get("product_insights", [])[:3]:
-        if isinstance(insight, dict):
-            st.markdown(f"- {insight.get('insight', '')}")
-
-    st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", [])[:3]:
-        if isinstance(insight, str):
-            st.markdown(f"- {insight.strip()}")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-        chart_top = alt.Chart(top_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_top, use_container_width=True)
-
-    with col2:
-        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
-        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_bot, use_container_width=True)
-            if qty_col:
-        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
+    if qty_col:
+        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col: 'quantity'})
     else:
         inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
 
@@ -179,7 +146,7 @@ Slow SKU Context:
     with st.spinner("Generating SKU recommendations and AI insights..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
-            messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
+            messages=[{"role": "system", "content": "Output valid JSON only."}, {"role": "user", "content": sku_prompt}],
             temperature=0.3,
             max_tokens=1200
         )
@@ -188,12 +155,12 @@ Slow SKU Context:
     except:
         st.error("Failed to parse SKU recommendations.")
         sku_data = {
-    "category_insights": [],
-    "product_insights": [],
-    "insights": []
-}
+            "category_insights": [],
+            "product_insights": [],
+            "insights": []
+        }
 
-    # === FINAL CLEAN OUTPUT ORDER ===
+    # === INSIGHTS FIRST ===
     st.markdown("### Category Insights")
     for insight in sku_data.get("category_insights", [])[:3]:
         if isinstance(insight, dict):
@@ -208,4 +175,26 @@ Slow SKU Context:
     for insight in sku_data.get("insights", [])[:3]:
         if isinstance(insight, str):
             st.markdown(f"- {insight.strip()}")
+
+    # === CHARTS AFTER INSIGHTS ===
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+        chart_top = alt.Chart(top_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_top, use_container_width=True)
+
+    with col2:
+        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_bot, use_container_width=True)
+
+    # === CATEGORY TABLE ===
+    st.markdown("### Category-Level Summary Table")
+    st.dataframe(category_summary, use_container_width=True)
 
