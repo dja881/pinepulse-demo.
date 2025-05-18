@@ -88,94 +88,12 @@ if st.sidebar.button("Generate Report"):
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-        chart_top = alt.Chart(top_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_top, use_container_width=True)
-    with col2:
-        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
-        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_bot, use_container_width=True)
-
-    if qty_col:
-        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
-    else:
-        inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
-
-    def build_ctx(df_sku):
-        ctx = df_sku.merge(inv, on=item_col, how='left')
-        ctx['velocity'] = (ctx['sales'] / days).round(1)
-        ctx['days_supply'] = ctx.apply(
-            lambda r: round(r['quantity'] / r['velocity'], 1) if r['quantity'] and r['velocity'] else None,
-            axis=1
-        )
-        return ctx.to_dict(orient='records')
-
-    top_context = build_ctx(top_df)
-    bottom_context = build_ctx(bottom_df)
-
-    product_summary = df.groupby("Product Name").agg(
-        total_sales=(amount_col, 'sum'),
-        num_txns=('Transaction ID', 'count')
-    ).sort_values("total_sales", ascending=False).reset_index()
-
-    payment_summary = df.groupby(["Payment Mode", "Card Type"]).agg(
-        total_sales=(amount_col, 'sum'),
-        txn_count=('Transaction ID', 'count')
-    ).reset_index()
-
-    sku_prompt = f"""
-You are a data-driven retail analyst. Follow the example schema:
-{json.dumps({
-    "sku": "Parle-G Biscuit (500g)",
-    "sales": 3000,
-    "quantity": 100,
-    "velocity": 150,
-    "days_supply": 0.7,
-    "recommendations": [
-        "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
-        "Schedule a 10% promo during peak hours to boost sales.",
-        "Place at checkout for visibility to maximize impulse buys."
-    ]
-}, indent=2)}
-
-Top SKUs context:
-{json.dumps(top_context, indent=2)}
-
-Slow SKUs context:
-{json.dumps(bottom_context, indent=2)}
-
-Product-Level Summary:
-{json.dumps(product_summary.to_dict(orient="records"), indent=2)}
-
-Payment Summary:
-{json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
-
-Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
-Limit product_insights and payment_insights to 5 key points each. Avoid technical terms like 'days_supply'; use natural phrasing.
-"""
-
-    with st.spinner("Generating SKU recommendations and AI insights..."):
-        resp = client.chat.completions.create(
-            model="gpt-4.1-mini",
-            messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
-            temperature=0.3,
-            max_tokens=1200
-        )
-
-    try:
-        sku_data = json.loads(resp.choices[0].message.content)
-    except:
-        st.error("Failed to parse SKU recommendations.")
-        sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
-
-    with col1:
-    st.markdown("**Top SKU Recommendations**")
+        st.markdown("**Top SKU Recommendations**")
+        for item in sku_data.get("top_recos", []):
+            if isinstance(item, dict):
+                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
+                for rec in item.get("recommendations", []):
+                    st.write(f"- {rec}")
     for item in sku_data.get("top_recos", []):
         if isinstance(item, dict):
             st.write(f"**{item.get('sku', 'Unknown SKU')}**")
@@ -183,7 +101,12 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
                 st.write(f"- {rec}")
 
     with col2:
-    st.markdown("**Slow SKU Recommendations**")
+        st.markdown("**Slow SKU Recommendations**")
+        for item in sku_data.get("bottom_recos", []):
+            if isinstance(item, dict):
+                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
+                for rec in item.get("recommendations", []):
+                    st.write(f"- {rec}")
     for item in sku_data.get("bottom_recos", []):
         if isinstance(item, dict):
             st.write(f"**{item.get('sku', 'Unknown SKU')}**")
