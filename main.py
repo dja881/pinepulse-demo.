@@ -1,4 +1,4 @@
-    sku_prompt = f'''
+sku_prompt = f'''
 You are a retail analyst tasked with understanding why certain products are performing better or worse than others.
 Your goal is to reason through the differences using data (velocity, stock, sales) and potential trends such as:
 - payment preferences (e.g. UPI vs card)
