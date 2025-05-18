@@ -1,4 +1,3 @@
-
 import os
 import math
 import streamlit as st
@@ -12,7 +11,7 @@ client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # --- APP CONFIG ---
 st.set_page_config(page_title="PinePulse - Interactive Store Dashboard", layout="wide")
-st.title("\ud83d\udcca PinePulse - Weekly Store Pulse Dashboard")
+st.title("PinePulse - Weekly Store Pulse Dashboard")
 
 # --- DATA LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), "data")
@@ -169,5 +168,4 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
     st.markdown("---")
-
 
