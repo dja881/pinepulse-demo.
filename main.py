@@ -7,14 +7,10 @@ import altair as alt
 import json
 
 # --- INITIALIZE AI CLIENT ---
-# Use the gpt-4.1-nano model for AI calls
 client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # --- APP CONFIG ---
-st.set_page_config(
-    page_title="PinePulse - Interactive Store Dashboard (gpt-4.1-nano)",
-    layout="wide"
-)
+st.set_page_config(page_title="PinePulse - Interactive Store Dashboard (gpt-4.1-mini)", layout="wide")
 st.title("📊 PinePulse - Weekly Store Pulse Dashboard")
 
 # --- DATA LOADING ---
@@ -37,7 +33,7 @@ def load_data():
 
 all_data = load_data()
 
-# --- SIDEBAR CONFIGURATION PANEL ---
+# --- SIDEBAR CONTROLS ---
 st.sidebar.header("Configuration")
 store_type = st.sidebar.selectbox("Store Category", list(all_data.keys()))
 if store_type:
@@ -88,33 +84,56 @@ if store_type:
                 )
 
             # --- AI SKU RECOMMENDATIONS ---
+            # Prepare detailed context with velocity and days_supply
             inv_counts = df.groupby("Product Name")["Quantity"].sum().reset_index().rename(columns={"Quantity":"quantity"})
-            top_info = top_df.merge(inv_counts, on="Product Name").to_dict(orient='records')
-            bottom_info = bottom_df.merge(inv_counts, on="Product Name").to_dict(orient='records')
+            top_info = top_df.merge(inv_counts, on="Product Name")
+            top_info['velocity'] = top_info['Txn Amount (₹)'] / 20
+            top_info['days_supply'] = (top_info['quantity'] / top_info['velocity']).round(1)
+            bottom_info = bottom_df.merge(inv_counts, on="Product Name")
+            bottom_info['velocity'] = bottom_info['Txn Amount (₹)'] / 20
+            bottom_info['days_supply'] = (bottom_info['quantity'] / bottom_info['velocity']).round(1)
+
+            top_context = top_info.to_dict(orient='records')
+            bottom_context = bottom_info.to_dict(orient='records')
+
+            # Example few-shot to guide depth and format
+            example = {
+                "sku": "Parle-G Biscuit (500g)",
+                "sales": 3000,
+                "quantity": 100,
+                "velocity": 150,
+                "days_supply": 0.7,
+                "recommendations": [
+                    "Increase reorder level to 200 units to avoid stockout.",
+                    "Run a 10% afternoon promo to boost margin.",
+                    "Feature in store entrance display for visibility."
+                ]
+            }
 
             sku_prompt = f"""
-You are a data-driven retail analyst. Below are top 30% SKUs and bottom 30% SKUs with their total sales and quantities:
+You are a data-driven retail analyst. For each SKU, you will receive context of sales, inventory, velocity and days_supply.
+Use this example as template (valid JSON):
+{json.dumps(example, indent=2)}
 
-Top SKUs:
-{json.dumps(top_info, indent=2)}
+Now, for the following top SKUs:
+{json.dumps(top_context, indent=2)}
+Provide 3 distinct, data-backed recommendations per SKU to sustain high sales.
 
-Slow SKUs:
-{json.dumps(bottom_info, indent=2)}
+And for the following slow SKUs:
+{json.dumps(bottom_context, indent=2)}
+Provide 3 distinct, data-backed recommendations per SKU to boost sales.
 
-For each Top SKU, provide 3 distinct recommendations to sustain high sales (e.g., optimal reorder level, targeted promotion, shelf placement).
-For each Slow SKU, provide 3 distinct recommendations to boost sales (e.g., bundle offers, discount tiers, repositioning on shelf).
-
-Return a JSON object with keys 'top_recos' and 'bottom_recos'.
+Return JSON: {{"top_recos": [{{...}}], "bottom_recos": [{{...}}]}}
 """
-            with st.spinner("Generating SKU recommendations with gpt-4.1-nano..."):
+            with st.spinner("Generating SKU recommendations with gpt-4.1-mini..."):
                 resp = client.chat.completions.create(
-                    model="gpt-4.1-nano",
+                    model="gpt-4.1-mini",
                     messages=[
-                        {"role":"system","content":"Output valid JSON only."},
+                        {"role":"system","content":"Output valid JSON only, following the example schema."},
                         {"role":"user","content":sku_prompt}
                     ],
-                    temperature=0.6,
-                    max_tokens=300,
+                    temperature=0.3,
+                    max_tokens=500,
                 )
             try:
                 sku_data = json.loads(resp.choices[0].message.content)
@@ -122,6 +141,7 @@ Return a JSON object with keys 'top_recos' and 'bottom_recos'.
                 st.error("Failed to parse SKU recommendations.")
                 sku_data = {"top_recos": [], "bottom_recos": []}
 
+            # Render recommendations
             with col1:
                 st.markdown("**Top SKU Recommendations**")
                 for item in sku_data.get("top_recos", []):
@@ -139,17 +159,18 @@ Return a JSON object with keys 'top_recos' and 'bottom_recos'.
 
         # --- SIDEBAR AI PANEL: 1-3-3 FORMAT ---
         with c_sidebar:
+            # Single Insight
             st.subheader("AI Insight")
             insight_prompt = (
-                f"Provide one concise insight about {store_name} based on {num_txn} transactions over the past 20 days, referencing sales trends and inventory levels."
+                f"Provide one concise, data-backed insight about {store_name}, referencing sales trends, inventory days_supply, and upcoming weather trends (e.g., 40°C heat)."
             )
             resp_insight = client.chat.completions.create(
-                model="gpt-4.1-nano",
+                model="gpt-4.1-mini",
                 messages=[
-                    {"role":"system","content":"Provide a single-sentence data-driven insight."},
+                    {"role":"system","content":"Output a single-sentence insight."},
                     {"role":"user","content":insight_prompt}
                 ],
-                temperature=0.7,
+                temperature=0.3,
                 max_tokens=60
             )
             st.info(resp_insight.choices[0].message.content.strip())
@@ -157,15 +178,15 @@ Return a JSON object with keys 'top_recos' and 'bottom_recos'.
             # Forecast metrics
             st.subheader("Next-Month Sales Forecast")
             forecast_prompt = (
-                f"Given the transaction and inventory data for {store_name}, forecast 3 category-level % changes for next month. Return JSON: {{'forecast': [{{'category':'','change':'%'}}]}}"
+                f"Based on transaction, inventory, and external trends (e.g., weather), forecast 3 key category % changes for next month. Return JSON: {{'forecast':[{{'category':'','change':'%'}}]}}"
             )
             resp_forecast = client.chat.completions.create(
-                model="gpt-4.1-nano",
+                model="gpt-4.1-mini",
                 messages=[
-                    {"role":"system","content":"Output valid JSON with key 'forecast'."},
+                    {"role":"system","content":"Output valid JSON with 'forecast'."},
                     {"role":"user","content":forecast_prompt}
                 ],
-                temperature=0.7,
+                temperature=0.3,
                 max_tokens=100
             )
             try:
@@ -176,17 +197,18 @@ Return a JSON object with keys 'top_recos' and 'bottom_recos'.
             for i, f in enumerate(forecast_data.get("forecast", [])):
                 fcols[i].metric(f.get("category", ""), f.get("change", ""))
 
+            # AI Nudges
             st.subheader("AI Nudges to Action")
             nudges_prompt = (
-                f"Using transaction, inventory, and typical external trends (e.g., weather), provide 3 actionable recommendations for {store_name} this week. Return JSON: {{'nudges': ['...']}}"
+                f"Using sales, inventory, days_supply, and external trends, provide 3 actionable nudges for {store_name}. Return JSON: {{'nudges':['...']}}"
             )
             resp_nudges = client.chat.completions.create(
-                model="gpt-4.1-nano",
+                model="gpt-4.1-mini",
                 messages=[
-                    {"role":"system","content":"Output valid JSON with key 'nudges'."},
+                    {"role":"system","content":"Output valid JSON with 'nudges'."},
                     {"role":"user","content":nudges_prompt}
                 ],
-                temperature=0.7,
+                temperature=0.3,
                 max_tokens=100
             )
             try:
@@ -195,3 +217,4 @@ Return a JSON object with keys 'top_recos' and 'bottom_recos'.
                 nudges_data = {"nudges": []}
             for n in nudges_data.get("nudges", []):
                 st.write(f"- {n}")
+
