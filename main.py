@@ -54,10 +54,17 @@ cutoff = pd.Timestamp.now() - pd.Timedelta(days=days)
 df_all = df_all[df_all["Timestamp"] >= cutoff]
 
 # --- AUTO-DETECT COLUMNS ---
-store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
-amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
-qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
-item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
+def detect_col(preferred, columns):
+    for option in preferred:
+        match = next((c for c in columns if option.lower() in c.lower()), None)
+        if match:
+            return match
+    return None
+
+store_col = detect_col(["Store Name"], df_all.columns)
+amount_col = detect_col(["Total Amount", "Amount", "Price per Unit", "Total"], df_all.columns)
+qty_col = detect_col(["Stock Remaining", "Remaining", "Stock", "Quantity"], df_all.columns)
+item_col = detect_col(["Product Name", "Product", "SKU"], df_all.columns)
 
 # --- STORE FILTER (only if demo data) ---
 if store_col and data_source == "Use Demo Store Data":
@@ -88,19 +95,19 @@ if st.sidebar.button("Generate Report"):
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
-        chart_top = alt.Chart(top_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_top, use_container_width=True)
+    st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+    chart_top = alt.Chart(top_df).mark_bar().encode(
+        x=alt.X("sales:Q", title="Sales"),
+        y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+    ).properties(height=300)
+    st.altair_chart(chart_top, use_container_width=True)
     with col2:
-        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
-        chart_bot = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X("sales:Q", title="Sales"),
-            y=alt.Y(f"{item_col}:N", sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(chart_bot, use_container_width=True)
+    st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+    chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+        x=alt.X("sales:Q", title="Sales"),
+        y=alt.Y(f"{item_col}:N", sort='x', title=None)
+    ).properties(height=300)
+    st.altair_chart(chart_bot, use_container_width=True)
 
     if qty_col:
         inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
@@ -164,10 +171,10 @@ Slow SKU Context:
     except:
         st.error("Failed to parse SKU recommendations.")
         sku_data = {
-            "category_insights": [],
-            "product_insights": [],
-            "insights": []
-        }
+    "category_insights": [],
+    "product_insights": [],
+    "insights": []
+}
 
     # === FINAL CLEAN OUTPUT ORDER ===
     st.markdown("### Category Insights")
@@ -184,3 +191,4 @@ Slow SKU Context:
     for insight in sku_data.get("insights", [])[:3]:
         if isinstance(insight, str):
             st.markdown(f"- {insight.strip()}")
+
