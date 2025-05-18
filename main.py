@@ -2,6 +2,7 @@ import os
 import streamlit as st
 import pandas as pd
 import openai
+import re
 
 # --- INITIALIZE AI CLIENT ---
 client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
@@ -33,14 +34,10 @@ all_data = load_data(csv_paths)
 store_type = st.selectbox("Select Store Category", list(all_data.keys()))
 if store_type:
     df = all_data[store_type]
-    st.subheader("🔎 CSV Data Preview (first 20 rows):")
-    st.dataframe(df.head(20))
-
-    # Derive store-specific context (e.g., location) if available
     location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
 
     if st.button("Generate Store Pulse"):
-        # Build AI prompt matching desired output structure
+        # Build AI prompt
         pulse_prompt = f"""
 📊 Weekly Store Pulse: {store_type} Store — {location}
 (Analyzed from recent 20 days of transaction data)
@@ -73,6 +70,16 @@ if store_type:
                 temperature=0.7,
                 max_tokens=600,
             )
-        # Display the AI-generated report
-        st.markdown(response.choices[0].message.content.strip())
+        raw = response.choices[0].message.content.strip()
+        # parse sections by emoji headers
+        pattern = r"(🔥[^\n]*|🧊[^\n]*|📅[^\n]*|🌐[^\n]*|📦[^\n]*|🔁[^\n]*)([\s\S]*?)(?=(🔥|🧊|📅|🌐|📦|🔁)|$)"
+        matches = re.findall(pattern, raw)
+        for header, body, _ in matches:
+            st.subheader(header)
+            # list each line in body as markdown bullet
+            for line in body.strip().split('\n'):
+                text = line.lstrip('- ').strip()
+                if text:
+                    st.markdown(f"- {text}")
+
 
