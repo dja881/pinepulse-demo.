@@ -89,30 +89,10 @@ if st.sidebar.button("Generate Report"):
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**Top SKU Recommendations**")
-        for item in sku_data.get("top_recos", []):
-            if isinstance(item, dict):
-                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                for rec in item.get("recommendations", []):
-                    st.write(f"- {rec}")
-    for item in sku_data.get("top_recos", []):
-        if isinstance(item, dict):
-            st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-            for rec in item.get("recommendations", []):
-                st.write(f"- {rec}")
-
+            
     with col2:
         st.markdown("**Slow SKU Recommendations**")
-        for item in sku_data.get("bottom_recos", []):
-            if isinstance(item, dict):
-                st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-                for rec in item.get("recommendations", []):
-                    st.write(f"- {rec}")
-    for item in sku_data.get("bottom_recos", []):
-        if isinstance(item, dict):
-            st.write(f"**{item.get('sku', 'Unknown SKU')}**")
-            for rec in item.get("recommendations", []):
-                st.write(f"- {rec}")
-
+            
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", [])[:5]:
@@ -125,4 +105,5 @@ if st.sidebar.button("Generate Report"):
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:5]:
         st.write(f"- {insight}")
+
 
