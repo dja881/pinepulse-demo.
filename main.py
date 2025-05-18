@@ -69,7 +69,22 @@ st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
 if st.sidebar.button("Generate Report"):
-    sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}  # Safe default
+    # AI block begins
+    try:
+        with st.spinner("Generating SKU recommendations and AI insights..."):
+            resp = client.chat.completions.create(
+                model="gpt-4.1-mini",
+                messages=[
+                    {"role": "system", "content": "Output valid JSON only."},
+                    {"role": "user", "content": sku_prompt}
+                ],
+                temperature=0.3,
+                max_tokens=1200
+            )
+            sku_data = json.loads(resp.choices[0].message.content)
+    except Exception as e:
+        st.error("Failed to generate AI insights. Showing empty output.")
+        sku_data = {"top_recos": [], "bottom_recos": [], "insights": [], "product_insights": [], "payment_insights": []}
     df = df_all.loc[:, ~df_all.columns.duplicated()]
     total_sales = df[amount_col].sum()
     num_txn = len(df)
@@ -116,4 +131,3 @@ if st.sidebar.button("Generate Report"):
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:5]:
         st.write(f"- {insight}")
-
