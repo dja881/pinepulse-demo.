@@ -132,6 +132,13 @@ Slow SKU Context:
     st.text(resp.choices[0].message.content)
     try:
         insights = json.loads(resp.choices[0].message.content)
+        # Fallback: if category_insights or product_insights are empty, split from insights
+        all_ins = insights.get('insights', [])
+        if not insights.get('category_insights') and all_ins:
+            insights['category_insights'] = all_ins[:3]
+        if not insights.get('product_insights') and len(all_ins) > 3:
+            insights['product_insights'] = all_ins[3:6]
+    except:[0].message.content)
     except:
         st.error('Failed to parse insights.')
         insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
@@ -184,4 +191,3 @@ Slow SKU Context:
     st.markdown("### AI Forecasts & Strategy Nudges")
     for line in insights.get('insights', [])[:3]:
         st.markdown(f"- {line}")
-
