@@ -33,15 +33,18 @@ all_data = load_data(csv_paths)
 store_type = st.selectbox("Select Store Category", list(all_data.keys()))
 if store_type:
     df = all_data[store_type]
+    # Show CSV preview so users understand data
+    st.subheader("🔎 CSV Data Preview (first 20 rows):")
+    st.dataframe(df.head(20))
 
-    # Derive store details automatically
+    # Derive store-specific context (e.g., location) if available
     location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
 
     if st.button("Generate Store Pulse"):
-        # Prepare data sample
+        # Prepare sample for AI prompt
         sample_csv = df.sort_values(by='Timestamp', ascending=False).head(20).to_csv(index=False)
 
-        # Build AI prompt matching desired structure
+        # Build AI prompt matching desired output structure
         pulse_prompt = f"""
 📊 Weekly Store Pulse: {store_type} Store — {location}
 (Analyzed from recent 20 days of transaction data)
@@ -69,8 +72,6 @@ Data sample (first 20 rows):
 
 Provide the answer exactly in markdown as above.
 """
-
-        # Call OpenAI API
         with st.spinner("Generating AI-driven pulse report..."):
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
@@ -81,6 +82,5 @@ Provide the answer exactly in markdown as above.
                 temperature=0.7,
                 max_tokens=600,
             )
-
         # Display the AI-generated report
         st.markdown(response.choices[0].message.content.strip())
