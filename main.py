@@ -2,7 +2,6 @@ import os
 import streamlit as st
 import pandas as pd
 import openai
-import re
 
 # --- INITIALIZE AI CLIENT ---
 client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
@@ -25,7 +24,7 @@ def load_data(paths):
     data = {}
     for name, path in paths.items():
         if os.path.isfile(path):
-            data[name] = pd.read_csv(path, parse_dates=["Timestamp"], infer_datetime_format=True)
+            data[name] = pd.read_csv(path, parse_dates=["Timestamp"])
     return data
 
 all_data = load_data(csv_paths)
@@ -34,52 +33,43 @@ all_data = load_data(csv_paths)
 store_type = st.selectbox("Select Store Category", list(all_data.keys()))
 if store_type:
     df = all_data[store_type]
-    location = df.get('Location', pd.Series()).dropna().iloc[0] if 'Location' in df.columns else ''
-
+    location = df["Location"].dropna().iloc[0] if "Location" in df.columns else ""
     if st.button("Generate Store Pulse"):
-        pulse_prompt = f"""
+        prompt = f"""
 Weekly Store Pulse: {store_type} Store — {location}
 (Analyzed from recent 20 days of transaction data)
 
 Hot-Selling SKUs (Restock Urgently)
-[List top SKUs by velocity with bullet points and actionable restock guidance]
+- Provide top 3 SKUs by sales velocity and recommended restock actions.
 
 Cold Movers (Consider Discount/Bundling)
-[List slowest moving SKUs with bullet points and promotion suggestions]
+- List slowest 3 SKUs with bundling or discount suggestions.
 
 Footfall Patterns & Opportunity Slots
-[Highlight slowest days/hours and suggested promos]
+- Highlight slowest days and hours, with promo ideas.
 
 External Signals & Trends
-[Call out external trends relevant to inventory or weather]
+- Note relevant external trends affecting inventory.
 
 Projected Next-Month Sales Forecast
-[Give % forecasts per category]
+- Forecast % change for key categories.
 
 AI Nudges to Action This Week
-[Checklist of top 3-5 actionable nudges]
+- Summarize top 5 actionable items.
 """
-        with st.spinner("Generating AI-driven pulse report..."):
+        with st.spinner("Generating report…"):
             response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are a professional data-driven retail analyst. Provide the report with plain headings and bullet points, no emojis."},
-                    {"role": "user", "content": pulse_prompt}
+                    {"role":"system","content":"You are a concise retail analyst. Provide plain headings and bullet points, no emojis."},
+                    {"role":"user","content":prompt}
                 ],
-                temperature=0.7,
-                max_tokens=600,
+                temperature=0.6,
+                max_tokens=500
             )
-        raw = response.choices[0].message.content.strip()
-        # parse sections: header lines separated by blank line from bullets
-        sections = re.split(r"(?m)^(?=[A-Z].*\n)", raw)
-        for section in sections:
-            lines = section.strip().splitlines()
-            if not lines:
-                continue
-            header = lines[0].strip()
-            body_lines = [l.strip('- ').strip() for l in lines[1:] if l.startswith('-')]
-            with st.expander(header, expanded=False):
-                for item in body_lines:
-                    st.write(f"• {item}")
+        report_md = response.choices[0].message.content.strip()
+        # Render markdown directly for a clean, professional look
+        st.markdown(report_md)
+
 
 
