@@ -75,7 +75,7 @@ if st.sidebar.button("Generate Report"):
     unique_items = df[item_col].nunique()
 
     m1, m2, m3 = st.columns(3)
-    m1.metric("Total Sales", f"\u20b9{total_sales:,.0f}")
+    m1.metric("Total Sales", f"₹{total_sales:,.0f}")
     m2.metric("Transactions", num_txn)
     m3.metric("Unique Products", unique_items)
     st.markdown("---")
@@ -123,9 +123,9 @@ if st.sidebar.button("Generate Report"):
         "velocity": 150,
         "days_supply": 0.7,
         "recommendations": [
-            "Set reorder level to 200 to avoid stockout.",
-            "Schedule a 10% promo during peak hours.",
-            "Place at checkout for visibility."
+            "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
+            "Schedule a 10% promo during peak hours to boost sales.",
+            "Place at checkout for visibility to maximize impulse buys."
         ]
     }
 
@@ -135,26 +135,32 @@ You are a data-driven retail analyst. Follow the example schema:
 
 Now top SKUs context:
 {json.dumps(top_context, indent=2)}
-Provide exactly 3 data-backed \"recommendations\" per SKU.
+Provide exactly 3 data-backed "recommendations" per SKU. Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high' or 'running low soon'.
 
 Slow SKUs context:
 {json.dumps(bottom_context, indent=2)}
-Provide exactly 3 data-backed \"recommendations\" per SKU.
+Provide exactly 3 data-backed "recommendations" per SKU. Avoid jargon.
 
-Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
+Then give 4 AI insights about:
+1. Trends in sales and demand patterns,
+2. External signals (e.g. weather, festivals),
+3. Inventory risks or opportunities,
+4. Recommendations for next month’s prep.
+
+Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
 """
-    with st.spinner("Generating SKU recommendations..."):
+    with st.spinner("Generating SKU recommendations and AI insights..."):
         resp = client.chat.completions.create(
             model="gpt-4.1-mini",
             messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
             temperature=0.3,
-            max_tokens=500
+            max_tokens=800
         )
     try:
         sku_data = json.loads(resp.choices[0].message.content)
     except:
         st.error("Failed to parse SKU recommendations.")
-        sku_data = {"top_recos": [], "bottom_recos": []}
+        sku_data = {"top_recos": [], "bottom_recos": [], "insights": []}
 
     with col1:
         st.markdown("**Top SKU Recommendations**")
@@ -168,4 +174,8 @@ Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
     st.markdown("---")
+    st.markdown("### AI Forecasts & Strategy Nudges")
+    for insight in sku_data.get("insights", []):
+        st.markdown(f"- {insight}")
+
 
