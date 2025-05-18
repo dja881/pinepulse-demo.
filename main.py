@@ -177,7 +177,7 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     with col1:
         st.markdown("**Top SKU Recommendations**")
         for item in sku_data.get("top_recos", []):
-        if isinstance(item, dict):
+            if isinstance(item, dict):
             st.write(f"**{item.get('sku', 'Unknown SKU')}**")
             for rec in item.get("recommendations", []):
                 st.write(f"- {rec}")
@@ -185,7 +185,7 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     with col2:
         st.markdown("**Slow SKU Recommendations**")
         for item in sku_data.get("bottom_recos", []):
-        if isinstance(item, dict):
+            if isinstance(item, dict):
             st.write(f"**{item.get('sku', 'Unknown SKU')}**")
             for rec in item.get("recommendations", []):
                 st.write(f"- {rec}")
@@ -202,4 +202,3 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:5]:
         st.write(f"- {insight}")
-
