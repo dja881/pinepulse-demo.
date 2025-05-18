@@ -1,0 +1,151 @@
+Transaction ID,Terminal ID,Merchant ID,Store Name,Location,Timestamp,Card Type,Masked Card No,Auth Code,Txn Amount (₹),Txn Type,Product Category,Product SKU,Product Name,Inventory ID,Response Code,Settlement Date,Status,Payment Mode,EMI Plan (months),Cashback (₹),Scheme Code,Remaining Stock
+SWATXN1001,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:34:00,Mastercard,**** **** 4330,368943,0,Reversal,First Aid,CHE005,Bandage Roll,INV47089,00,,Reversed,Debit Card,0,0,-,29
+SWATXN1002,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:11:00,RuPay,**** **** 2453,199455,25,Sale,Medicines,CHE001,Paracetamol Strip,INV96014,00,2025-05-18,Success,Debit Card,0,0,-,23
+SWATXN1003,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:27:00,Amex,**** **** 5458,265635,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV25246,00,2025-05-18,Success,Credit Card,0,0,-,10
+SWATXN1004,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:27:00,RuPay,**** **** 8165,347154,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV17064,00,2025-05-18,Success,Credit Card,0,0,-,18
+SWATXN1005,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:36:00,RuPay,**** **** 1047,101684,199,Sale,Equipment,CHE004,Digital Thermometer,INV10424,00,2025-05-18,Success,Debit Card,0,0,-,21
+SWATXN1006,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:03:00,Visa,**** **** 2292,604456,199,Sale,Equipment,CHE004,Digital Thermometer,INV97292,00,2025-05-18,Success,Debit Card,0,0,-,20
+SWATXN1007,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:20:00,Amex,**** **** 9899,297079,30,Sale,First Aid,CHE005,Bandage Roll,INV33578,00,2025-05-18,Success,Credit Card,0,0,-,28
+SWATXN1008,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:36:00,RuPay,**** **** 4260,713195,0,Void,Medicines,CHE001,Paracetamol Strip,INV88316,00,,Voided,Credit Card,0,0,-,24
+SWATXN1009,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:55:00,Mastercard,**** **** 8655,822461,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV48958,00,2025-05-18,Success,Debit Card,0,0,-,17
+SWATXN1010,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:30:00,Visa,**** **** 7495,473110,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV92290,00,2025-05-18,Success,Debit Card,0,0,-,16
+SWATXN1011,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:07:00,Visa,**** **** 3363,686404,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV62837,00,2025-05-18,Success,Debit Card,0,0,-,15
+SWATXN1012,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:46:00,Mastercard,**** **** 2400,654590,0,Reversal,First Aid,CHE005,Bandage Roll,INV87637,00,,Reversed,Credit Card,0,0,-,29
+SWATXN1013,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:39:00,Visa,**** **** 5012,870990,30,Sale,First Aid,CHE005,Bandage Roll,INV17644,00,2025-05-18,Success,Credit Card,0,0,-,28
+SWATXN1014,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:12:00,RuPay,**** **** 9270,982737,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV29592,00,2025-05-18,Success,Debit Card,0,0,-,14
+SWATXN1015,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Visa,**** **** 6948,200920,199,Sale,Equipment,CHE004,Digital Thermometer,INV77926,00,2025-05-18,Success,Credit Card,0,0,-,19
+SWATXN1016,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:18:00,Amex,**** **** 9473,134491,199,Sale,Equipment,CHE004,Digital Thermometer,INV81506,00,2025-05-18,Success,Debit Card,0,0,-,18
+SWATXN1017,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:31:00,Mastercard,**** **** 7207,704191,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV44777,00,2025-05-18,Success,Debit Card,0,0,-,9
+SWATXN1018,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:29:00,Mastercard,**** **** 3441,611246,199,Sale,Equipment,CHE004,Digital Thermometer,INV78195,00,2025-05-18,Success,Debit Card,0,0,-,17
+SWATXN1019,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:25:00,Amex,**** **** 7476,622771,30,Sale,First Aid,CHE005,Bandage Roll,INV22685,00,2025-05-18,Success,Debit Card,0,0,-,27
+SWATXN1020,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:57:00,Visa,**** **** 4235,738380,0,Void,Medicines,CHE001,Paracetamol Strip,INV49816,00,,Voided,Debit Card,0,0,-,25
+SWATXN1021,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:05:00,RuPay,**** **** 2951,285153,30,Sale,First Aid,CHE005,Bandage Roll,INV54868,00,2025-05-18,Success,Credit Card,0,0,-,26
+SWATXN1022,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:48:00,Amex,**** **** 3549,805706,30,Sale,First Aid,CHE005,Bandage Roll,INV89195,00,2025-05-18,Success,Debit Card,0,0,-,25
+SWATXN1023,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:20:00,Visa,**** **** 4654,499161,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV84257,00,2025-05-18,Success,Credit Card,0,0,-,13
+SWATXN1024,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:37:00,Amex,**** **** 5658,574184,30,Sale,First Aid,CHE005,Bandage Roll,INV43289,00,2025-05-18,Success,Debit Card,0,0,-,24
+SWATXN1025,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:33:00,Mastercard,**** **** 5844,323100,30,Sale,First Aid,CHE005,Bandage Roll,INV25912,00,2025-05-18,Success,Debit Card,0,0,-,23
+SWATXN1026,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:54:00,Amex,**** **** 5099,143285,199,Sale,Equipment,CHE004,Digital Thermometer,INV52569,00,2025-05-18,Success,Credit Card,0,0,-,16
+SWATXN1027,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:11:00,Visa,**** **** 1703,182288,0,Reversal,Medicines,CHE002,Cough Syrup 100ml,INV54537,00,,Reversed,Credit Card,0,0,-,14
+SWATXN1028,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:32:00,RuPay,**** **** 2787,826687,25,Sale,Medicines,CHE001,Paracetamol Strip,INV56719,00,2025-05-18,Success,Debit Card,0,0,-,24
+SWATXN1029,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:37:00,Mastercard,**** **** 6364,418905,30,Sale,First Aid,CHE005,Bandage Roll,INV77876,00,2025-05-18,Success,Debit Card,0,0,-,22
+SWATXN1030,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:47:00,RuPay,**** **** 9961,414363,0,Void,First Aid,CHE005,Bandage Roll,INV87752,00,,Voided,Credit Card,0,0,-,23
+SWATXN1031,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:51:00,RuPay,**** **** 4736,242521,199,Sale,Equipment,CHE004,Digital Thermometer,INV16299,00,2025-05-18,Success,Credit Card,0,0,-,15
+SWATXN1032,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:25:00,Visa,**** **** 4297,878096,25,Sale,Medicines,CHE001,Paracetamol Strip,INV11757,00,2025-05-18,Success,Debit Card,0,0,-,23
+SWATXN1033,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:00:00,Visa,**** **** 5818,316053,25,Sale,Medicines,CHE001,Paracetamol Strip,INV39754,00,2025-05-18,Success,Credit Card,0,0,-,22
+SWATXN1034,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:34:00,Amex,**** **** 9026,853101,199,Sale,Equipment,CHE004,Digital Thermometer,INV10269,00,2025-05-18,Success,Debit Card,0,0,-,14
+SWATXN1035,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:57:00,RuPay,**** **** 1998,653971,199,Sale,Equipment,CHE004,Digital Thermometer,INV17629,00,2025-05-18,Success,Debit Card,0,0,-,13
+SWATXN1036,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:57:00,RuPay,**** **** 2571,343143,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV60009,00,2025-05-18,Success,Credit Card,0,0,-,8
+SWATXN1037,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:32:00,Visa,**** **** 3171,664127,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV12025,00,2025-05-18,Success,Debit Card,0,0,-,7
+SWATXN1038,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:17:00,RuPay,**** **** 9792,169474,199,Sale,Equipment,CHE004,Digital Thermometer,INV21352,00,2025-05-18,Success,Credit Card,0,0,-,12
+SWATXN1039,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:30:00,Amex,**** **** 3198,773391,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV88837,00,,Reversed,Debit Card,0,0,-,23
+SWATXN1040,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:20:00,Amex,**** **** 7348,692119,199,Sale,Equipment,CHE004,Digital Thermometer,INV80231,00,2025-05-18,Success,Credit Card,0,0,-,11
+SWATXN1041,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:41:00,Mastercard,**** **** 7159,843946,30,Sale,First Aid,CHE005,Bandage Roll,INV60008,00,2025-05-18,Success,Debit Card,0,0,-,22
+SWATXN1042,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:23:00,Visa,**** **** 8284,186767,0,Void,Medicines,CHE002,Cough Syrup 100ml,INV80486,00,,Voided,Credit Card,0,0,-,15
+SWATXN1043,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:26:00,Visa,**** **** 8704,976081,0,Reversal,Personal Care,CHE003,Hand Sanitizer 200ml,INV84923,00,,Reversed,Credit Card,0,0,-,8
+SWATXN1044,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:00:00,Amex,**** **** 4037,153009,30,Sale,First Aid,CHE005,Bandage Roll,INV69364,00,2025-05-18,Success,Debit Card,0,0,-,21
+SWATXN1045,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:58:00,Mastercard,**** **** 2638,613600,0,Void,Personal Care,CHE003,Hand Sanitizer 200ml,INV94813,00,,Voided,Credit Card,0,0,-,9
+SWATXN1046,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:24:00,Amex,**** **** 8066,982531,30,Sale,First Aid,CHE005,Bandage Roll,INV43932,00,2025-05-18,Success,Debit Card,0,0,-,20
+SWATXN1047,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:08:00,RuPay,**** **** 1780,340014,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV62533,00,2025-05-18,Success,Credit Card,0,0,-,14
+SWATXN1048,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:06:00,Amex,**** **** 8262,668526,0,Void,First Aid,CHE005,Bandage Roll,INV29958,00,,Voided,Debit Card,0,0,-,21
+SWATXN1049,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:39:00,Amex,**** **** 5283,738553,199,Sale,Equipment,CHE004,Digital Thermometer,INV70737,00,2025-05-18,Success,Credit Card,0,0,-,10
+SWATXN1050,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:50:00,Mastercard,**** **** 8742,401413,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV25082,00,2025-05-18,Success,Debit Card,0,0,-,13
+SWATXN1051,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:52:00,Visa,**** **** 6166,233402,30,Sale,First Aid,CHE005,Bandage Roll,INV14690,00,2025-05-18,Success,Credit Card,0,0,-,20
+SWATXN1052,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:44:00,Visa,**** **** 1943,610969,30,Sale,First Aid,CHE005,Bandage Roll,INV16736,00,2025-05-18,Success,Debit Card,0,0,-,19
+SWATXN1053,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:23:00,Visa,**** **** 4207,662974,199,Sale,Equipment,CHE004,Digital Thermometer,INV56607,00,2025-05-18,Success,Credit Card,0,0,-,9
+SWATXN1054,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:46:00,Amex,**** **** 1810,172577,30,Sale,First Aid,CHE005,Bandage Roll,INV91039,00,2025-05-18,Success,Credit Card,0,0,-,18
+SWATXN1055,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:00:00,RuPay,**** **** 6075,733615,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV50121,00,2025-05-18,Success,Debit Card,0,0,-,12
+SWATXN1056,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:18:00,RuPay,**** **** 2193,800414,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV46523,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1057,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:43:00,RuPay,**** **** 4894,433797,25,Sale,Medicines,CHE001,Paracetamol Strip,INV28744,00,2025-05-18,Success,Credit Card,0,0,-,22
+SWATXN1058,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:31:00,Visa,**** **** 7112,936996,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV58081,00,2025-05-18,Success,Debit Card,0,0,-,7
+SWATXN1059,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:50:00,Visa,**** **** 8918,631896,0,Reversal,Equipment,CHE004,Digital Thermometer,INV79554,00,,Reversed,Debit Card,0,0,-,10
+SWATXN1060,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:44:00,RuPay,**** **** 9766,106507,199,Sale,Equipment,CHE004,Digital Thermometer,INV10990,00,2025-05-18,Success,Credit Card,0,0,-,9
+SWATXN1061,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:48:00,Mastercard,**** **** 7099,739378,199,Sale,Equipment,CHE004,Digital Thermometer,INV76501,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1062,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:49:00,Mastercard,**** **** 7295,778413,199,Sale,Equipment,CHE004,Digital Thermometer,INV49476,00,2025-05-18,Success,Debit Card,0,0,-,7
+SWATXN1063,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:53:00,Amex,**** **** 4884,280065,25,Sale,Medicines,CHE001,Paracetamol Strip,INV88037,00,2025-05-18,Success,Debit Card,0,0,-,21
+SWATXN1064,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:20:00,Visa,**** **** 2994,660177,30,Sale,First Aid,CHE005,Bandage Roll,INV75354,00,2025-05-18,Success,Credit Card,0,0,-,17
+SWATXN1065,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:35:00,Visa,**** **** 4485,437167,30,Sale,First Aid,CHE005,Bandage Roll,INV31817,00,2025-05-18,Success,Credit Card,0,0,-,16
+SWATXN1066,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:48:00,RuPay,**** **** 8964,295388,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV43155,00,2025-05-18,Success,Credit Card,0,0,-,6
+SWATXN1067,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Amex,**** **** 8296,496301,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV84787,00,2025-05-18,Success,Debit Card,0,0,-,5
+SWATXN1068,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:39:00,Visa,**** **** 4366,579898,199,Sale,Equipment,CHE004,Digital Thermometer,INV48252,00,2025-05-18,Success,Debit Card,0,0,-,6
+SWATXN1069,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:08:00,Visa,**** **** 2249,265230,199,Sale,Equipment,CHE004,Digital Thermometer,INV85161,00,2025-05-18,Success,Credit Card,0,0,-,5
+SWATXN1070,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,Amex,**** **** 2532,271174,25,Sale,Medicines,CHE001,Paracetamol Strip,INV58857,00,2025-05-18,Success,Credit Card,0,0,-,20
+SWATXN1071,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:33:00,Mastercard,**** **** 3357,789036,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV60916,00,2025-05-18,Success,Debit Card,0,0,-,4
+SWATXN1072,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:23:00,RuPay,**** **** 3517,902073,25,Sale,Medicines,CHE001,Paracetamol Strip,INV50707,00,2025-05-18,Success,Debit Card,0,0,-,19
+SWATXN1073,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:20:00,Visa,**** **** 4977,677017,199,Sale,Equipment,CHE004,Digital Thermometer,INV76592,00,2025-05-18,Success,Credit Card,0,0,-,4
+SWATXN1074,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:50:00,Amex,**** **** 7162,578854,25,Sale,Medicines,CHE001,Paracetamol Strip,INV67964,00,2025-05-18,Success,Debit Card,0,0,-,18
+SWATXN1075,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:15:00,RuPay,**** **** 7409,504876,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV84923,00,2025-05-18,Success,Debit Card,0,0,-,11
+SWATXN1076,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:22:00,Mastercard,**** **** 8526,150311,30,Sale,First Aid,CHE005,Bandage Roll,INV92984,00,2025-05-18,Success,Credit Card,0,0,-,15
+SWATXN1077,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:42:00,Visa,**** **** 1931,677728,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV21192,00,2025-05-18,Success,Credit Card,0,0,-,10
+SWATXN1078,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:06:00,Visa,**** **** 7765,304678,0,Void,Medicines,CHE001,Paracetamol Strip,INV13371,00,,Voided,Debit Card,0,0,-,19
+SWATXN1079,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:03:00,Amex,**** **** 5459,715579,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV67064,00,2025-05-18,Success,Credit Card,0,0,-,9
+SWATXN1080,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:01:00,Mastercard,**** **** 3762,604137,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV57237,00,2025-05-18,Success,Debit Card,0,0,-,3
+SWATXN1081,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:02:00,Amex,**** **** 7595,197881,25,Sale,Medicines,CHE001,Paracetamol Strip,INV80925,00,2025-05-18,Success,Credit Card,0,0,-,18
+SWATXN1082,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:30:00,RuPay,**** **** 2205,213408,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV30147,00,2025-05-18,Success,Credit Card,0,0,-,2
+SWATXN1083,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:47:00,RuPay,**** **** 2822,303894,25,Sale,Medicines,CHE001,Paracetamol Strip,INV84277,00,2025-05-18,Success,Debit Card,0,0,-,17
+SWATXN1084,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:18:00,Visa,**** **** 5882,804992,30,Sale,First Aid,CHE005,Bandage Roll,INV47511,00,2025-05-18,Success,Credit Card,0,0,-,14
+SWATXN1085,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:29:00,RuPay,**** **** 6418,793580,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV19007,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1086,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:19:00,Mastercard,**** **** 7209,947204,25,Sale,Medicines,CHE001,Paracetamol Strip,INV39317,00,2025-05-18,Success,Credit Card,0,0,-,16
+SWATXN1087,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:31:00,RuPay,**** **** 7646,626152,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV24564,00,2025-05-18,Success,Debit Card,0,0,-,1
+SWATXN1088,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:53:00,Visa,**** **** 3640,422762,199,Sale,Equipment,CHE004,Digital Thermometer,INV87050,00,2025-05-18,Success,Debit Card,0,0,-,3
+SWATXN1089,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:11:00,Mastercard,**** **** 9168,405630,30,Sale,First Aid,CHE005,Bandage Roll,INV37199,00,2025-05-18,Success,Credit Card,0,0,-,13
+SWATXN1090,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:47:00,Amex,**** **** 2835,686246,25,Sale,Medicines,CHE001,Paracetamol Strip,INV71287,00,2025-05-18,Success,Credit Card,0,0,-,15
+SWATXN1091,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:42:00,RuPay,**** **** 6404,298037,25,Sale,Medicines,CHE001,Paracetamol Strip,INV83720,00,2025-05-18,Success,Credit Card,0,0,-,14
+SWATXN1092,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:31:00,Mastercard,**** **** 2794,750779,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV20266,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1093,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:43:00,Mastercard,**** **** 3614,583147,25,Sale,Medicines,CHE001,Paracetamol Strip,INV14826,00,2025-05-18,Success,Credit Card,0,0,-,13
+SWATXN1094,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:38:00,Amex,**** **** 1772,968494,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV71457,00,2025-05-18,Success,Debit Card,0,0,-,7
+SWATXN1095,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:37:00,Amex,**** **** 1606,565702,25,Sale,Medicines,CHE001,Paracetamol Strip,INV28068,00,2025-05-18,Success,Debit Card,0,0,-,12
+SWATXN1096,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:44:00,Visa,**** **** 3805,733709,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV82210,00,2025-05-18,Success,Credit Card,0,0,-,6
+SWATXN1097,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:46:00,Amex,**** **** 5802,228316,0,Void,Personal Care,CHE003,Hand Sanitizer 200ml,INV47442,00,,Voided,Debit Card,0,0,-,1
+SWATXN1098,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:40:00,Visa,**** **** 2875,346102,0,Reversal,Personal Care,CHE003,Hand Sanitizer 200ml,INV89890,00,,Reversed,Credit Card,0,0,-,2
+SWATXN1099,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:41:00,Mastercard,**** **** 6254,231560,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV75931,00,2025-05-18,Success,Credit Card,0,0,-,1
+SWATXN1100,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:34:00,Mastercard,**** **** 8320,152345,25,Sale,Medicines,CHE001,Paracetamol Strip,INV24715,00,2025-05-18,Success,Debit Card,0,0,-,11
+SWATXN1101,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:24:00,Amex,**** **** 1161,151836,25,Sale,Medicines,CHE001,Paracetamol Strip,INV19242,00,2025-05-18,Success,Credit Card,0,0,-,10
+SWATXN1102,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:16:00,Amex,**** **** 2226,221245,30,Sale,First Aid,CHE005,Bandage Roll,INV47721,00,2025-05-18,Success,Credit Card,0,0,-,12
+SWATXN1103,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:19:00,Amex,**** **** 9425,718236,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV58500,00,2025-05-18,Success,Debit Card,0,0,-,5
+SWATXN1104,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:25:00,Amex,**** **** 8376,153051,25,Sale,Medicines,CHE001,Paracetamol Strip,INV38358,00,2025-05-18,Success,Debit Card,0,0,-,9
+SWATXN1105,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:08:00,Mastercard,**** **** 5765,615545,199,Sale,Equipment,CHE004,Digital Thermometer,INV57247,00,2025-05-18,Success,Credit Card,0,0,-,2
+SWATXN1106,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:43:00,RuPay,**** **** 5345,622767,199,Sale,Equipment,CHE004,Digital Thermometer,INV84843,00,2025-05-18,Success,Debit Card,0,0,-,1
+SWATXN1107,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:42:00,RuPay,**** **** 7534,506399,199,Sale,Equipment,CHE004,Digital Thermometer,INV49598,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1108,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:13:00,Mastercard,**** **** 2235,309983,30,Sale,First Aid,CHE005,Bandage Roll,INV30077,00,2025-05-18,Success,Debit Card,0,0,-,11
+SWATXN1109,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:52:00,RuPay,**** **** 9457,209626,25,Sale,Medicines,CHE001,Paracetamol Strip,INV22400,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1110,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:28:00,Amex,**** **** 7859,439443,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV15902,00,2025-05-18,Success,Credit Card,0,0,-,4
+SWATXN1111,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:34:00,Visa,**** **** 9537,377026,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV31936,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1112,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:45:00,RuPay,**** **** 1872,826157,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV38288,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1113,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:40:00,Mastercard,**** **** 8136,749913,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV74415,00,2025-05-18,Success,Debit Card,0,0,-,3
+SWATXN1114,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:29:00,RuPay,**** **** 6773,359158,199,Sale,Equipment,CHE004,Digital Thermometer,INV17934,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1115,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:29:00,Mastercard,**** **** 4267,593470,30,Sale,First Aid,CHE005,Bandage Roll,INV63624,00,2025-05-18,Success,Debit Card,0,0,-,10
+SWATXN1116,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:30:00,Amex,**** **** 4613,995245,30,Sale,First Aid,CHE005,Bandage Roll,INV34736,00,2025-05-18,Success,Debit Card,0,0,-,9
+SWATXN1117,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:25:00,Amex,**** **** 7077,359065,30,Sale,First Aid,CHE005,Bandage Roll,INV28027,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1118,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:33:00,Amex,**** **** 2605,538784,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV35743,00,2025-05-18,Success,Debit Card,0,0,-,2
+SWATXN1119,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:39:00,Mastercard,**** **** 9182,684339,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV46932,00,2025-05-18,Success,Credit Card,0,0,-,1
+SWATXN1120,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:11:00,Visa,**** **** 6426,837615,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV71137,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1121,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:07:00,RuPay,**** **** 5677,456557,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV86560,00,,Reversed,Debit Card,0,0,-,9
+SWATXN1122,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:47:00,Mastercard,**** **** 3611,167817,25,Sale,Medicines,CHE001,Paracetamol Strip,INV99259,00,2025-05-18,Success,Debit Card,0,0,-,8
+SWATXN1123,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:14:00,Visa,**** **** 2504,590108,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV34290,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1124,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:01:00,RuPay,**** **** 3194,787655,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV55835,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1125,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 12:12:00,Visa,**** **** 8221,841392,30,Sale,First Aid,CHE005,Bandage Roll,INV77842,00,2025-05-18,Success,Credit Card,0,0,-,7
+SWATXN1126,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:52:00,Mastercard,**** **** 8914,737517,25,Sale,Medicines,CHE001,Paracetamol Strip,INV50292,00,2025-05-18,Success,Debit Card,0,0,-,7
+SWATXN1127,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:51:00,RuPay,**** **** 4757,255259,25,Sale,Medicines,CHE001,Paracetamol Strip,INV60843,00,2025-05-18,Success,Credit Card,0,0,-,6
+SWATXN1128,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:46:00,Visa,**** **** 5457,458628,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV85180,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1129,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:52:00,Amex,**** **** 6366,243742,30,Sale,First Aid,CHE005,Bandage Roll,INV11388,00,2025-05-18,Success,Credit Card,0,0,-,6
+SWATXN1130,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:36:00,Visa,**** **** 9158,105871,25,Sale,Medicines,CHE001,Paracetamol Strip,INV37702,00,2025-05-18,Success,Debit Card,0,0,-,5
+SWATXN1131,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:24:00,Visa,**** **** 8436,559263,25,Sale,Medicines,CHE001,Paracetamol Strip,INV17619,00,2025-05-18,Success,Debit Card,0,0,-,4
+SWATXN1132,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:41:00,Amex,**** **** 3342,229618,0,Reversal,Equipment,CHE004,Digital Thermometer,INV67394,00,,Reversed,Credit Card,0,0,-,1
+SWATXN1133,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:40:00,Amex,**** **** 7797,281428,30,Sale,First Aid,CHE005,Bandage Roll,INV10987,00,2025-05-18,Success,Credit Card,0,0,-,5
+SWATXN1134,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:38:00,RuPay,**** **** 4443,591641,25,Sale,Medicines,CHE001,Paracetamol Strip,INV14704,00,2025-05-18,Success,Debit Card,0,0,-,3
+SWATXN1135,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:10:00,Amex,**** **** 8405,577372,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV32003,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1136,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:18:00,Amex,**** **** 6203,682895,0,Reversal,Medicines,CHE001,Paracetamol Strip,INV44234,00,,Reversed,Credit Card,0,0,-,4
+SWATXN1137,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:26:00,Mastercard,**** **** 1661,422290,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV50759,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1138,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:46:00,RuPay,**** **** 3823,399072,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV54396,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1139,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 16:33:00,Mastercard,**** **** 7892,531928,199,Sale,Equipment,CHE004,Digital Thermometer,INV37427,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1140,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:48:00,Visa,**** **** 6469,206043,199,Sale,Equipment,CHE004,Digital Thermometer,INV95983,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1141,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 11:53:00,Mastercard,**** **** 9563,731549,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV97593,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1142,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 17:11:00,Mastercard,**** **** 3020,342596,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV76511,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1143,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:01:00,RuPay,**** **** 5897,987822,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV53548,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1144,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 15:12:00,Mastercard,**** **** 9056,397656,199,Sale,Equipment,CHE004,Digital Thermometer,INV50428,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1145,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 19:13:00,Mastercard,**** **** 2680,868229,199,Sale,Equipment,CHE004,Digital Thermometer,INV47798,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1146,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:50:00,RuPay,**** **** 4154,341181,199,Sale,Equipment,CHE004,Digital Thermometer,INV38533,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1147,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 10:56:00,Mastercard,**** **** 9465,955301,0,Reversal,Medicines,CHE002,Cough Syrup 100ml,INV77411,00,,Reversed,Credit Card,0,0,-,1
+SWATXN1148,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 14:28:00,RuPay,**** **** 9634,278699,199,Sale,Equipment,CHE004,Digital Thermometer,INV71048,00,2025-05-18,Success,Debit Card,0,0,-,0
+SWATXN1149,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 18:39:00,Amex,**** **** 6874,214658,75,Sale,Personal Care,CHE003,Hand Sanitizer 200ml,INV95082,00,2025-05-18,Success,Credit Card,0,0,-,0
+SWATXN1150,TERM002,MERCH202,Swasth Chemist,Delhi,2025-05-17 13:31:00,RuPay,**** **** 4977,482211,55,Sale,Medicines,CHE002,Cough Syrup 100ml,INV28292,00,2025-05-18,Success,Debit Card,0,0,-,0

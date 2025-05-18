@@ -1,0 +1,151 @@
+Transaction ID,Terminal ID,Merchant ID,Store Name,Location,Timestamp,Card Type,Masked Card No,Auth Code,Txn Amount (₹),Txn Type,Product Category,Product SKU,Product Name,Inventory ID,Response Code,Settlement Date,Status,Payment Mode,EMI Plan (months),Cashback (₹),Scheme Code,Remaining Stock
+BRETXN1001,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:19:00,Mastercard,**** **** 5919,754860,150,Sale,Beverage,CAF002,Cappuccino,INV48999,00,2025-05-18,Success,Credit Card,0,0,-,14
+BRETXN1002,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:15:00,Mastercard,**** **** 3235,981781,120,Sale,Beverage,CAF001,Espresso,INV95012,00,2025-05-18,Success,Credit Card,0,0,-,29
+BRETXN1003,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:09:00,Mastercard,**** **** 6758,134347,180,Sale,Beverage,CAF003,Cold Coffee,INV60250,00,2025-05-18,Success,Credit Card,0,0,-,29
+BRETXN1004,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:23:00,Amex,**** **** 3921,493662,120,Sale,Beverage,CAF001,Espresso,INV74581,00,2025-05-18,Success,Credit Card,0,0,-,28
+BRETXN1005,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:25:00,Visa,**** **** 4060,286629,120,Sale,Beverage,CAF001,Espresso,INV19127,00,2025-05-18,Success,Credit Card,0,0,-,27
+BRETXN1006,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:06:00,Visa,**** **** 2901,111798,120,Sale,Beverage,CAF001,Espresso,INV23623,00,2025-05-18,Success,Debit Card,0,0,-,26
+BRETXN1007,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:25:00,RuPay,**** **** 2724,858829,120,Sale,Beverage,CAF001,Espresso,INV99383,00,2025-05-18,Success,Debit Card,0,0,-,25
+BRETXN1008,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:51:00,Amex,**** **** 7249,884410,90,Sale,Bakery,CAF004,Chocolate Muffin,INV40001,00,2025-05-18,Success,Debit Card,0,0,-,9
+BRETXN1009,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:53:00,Visa,**** **** 3850,495671,90,Sale,Bakery,CAF004,Chocolate Muffin,INV25271,00,2025-05-18,Success,Credit Card,0,0,-,8
+BRETXN1010,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:48:00,Amex,**** **** 3959,701927,160,Sale,Snacks,CAF005,Cheese Sandwich,INV26328,00,2025-05-18,Success,Credit Card,0,0,-,17
+BRETXN1011,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:58:00,Mastercard,**** **** 4323,829727,90,Sale,Bakery,CAF004,Chocolate Muffin,INV62419,00,2025-05-18,Success,Credit Card,0,0,-,7
+BRETXN1012,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:31:00,RuPay,**** **** 3943,580295,150,Sale,Beverage,CAF002,Cappuccino,INV23763,00,2025-05-18,Success,Credit Card,0,0,-,13
+BRETXN1013,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:48:00,Amex,**** **** 1783,534248,120,Sale,Beverage,CAF001,Espresso,INV49585,00,2025-05-18,Success,Credit Card,0,0,-,24
+BRETXN1014,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:17:00,Amex,**** **** 9260,574219,180,Sale,Beverage,CAF003,Cold Coffee,INV56153,00,2025-05-18,Success,Credit Card,0,0,-,28
+BRETXN1015,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:03:00,Visa,**** **** 3938,369112,0,Reversal,Bakery,CAF004,Chocolate Muffin,INV65443,00,,Reversed,Debit Card,0,0,-,8
+BRETXN1016,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:09:00,Visa,**** **** 3346,263412,150,Sale,Beverage,CAF002,Cappuccino,INV56190,00,2025-05-18,Success,Credit Card,0,0,-,12
+BRETXN1017,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:14:00,Amex,**** **** 9470,388822,0,Reversal,Snacks,CAF005,Cheese Sandwich,INV34025,00,,Reversed,Debit Card,0,0,-,18
+BRETXN1018,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:25:00,Amex,**** **** 6199,310412,90,Sale,Bakery,CAF004,Chocolate Muffin,INV36085,00,2025-05-18,Success,Debit Card,0,0,-,7
+BRETXN1019,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:53:00,Visa,**** **** 4083,947079,180,Sale,Beverage,CAF003,Cold Coffee,INV61475,00,2025-05-18,Success,Debit Card,0,0,-,27
+BRETXN1020,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:25:00,Visa,**** **** 9154,171926,90,Sale,Bakery,CAF004,Chocolate Muffin,INV57784,00,2025-05-18,Success,Credit Card,0,0,-,6
+BRETXN1021,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:30:00,Amex,**** **** 3810,121594,120,Sale,Beverage,CAF001,Espresso,INV49016,00,2025-05-18,Success,Debit Card,0,0,-,23
+BRETXN1022,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:26:00,Visa,**** **** 8704,569293,150,Sale,Beverage,CAF002,Cappuccino,INV74990,00,2025-05-18,Success,Credit Card,0,0,-,11
+BRETXN1023,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:38:00,Amex,**** **** 9695,994889,120,Sale,Beverage,CAF001,Espresso,INV49118,00,2025-05-18,Success,Debit Card,0,0,-,22
+BRETXN1024,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:34:00,Mastercard,**** **** 7166,712738,90,Sale,Bakery,CAF004,Chocolate Muffin,INV72674,00,2025-05-18,Success,Debit Card,0,0,-,5
+BRETXN1025,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:12:00,Mastercard,**** **** 1519,496079,150,Sale,Beverage,CAF002,Cappuccino,INV86959,00,2025-05-18,Success,Debit Card,0,0,-,10
+BRETXN1026,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:13:00,RuPay,**** **** 1726,541063,160,Sale,Snacks,CAF005,Cheese Sandwich,INV69812,00,2025-05-18,Success,Debit Card,0,0,-,17
+BRETXN1027,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:54:00,Amex,**** **** 1769,813139,150,Sale,Beverage,CAF002,Cappuccino,INV21408,00,2025-05-18,Success,Debit Card,0,0,-,9
+BRETXN1028,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:29:00,Visa,**** **** 3061,856686,120,Sale,Beverage,CAF001,Espresso,INV39776,00,2025-05-18,Success,Debit Card,0,0,-,21
+BRETXN1029,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:41:00,Visa,**** **** 9935,509025,150,Sale,Beverage,CAF002,Cappuccino,INV95974,00,2025-05-18,Success,Debit Card,0,0,-,8
+BRETXN1030,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:21:00,Visa,**** **** 3678,632494,120,Sale,Beverage,CAF001,Espresso,INV85317,00,2025-05-18,Success,Credit Card,0,0,-,20
+BRETXN1031,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:08:00,RuPay,**** **** 8590,404799,180,Sale,Beverage,CAF003,Cold Coffee,INV33204,00,2025-05-18,Success,Credit Card,0,0,-,26
+BRETXN1032,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:09:00,Mastercard,**** **** 2260,877323,120,Sale,Beverage,CAF001,Espresso,INV77894,00,2025-05-18,Success,Debit Card,0,0,-,19
+BRETXN1033,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:01:00,RuPay,**** **** 2043,863071,180,Sale,Beverage,CAF003,Cold Coffee,INV98384,00,2025-05-18,Success,Credit Card,0,0,-,25
+BRETXN1034,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:55:00,Amex,**** **** 3254,848885,0,Void,Beverage,CAF001,Espresso,INV58792,00,,Voided,Credit Card,0,0,-,20
+BRETXN1035,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:59:00,Visa,**** **** 3194,162360,0,Void,Beverage,CAF003,Cold Coffee,INV11329,00,,Voided,Debit Card,0,0,-,26
+BRETXN1036,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:39:00,Amex,**** **** 8680,854133,160,Sale,Snacks,CAF005,Cheese Sandwich,INV70354,00,2025-05-18,Success,Debit Card,0,0,-,16
+BRETXN1037,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:47:00,Visa,**** **** 4751,479714,160,Sale,Snacks,CAF005,Cheese Sandwich,INV57186,00,2025-05-18,Success,Credit Card,0,0,-,15
+BRETXN1038,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:09:00,Mastercard,**** **** 8919,591002,150,Sale,Beverage,CAF002,Cappuccino,INV40734,00,2025-05-18,Success,Debit Card,0,0,-,7
+BRETXN1039,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:35:00,RuPay,**** **** 1818,523349,120,Sale,Beverage,CAF001,Espresso,INV77380,00,2025-05-18,Success,Debit Card,0,0,-,19
+BRETXN1040,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:31:00,RuPay,**** **** 2654,777511,160,Sale,Snacks,CAF005,Cheese Sandwich,INV25008,00,2025-05-18,Success,Debit Card,0,0,-,14
+BRETXN1041,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:29:00,Visa,**** **** 5402,436806,120,Sale,Beverage,CAF001,Espresso,INV69497,00,2025-05-18,Success,Debit Card,0,0,-,18
+BRETXN1042,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:01:00,RuPay,**** **** 3726,208342,0,Void,Bakery,CAF004,Chocolate Muffin,INV43165,00,,Voided,Credit Card,0,0,-,6
+BRETXN1043,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:32:00,Visa,**** **** 9195,321919,160,Sale,Snacks,CAF005,Cheese Sandwich,INV28850,00,2025-05-18,Success,Debit Card,0,0,-,13
+BRETXN1044,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:00:00,Visa,**** **** 8418,600826,180,Sale,Beverage,CAF003,Cold Coffee,INV89131,00,2025-05-18,Success,Credit Card,0,0,-,25
+BRETXN1045,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:53:00,Visa,**** **** 6427,627769,0,Void,Beverage,CAF001,Espresso,INV86378,00,,Voided,Credit Card,0,0,-,19
+BRETXN1046,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:22:00,Mastercard,**** **** 2560,563314,0,Reversal,Snacks,CAF005,Cheese Sandwich,INV25718,00,,Reversed,Credit Card,0,0,-,14
+BRETXN1047,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:46:00,Amex,**** **** 2452,205807,120,Sale,Beverage,CAF001,Espresso,INV36406,00,2025-05-18,Success,Credit Card,0,0,-,18
+BRETXN1048,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:19:00,Visa,**** **** 3325,245533,90,Sale,Bakery,CAF004,Chocolate Muffin,INV89377,00,2025-05-18,Success,Credit Card,0,0,-,5
+BRETXN1049,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:10:00,Visa,**** **** 3074,227825,0,Reversal,Beverage,CAF001,Espresso,INV85982,00,,Reversed,Credit Card,0,0,-,19
+BRETXN1050,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:19:00,Visa,**** **** 8955,467668,160,Sale,Snacks,CAF005,Cheese Sandwich,INV23971,00,2025-05-18,Success,Credit Card,0,0,-,13
+BRETXN1051,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:17:00,Amex,**** **** 3201,748536,120,Sale,Beverage,CAF001,Espresso,INV72503,00,2025-05-18,Success,Credit Card,0,0,-,18
+BRETXN1052,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:08:00,Visa,**** **** 7738,446720,150,Sale,Beverage,CAF002,Cappuccino,INV78579,00,2025-05-18,Success,Credit Card,0,0,-,6
+BRETXN1053,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:37:00,Amex,**** **** 1341,118572,0,Void,Beverage,CAF001,Espresso,INV67102,00,,Voided,Debit Card,0,0,-,19
+BRETXN1054,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:03:00,Visa,**** **** 1172,239422,180,Sale,Beverage,CAF003,Cold Coffee,INV63059,00,2025-05-18,Success,Credit Card,0,0,-,24
+BRETXN1055,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:42:00,Amex,**** **** 2456,923947,160,Sale,Snacks,CAF005,Cheese Sandwich,INV42221,00,2025-05-18,Success,Debit Card,0,0,-,12
+BRETXN1056,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:58:00,Mastercard,**** **** 9551,137895,120,Sale,Beverage,CAF001,Espresso,INV61716,00,2025-05-18,Success,Debit Card,0,0,-,18
+BRETXN1057,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:02:00,Amex,**** **** 5598,746666,180,Sale,Beverage,CAF003,Cold Coffee,INV33305,00,2025-05-18,Success,Credit Card,0,0,-,23
+BRETXN1058,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:54:00,Mastercard,**** **** 1185,273001,150,Sale,Beverage,CAF002,Cappuccino,INV35133,00,2025-05-18,Success,Credit Card,0,0,-,5
+BRETXN1059,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:04:00,RuPay,**** **** 5415,365242,180,Sale,Beverage,CAF003,Cold Coffee,INV95041,00,2025-05-18,Success,Debit Card,0,0,-,22
+BRETXN1060,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:07:00,RuPay,**** **** 8747,553405,160,Sale,Snacks,CAF005,Cheese Sandwich,INV41329,00,2025-05-18,Success,Debit Card,0,0,-,11
+BRETXN1061,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:57:00,Mastercard,**** **** 8344,833808,120,Sale,Beverage,CAF001,Espresso,INV34258,00,2025-05-18,Success,Debit Card,0,0,-,17
+BRETXN1062,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:20:00,RuPay,**** **** 8711,284368,150,Sale,Beverage,CAF002,Cappuccino,INV24015,00,2025-05-18,Success,Credit Card,0,0,-,4
+BRETXN1063,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:32:00,RuPay,**** **** 5897,201192,90,Sale,Bakery,CAF004,Chocolate Muffin,INV78006,00,2025-05-18,Success,Debit Card,0,0,-,4
+BRETXN1064,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:37:00,Visa,**** **** 3722,858848,150,Sale,Beverage,CAF002,Cappuccino,INV34709,00,2025-05-18,Success,Credit Card,0,0,-,3
+BRETXN1065,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:47:00,RuPay,**** **** 4587,177189,160,Sale,Snacks,CAF005,Cheese Sandwich,INV44999,00,2025-05-18,Success,Debit Card,0,0,-,10
+BRETXN1066,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:49:00,RuPay,**** **** 4979,905972,0,Void,Snacks,CAF005,Cheese Sandwich,INV26733,00,,Voided,Debit Card,0,0,-,11
+BRETXN1067,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:56:00,RuPay,**** **** 2495,774574,180,Sale,Beverage,CAF003,Cold Coffee,INV40573,00,2025-05-18,Success,Credit Card,0,0,-,21
+BRETXN1068,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:15:00,RuPay,**** **** 5717,578274,90,Sale,Bakery,CAF004,Chocolate Muffin,INV65280,00,2025-05-18,Success,Credit Card,0,0,-,3
+BRETXN1069,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:18:00,RuPay,**** **** 1874,314497,180,Sale,Beverage,CAF003,Cold Coffee,INV42960,00,2025-05-18,Success,Debit Card,0,0,-,20
+BRETXN1070,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:15:00,Mastercard,**** **** 4400,593568,180,Sale,Beverage,CAF003,Cold Coffee,INV65650,00,2025-05-18,Success,Credit Card,0,0,-,19
+BRETXN1071,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:08:00,Mastercard,**** **** 7894,933371,180,Sale,Beverage,CAF003,Cold Coffee,INV53666,00,2025-05-18,Success,Credit Card,0,0,-,18
+BRETXN1072,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:01:00,Mastercard,**** **** 2249,765767,0,Void,Snacks,CAF005,Cheese Sandwich,INV89639,00,,Voided,Debit Card,0,0,-,12
+BRETXN1073,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:21:00,Visa,**** **** 2938,561355,120,Sale,Beverage,CAF001,Espresso,INV39018,00,2025-05-18,Success,Credit Card,0,0,-,16
+BRETXN1074,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:38:00,RuPay,**** **** 9209,710212,120,Sale,Beverage,CAF001,Espresso,INV72548,00,2025-05-18,Success,Debit Card,0,0,-,15
+BRETXN1075,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:56:00,Amex,**** **** 2875,724206,180,Sale,Beverage,CAF003,Cold Coffee,INV39783,00,2025-05-18,Success,Debit Card,0,0,-,17
+BRETXN1076,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:26:00,Mastercard,**** **** 6501,641314,150,Sale,Beverage,CAF002,Cappuccino,INV96529,00,2025-05-18,Success,Debit Card,0,0,-,2
+BRETXN1077,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:00:00,RuPay,**** **** 3487,775199,180,Sale,Beverage,CAF003,Cold Coffee,INV74736,00,2025-05-18,Success,Credit Card,0,0,-,16
+BRETXN1078,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:55:00,Visa,**** **** 9740,709568,180,Sale,Beverage,CAF003,Cold Coffee,INV24192,00,2025-05-18,Success,Credit Card,0,0,-,15
+BRETXN1079,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:34:00,Visa,**** **** 2084,339888,120,Sale,Beverage,CAF001,Espresso,INV27724,00,2025-05-18,Success,Credit Card,0,0,-,14
+BRETXN1080,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:14:00,Visa,**** **** 5192,838103,150,Sale,Beverage,CAF002,Cappuccino,INV93891,00,2025-05-18,Success,Credit Card,0,0,-,1
+BRETXN1081,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:40:00,Visa,**** **** 2010,483706,150,Sale,Beverage,CAF002,Cappuccino,INV86606,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1082,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:40:00,Visa,**** **** 4658,707803,160,Sale,Snacks,CAF005,Cheese Sandwich,INV66823,00,2025-05-18,Success,Credit Card,0,0,-,11
+BRETXN1083,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:42:00,Amex,**** **** 6674,913745,120,Sale,Beverage,CAF001,Espresso,INV55182,00,2025-05-18,Success,Credit Card,0,0,-,13
+BRETXN1084,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:57:00,Amex,**** **** 6315,318114,160,Sale,Snacks,CAF005,Cheese Sandwich,INV62959,00,2025-05-18,Success,Debit Card,0,0,-,10
+BRETXN1085,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:20:00,Amex,**** **** 2950,903043,180,Sale,Beverage,CAF003,Cold Coffee,INV50960,00,2025-05-18,Success,Debit Card,0,0,-,14
+BRETXN1086,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:54:00,Visa,**** **** 2618,876180,160,Sale,Snacks,CAF005,Cheese Sandwich,INV83931,00,2025-05-18,Success,Credit Card,0,0,-,9
+BRETXN1087,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:26:00,Mastercard,**** **** 6667,754618,160,Sale,Snacks,CAF005,Cheese Sandwich,INV23824,00,2025-05-18,Success,Debit Card,0,0,-,8
+BRETXN1088,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:37:00,Amex,**** **** 8802,794479,90,Sale,Bakery,CAF004,Chocolate Muffin,INV18742,00,2025-05-18,Success,Debit Card,0,0,-,2
+BRETXN1089,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:07:00,Mastercard,**** **** 6426,903503,180,Sale,Beverage,CAF003,Cold Coffee,INV30273,00,2025-05-18,Success,Debit Card,0,0,-,13
+BRETXN1090,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:56:00,RuPay,**** **** 6284,610911,150,Sale,Beverage,CAF002,Cappuccino,INV52612,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1091,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:03:00,Mastercard,**** **** 4521,184537,90,Sale,Bakery,CAF004,Chocolate Muffin,INV70384,00,2025-05-18,Success,Debit Card,0,0,-,1
+BRETXN1092,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:10:00,Visa,**** **** 4798,215967,0,Void,Beverage,CAF001,Espresso,INV20479,00,,Voided,Credit Card,0,0,-,14
+BRETXN1093,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:51:00,Mastercard,**** **** 1231,998527,0,Void,Beverage,CAF001,Espresso,INV30355,00,,Voided,Debit Card,0,0,-,15
+BRETXN1094,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:21:00,Amex,**** **** 1678,255616,90,Sale,Bakery,CAF004,Chocolate Muffin,INV52418,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1095,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:36:00,Mastercard,**** **** 8038,511316,180,Sale,Beverage,CAF003,Cold Coffee,INV91198,00,2025-05-18,Success,Debit Card,0,0,-,12
+BRETXN1096,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:50:00,RuPay,**** **** 6090,410613,160,Sale,Snacks,CAF005,Cheese Sandwich,INV22678,00,2025-05-18,Success,Debit Card,0,0,-,7
+BRETXN1097,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:14:00,Amex,**** **** 9819,668933,180,Sale,Beverage,CAF003,Cold Coffee,INV36423,00,2025-05-18,Success,Debit Card,0,0,-,11
+BRETXN1098,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:39:00,RuPay,**** **** 4371,650457,180,Sale,Beverage,CAF003,Cold Coffee,INV96590,00,2025-05-18,Success,Credit Card,0,0,-,10
+BRETXN1099,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:11:00,Visa,**** **** 3003,638682,160,Sale,Snacks,CAF005,Cheese Sandwich,INV69643,00,2025-05-18,Success,Credit Card,0,0,-,6
+BRETXN1100,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:31:00,Mastercard,**** **** 2360,997451,0,Void,Beverage,CAF002,Cappuccino,INV14790,00,,Voided,Debit Card,0,0,-,1
+BRETXN1101,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:00:00,RuPay,**** **** 5630,306372,160,Sale,Snacks,CAF005,Cheese Sandwich,INV82593,00,2025-05-18,Success,Debit Card,0,0,-,5
+BRETXN1102,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:50:00,RuPay,**** **** 1891,525347,90,Sale,Bakery,CAF004,Chocolate Muffin,INV65337,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1103,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:22:00,RuPay,**** **** 9318,746586,150,Sale,Beverage,CAF002,Cappuccino,INV82961,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1104,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:44:00,Mastercard,**** **** 1295,832481,150,Sale,Beverage,CAF002,Cappuccino,INV64195,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1105,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:35:00,Amex,**** **** 8298,318404,150,Sale,Beverage,CAF002,Cappuccino,INV41738,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1106,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:31:00,Amex,**** **** 2319,496477,150,Sale,Beverage,CAF002,Cappuccino,INV45815,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1107,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:31:00,Mastercard,**** **** 5249,889274,150,Sale,Beverage,CAF002,Cappuccino,INV77106,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1108,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:37:00,Amex,**** **** 2597,773982,150,Sale,Beverage,CAF002,Cappuccino,INV92177,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1109,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:14:00,Visa,**** **** 1093,140571,180,Sale,Beverage,CAF003,Cold Coffee,INV74197,00,2025-05-18,Success,Credit Card,0,0,-,9
+BRETXN1110,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:17:00,Visa,**** **** 5127,478566,150,Sale,Beverage,CAF002,Cappuccino,INV45434,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1111,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:17:00,RuPay,**** **** 8456,881532,90,Sale,Bakery,CAF004,Chocolate Muffin,INV20473,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1112,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:05:00,Mastercard,**** **** 3650,884997,90,Sale,Bakery,CAF004,Chocolate Muffin,INV61276,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1113,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:55:00,Visa,**** **** 1250,610144,120,Sale,Beverage,CAF001,Espresso,INV17043,00,2025-05-18,Success,Credit Card,0,0,-,14
+BRETXN1114,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:51:00,Visa,**** **** 3530,757524,180,Sale,Beverage,CAF003,Cold Coffee,INV48020,00,2025-05-18,Success,Debit Card,0,0,-,8
+BRETXN1115,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:35:00,Visa,**** **** 1678,144748,180,Sale,Beverage,CAF003,Cold Coffee,INV13727,00,2025-05-18,Success,Credit Card,0,0,-,7
+BRETXN1116,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:59:00,Mastercard,**** **** 4505,173676,90,Sale,Bakery,CAF004,Chocolate Muffin,INV32703,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1117,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:45:00,Mastercard,**** **** 4896,640343,90,Sale,Bakery,CAF004,Chocolate Muffin,INV99715,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1118,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:27:00,Mastercard,**** **** 9278,315329,0,Void,Snacks,CAF005,Cheese Sandwich,INV79683,00,,Voided,Credit Card,0,0,-,6
+BRETXN1119,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:17:00,Visa,**** **** 1845,164886,120,Sale,Beverage,CAF001,Espresso,INV25394,00,2025-05-18,Success,Credit Card,0,0,-,13
+BRETXN1120,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:41:00,Amex,**** **** 7474,376610,180,Sale,Beverage,CAF003,Cold Coffee,INV67518,00,2025-05-18,Success,Credit Card,0,0,-,6
+BRETXN1121,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:58:00,RuPay,**** **** 1755,188155,150,Sale,Beverage,CAF002,Cappuccino,INV22577,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1122,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:27:00,Visa,**** **** 8880,444655,150,Sale,Beverage,CAF002,Cappuccino,INV16309,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1123,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:25:00,RuPay,**** **** 7863,630801,160,Sale,Snacks,CAF005,Cheese Sandwich,INV78086,00,2025-05-18,Success,Credit Card,0,0,-,5
+BRETXN1124,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:37:00,Visa,**** **** 8478,132749,180,Sale,Beverage,CAF003,Cold Coffee,INV53738,00,2025-05-18,Success,Credit Card,0,0,-,5
+BRETXN1125,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:54:00,Mastercard,**** **** 3913,145583,160,Sale,Snacks,CAF005,Cheese Sandwich,INV93860,00,2025-05-18,Success,Credit Card,0,0,-,4
+BRETXN1126,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 12:10:00,Mastercard,**** **** 1512,943409,150,Sale,Beverage,CAF002,Cappuccino,INV71040,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1127,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:34:00,RuPay,**** **** 5101,299270,160,Sale,Snacks,CAF005,Cheese Sandwich,INV52378,00,2025-05-18,Success,Debit Card,0,0,-,3
+BRETXN1128,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:17:00,Mastercard,**** **** 1304,324531,120,Sale,Beverage,CAF001,Espresso,INV20714,00,2025-05-18,Success,Debit Card,0,0,-,12
+BRETXN1129,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:24:00,RuPay,**** **** 6920,973555,120,Sale,Beverage,CAF001,Espresso,INV70038,00,2025-05-18,Success,Debit Card,0,0,-,11
+BRETXN1130,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:20:00,Visa,**** **** 9123,626339,120,Sale,Beverage,CAF001,Espresso,INV12416,00,2025-05-18,Success,Credit Card,0,0,-,10
+BRETXN1131,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:30:00,Visa,**** **** 8438,593509,160,Sale,Snacks,CAF005,Cheese Sandwich,INV11179,00,2025-05-18,Success,Debit Card,0,0,-,2
+BRETXN1132,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:02:00,Visa,**** **** 3165,819007,150,Sale,Beverage,CAF002,Cappuccino,INV40785,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1133,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:01:00,Mastercard,**** **** 4855,928474,160,Sale,Snacks,CAF005,Cheese Sandwich,INV97235,00,2025-05-18,Success,Credit Card,0,0,-,1
+BRETXN1134,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:26:00,RuPay,**** **** 1242,622508,160,Sale,Snacks,CAF005,Cheese Sandwich,INV98566,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1135,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 16:07:00,RuPay,**** **** 4113,296101,90,Sale,Bakery,CAF004,Chocolate Muffin,INV12818,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1136,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:15:00,Mastercard,**** **** 7644,531944,150,Sale,Beverage,CAF002,Cappuccino,INV65079,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1137,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:45:00,RuPay,**** **** 9983,166576,160,Sale,Snacks,CAF005,Cheese Sandwich,INV26175,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1138,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:43:00,Visa,**** **** 5753,583891,160,Sale,Snacks,CAF005,Cheese Sandwich,INV88550,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1139,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:39:00,Mastercard,**** **** 9026,827083,150,Sale,Beverage,CAF002,Cappuccino,INV61991,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1140,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:02:00,Mastercard,**** **** 1491,483001,180,Sale,Beverage,CAF003,Cold Coffee,INV80217,00,2025-05-18,Success,Debit Card,0,0,-,4
+BRETXN1141,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:54:00,RuPay,**** **** 6199,913964,160,Sale,Snacks,CAF005,Cheese Sandwich,INV59287,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1142,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 18:29:00,Mastercard,**** **** 3520,949378,90,Sale,Bakery,CAF004,Chocolate Muffin,INV75872,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1143,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:39:00,Visa,**** **** 7020,376567,150,Sale,Beverage,CAF002,Cappuccino,INV44588,00,2025-05-18,Success,Debit Card,0,0,-,0
+BRETXN1144,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 15:22:00,RuPay,**** **** 8686,479222,120,Sale,Beverage,CAF001,Espresso,INV50734,00,2025-05-18,Success,Debit Card,0,0,-,9
+BRETXN1145,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 10:29:00,Amex,**** **** 5561,512348,160,Sale,Snacks,CAF005,Cheese Sandwich,INV52466,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1146,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 13:08:00,Visa,**** **** 7992,544907,180,Sale,Beverage,CAF003,Cold Coffee,INV98679,00,2025-05-18,Success,Debit Card,0,0,-,3
+BRETXN1147,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 17:33:00,Amex,**** **** 6335,787519,180,Sale,Beverage,CAF003,Cold Coffee,INV23223,00,2025-05-18,Success,Debit Card,0,0,-,2
+BRETXN1148,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 11:22:00,Mastercard,**** **** 3661,419083,180,Sale,Beverage,CAF003,Cold Coffee,INV11831,00,2025-05-18,Success,Credit Card,0,0,-,1
+BRETXN1149,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 19:41:00,Visa,**** **** 6758,341370,160,Sale,Snacks,CAF005,Cheese Sandwich,INV42418,00,2025-05-18,Success,Credit Card,0,0,-,0
+BRETXN1150,TERM004,MERCH204,Brew Bean Cafe,Pune,2025-05-17 14:51:00,Mastercard,**** **** 3147,197050,180,Sale,Beverage,CAF003,Cold Coffee,INV84166,00,2025-05-18,Success,Debit Card,0,0,-,0
