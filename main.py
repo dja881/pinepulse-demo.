@@ -177,21 +177,21 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     with col1:
         st.markdown("**Top SKU Recommendations**")
         for item in sku_data.get("top_recos", []):
-            st.write(f"**{item['sku']}**")
+            st.write(f"**{item.get('sku', 'Unknown SKU')}**")
             for rec in item.get("recommendations", []):
                 st.write(f"- {rec}")
 
     with col2:
         st.markdown("**Slow SKU Recommendations**")
         for item in sku_data.get("bottom_recos", []):
-            st.write(f"**{item['sku']}**")
+            st.write(f"**{item.get('sku', 'Unknown SKU')}**")
             for rec in item.get("recommendations", []):
                 st.write(f"- {rec}")
 
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", []):
-        st.write(insight)
+    for insight in sku_data.get("insights", [])[:5]:
+    st.write(f"- {insight}")
 
     st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:5]:
@@ -200,3 +200,4 @@ Limit product_insights and payment_insights to 5 key points each. Avoid technica
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:5]:
         st.write(f"- {insight}")
+
