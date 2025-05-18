@@ -192,7 +192,7 @@ Limit product_insights to 3 key points (focused on revenue or inventory), and pa
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", [])[:5]:
-        if isinstance(insight, str):
+        if isinstance(insight, str) and len(insight.strip().split()) > 3:
             st.markdown(f"- {insight.strip()}")
 
     st.markdown("### Product Insights")
@@ -202,4 +202,3 @@ Limit product_insights to 3 key points (focused on revenue or inventory), and pa
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:3]:
         st.markdown(f"- {insight}")
-
