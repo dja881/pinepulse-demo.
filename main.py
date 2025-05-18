@@ -22,7 +22,7 @@ csv_paths = {
 
 # --- CACHEABLE DATA LOADING ---
 @st.cache_data
- def load_data(paths):  # removed unexpected indent
+def load_data(paths):
     data = {}
     for name, path in paths.items():
         if os.path.isfile(path):
@@ -43,7 +43,7 @@ You're a smart data analyst. Given this CSV sample, tell me:
 2. The column that represents the store name.
 3. The column that represents the product/item name.
 
-Respond in JSON with keys: amount, store, product. If not found, return "unknown".
+Respond in JSON with keys: amount, store, product. If not found, return \"unknown\".
 
 CSV Sample:
 {sample_csv}
@@ -130,4 +130,3 @@ if selected_type:
                         st.write(insight_text)
                     except Exception:
                         st.error("Failed to parse AI insight.")
-
