@@ -1,3 +1,4 @@
+
 import os
 import math
 import streamlit as st
@@ -11,16 +12,7 @@ client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # --- APP CONFIG ---
 st.set_page_config(page_title="PinePulse - Interactive Store Dashboard", layout="wide")
-st.markdown("""
-    <style>
-    h1 { font-size: 2.2rem; margin-bottom: 1rem; }
-    h3 { color: #888; margin-top: 2rem; }
-    .section { margin-top: 2rem; margin-bottom: 2rem; }
-    .recos { padding-left: 1rem; }
-    </style>
-""", unsafe_allow_html=True)
-
-st.title("📊 PinePulse - Weekly Store Pulse Dashboard")
+st.title("\ud83d\udcca PinePulse - Weekly Store Pulse Dashboard")
 
 # --- DATA LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), "data")
@@ -41,127 +33,141 @@ def load_data():
 
 all_data = load_data()
 
-# --- SIDEBAR CONTROLS ---
+# --- SIDEBAR: CHOOSE DATA SOURCE ---
 st.sidebar.header("Configuration")
-store_type = st.sidebar.selectbox("Store Category", list(all_data.keys()))
-if store_type:
+data_source = st.sidebar.radio("Choose Data Source:", ["Use Demo Store Data", "Upload Your Own CSV"])
+
+if data_source == "Upload Your Own CSV":
+    uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type=["csv"])
+    if uploaded_file:
+        df_all = pd.read_csv(uploaded_file, parse_dates=["Timestamp"], infer_datetime_format=True)
+        store_type = "Uploaded CSV"
+    else:
+        st.warning("Please upload a file to continue.")
+        st.stop()
+else:
+    store_type = st.sidebar.selectbox("Store Category", list(all_data.keys()))
     df_all = all_data[store_type]
-    store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
-    amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
-    qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
-    item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
 
+# --- TIME FILTER ---
+days = st.sidebar.selectbox("Look at data from past...", [7, 14, 30], index=0)
+cutoff = pd.Timestamp.now() - pd.Timedelta(days=days)
+df_all = df_all[df_all["Timestamp"] >= cutoff]
+
+# --- AUTO-DETECT COLUMNS ---
+store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
+amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
+qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
+item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
+
+# --- STORE FILTER (only if demo data) ---
+if store_col and data_source == "Use Demo Store Data":
     store_name = st.sidebar.selectbox("Store Name", sorted(df_all[store_col].dropna().unique()))
-    if st.sidebar.button("Generate Report"):
-        df = df_all[df_all[store_col] == store_name]
+    df_all = df_all[df_all[store_col] == store_name]
 
-        total_sales = df[amount_col].sum()
-        num_txn = len(df)
-        unique_items = df[item_col].nunique()
+# --- SHOW FIRST 30 ROWS ---
+st.markdown("### Preview: First 30 Rows of Data")
+st.dataframe(df_all.head(30), use_container_width=True)
 
-        st.markdown("### Summary Metrics")
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Total Sales", f"₹{total_sales:,.0f}")
-        m2.metric("Transactions", num_txn)
-        m3.metric("Unique Products", unique_items)
-        st.divider()
+if st.sidebar.button("Generate Report"):
+    df = df_all
+    total_sales = df[amount_col].sum()
+    num_txn = len(df)
+    unique_items = df[item_col].nunique()
 
-        sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
-        n = len(sku_sales)
-        top_n = max(1, math.ceil(n * 0.3))
-        top_df = sku_sales.nlargest(top_n, 'sales')
-        bottom_df = sku_sales.nsmallest(top_n, 'sales')
+    m1, m2, m3 = st.columns(3)
+    m1.metric("Total Sales", f"\u20b9{total_sales:,.0f}")
+    m2.metric("Transactions", num_txn)
+    m3.metric("Unique Products", unique_items)
+    st.markdown("---")
 
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("### Top-Selling Products")
-            chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
-                x=alt.X("sales:Q", title="Sales"),
-                y=alt.Y(f"{item_col}:N", sort='-x', title=None)
-            ).properties(height=300)
-            st.altair_chart(chart_top, use_container_width=True)
-        with col2:
-            st.markdown("### Low-Selling Products")
-            chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
-                x=alt.X("sales:Q", title="Sales"),
-                y=alt.Y(f"{item_col}:N", sort='x', title=None)
-            ).properties(height=300)
-            st.altair_chart(chart_bot, use_container_width=True)
+    sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
+    n = len(sku_sales)
+    top_n = max(1, math.ceil(n * 0.3))
+    top_df = sku_sales.nlargest(top_n, 'sales')
+    bottom_df = sku_sales.nsmallest(top_n, 'sales')
 
-        if qty_col:
-            inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
-        else:
-            inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader(f"Top {top_n} Movers (Hot-Selling SKUs)")
+        chart_top = alt.Chart(top_df).mark_bar(color="#4CAF50").encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='-x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_top, use_container_width=True)
+    with col2:
+        st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+        chart_bot = alt.Chart(bottom_df).mark_bar(color="#FFA500").encode(
+            x=alt.X("sales:Q", title="Sales"),
+            y=alt.Y(f"{item_col}:N", sort='x', title=None)
+        ).properties(height=300)
+        st.altair_chart(chart_bot, use_container_width=True)
 
-        def build_ctx(df_sku):
-            ctx = df_sku.merge(inv, on=item_col, how='left')
-            ctx['velocity'] = (ctx['sales'] / 20).round(1)
-            ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
-            return ctx.to_dict(orient='records')
+    if qty_col:
+        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'})
+    else:
+        inv = pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
 
-        top_context = build_ctx(top_df)
-        bottom_context = build_ctx(bottom_df)
+    def build_ctx(df_sku):
+        ctx = df_sku.merge(inv, on=item_col, how='left')
+        ctx['velocity'] = (ctx['sales'] / days).round(1)
+        ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
+        return ctx.to_dict(orient='records')
 
-        example = {
-            "sku": "Parle-G Biscuit (500g)",
-            "sales": 3000,
-            "quantity": 100,
-            "velocity": 150,
-            "days_supply": 0.7,
-            "recommendations": [
-                "Set reorder level to 200 to avoid stockout.",
-                "Schedule a 10% promo during peak hours.",
-                "Place at checkout for visibility."
-            ]
-        }
+    top_context = build_ctx(top_df)
+    bottom_context = build_ctx(bottom_df)
 
-        sku_prompt = f"""
+    example = {
+        "sku": "Parle-G Biscuit (500g)",
+        "sales": 3000,
+        "quantity": 100,
+        "velocity": 150,
+        "days_supply": 0.7,
+        "recommendations": [
+            "Set reorder level to 200 to avoid stockout.",
+            "Schedule a 10% promo during peak hours.",
+            "Place at checkout for visibility."
+        ]
+    }
+
+    sku_prompt = f"""
 You are a data-driven retail analyst. Follow the example schema:
 {json.dumps(example, indent=2)}
 
 Now top SKUs context:
 {json.dumps(top_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU.
+Provide exactly 3 data-backed \"recommendations\" per SKU.
 
 Slow SKUs context:
 {json.dumps(bottom_context, indent=2)}
-Provide exactly 3 data-backed "recommendations" per SKU.
+Provide exactly 3 data-backed \"recommendations\" per SKU.
 
-Then give 4 AI insights about:
-1. Trends in sales and demand patterns,
-2. External signals (e.g. weather, festivals),
-3. Inventory risks or opportunities,
-4. Recommendations for next month’s prep.
-
-Return JSON: {{"top_recos": [...], "bottom_recos": [...], "insights": [...]}}
+Return JSON: {{"top_recos": [...], "bottom_recos": [...]}}
 """
-        with st.spinner("Generating Recommendations & Insights..."):
-            resp = client.chat.completions.create(
-                model="gpt-4.1-mini",
-                messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
-                temperature=0.3,
-                max_tokens=800
-            )
-        try:
-            sku_data = json.loads(resp.choices[0].message.content)
-        except:
-            st.error("Failed to parse response.")
-            sku_data = {"top_recos": [], "bottom_recos": [], "insights": []}
+    with st.spinner("Generating SKU recommendations..."):
+        resp = client.chat.completions.create(
+            model="gpt-4.1-mini",
+            messages=[{"role":"system","content":"Output valid JSON only."}, {"role":"user","content":sku_prompt}],
+            temperature=0.3,
+            max_tokens=500
+        )
+    try:
+        sku_data = json.loads(resp.choices[0].message.content)
+    except:
+        st.error("Failed to parse SKU recommendations.")
+        sku_data = {"top_recos": [], "bottom_recos": []}
 
-        with col1:
-            st.markdown("### Recommendations for Top-Sellers")
-            for item in sku_data.get("top_recos", []):
-                st.write(f"**{item['sku']}**")
-                for rec in item.get("recommendations", []): st.markdown(f"- {rec}")
-        with col2:
-            st.markdown("### Recommendations for Cold-Movers")
-            for item in sku_data.get("bottom_recos", []):
-                st.write(f"**{item['sku']}**")
-                for rec in item.get("recommendations", []): st.markdown(f"- {rec}")
+    with col1:
+        st.markdown("**Top SKU Recommendations**")
+        for item in sku_data.get("top_recos", []):
+            st.write(f"**{item['sku']}**")
+            for rec in item.get("recommendations", []): st.write(f"- {rec}")
+    with col2:
+        st.markdown("**Slow SKU Recommendations**")
+        for item in sku_data.get("bottom_recos", []):
+            st.write(f"**{item['sku']}**")
+            for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
-        st.divider()
-        st.markdown("### 🔍 AI Forecasts & Nudges")
-        for insight in sku_data.get("insights", []):
-            st.markdown(f"- {insight}")
+    st.markdown("---")
 
 
