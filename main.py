@@ -136,7 +136,7 @@ Payment Summary:
 {json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
 
 Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
-Limit product_insights and payment_insights to 3 key points each — prioritize those that impact revenue, inventory efficiency, or customer behavior. Avoid technical terms like 'days_supply'; use natural phrasing.
+Limit product_insights to 3 key points (focused on revenue or inventory), and payment_insights to 3 key points that reveal customer behavior — e.g., UPI usage, credit card preference, potential for loyalty programs, or digital payment enablement. Avoid technical terms like 'days_supply'; use natural phrasing.
 """
 
     # AI block begins
@@ -192,7 +192,8 @@ Limit product_insights and payment_insights to 3 key points each — prioritize 
     st.markdown("---")
     st.markdown("### AI Forecasts & Strategy Nudges")
     for insight in sku_data.get("insights", [])[:5]:
-        st.markdown(f"- {insight}")
+        if isinstance(insight, str):
+            st.markdown(f"- {insight.strip()}")
 
     st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:3]:
