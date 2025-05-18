@@ -105,7 +105,7 @@ if st.sidebar.button("Generate Report"):
 
     # AI Prompt
     prompt = f"""
-You are a data-driven retail analyst. Return exactly 3 insights each for categories, products, and overall strategy (include payments).
+You are a data-driven retail analyst. Output only valid JSON with these keys: category_insights, product_insights, insights. Return exactly 3 insights in each array, and ensure one payment-related insight within the 'insights' section.
 
 Category Summary:
 {json.dumps(category_summary.to_dict('records')[:5], indent=2)}
@@ -122,22 +122,35 @@ Top SKU Context:
 Slow SKU Context:
 {json.dumps(bot_ctx[:5], indent=2)}
 """
-    resp = client.chat.completions.create(model='gpt-4.1-mini', messages=[{'role':'system','content':'Output valid JSON only.'},{'role':'user','content':prompt}], temperature=0.3, max_tokens=1200)
+    resp = client.chat.completions.create(
+        model='gpt-4.1-mini',
+        messages=[{'role':'system','content':'Output valid JSON only.'},{'role':'user','content':prompt}],
+        temperature=0.3,
+        max_tokens=1200
+    )
+    # Debug: show raw AI response
+    st.text(resp.choices[0].message.content)
     try:
         insights = json.loads(resp.choices[0].message.content)
     except:
         st.error('Failed to parse insights.')
         insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
 
-    # Category chart & insights
+        # Category chart & insights
     st.subheader("Category Performance")
     cat_chart = alt.Chart(category_summary).mark_bar().encode(
         x=alt.X('total_sales:Q', title='Total Sales'),
         y=alt.Y('Category:N', sort='-x', title=None)
     ).properties(height=300)
     st.altair_chart(cat_chart, use_container_width=True)
+
     st.markdown("### Category Insights")
-    for line in insights.get('category_insights',[])[:3]: st.markdown(f"- {line}")
+    for entry in insights.get('category_insights', [])[:3]:
+        if isinstance(entry, dict):
+            text = entry.get('insight') or entry.get('text') or json.dumps(entry)
+        else:
+            text = entry
+        st.markdown(f"- {text}")
     st.markdown("---")
 
     # Product chart & insights
@@ -157,10 +170,18 @@ Slow SKU Context:
             y=alt.Y(f'{item_col}:N', sort='x', title=None)
         ).properties(height=300)
         st.altair_chart(bot_chart, use_container_width=True)
+
     st.markdown("### Product Insights")
-    for line in insights.get('product_insights',[])[:3]: st.markdown(f"- {line}")
+    for entry in insights.get('product_insights', [])[:3]:
+        if isinstance(entry, dict):
+            text = entry.get('insight') or entry.get('text') or json.dumps(entry)
+        else:
+            text = entry
+        st.markdown(f"- {text}")
     st.markdown("---")
 
     # Final AI insights
     st.markdown("### AI Forecasts & Strategy Nudges")
-    for line in insights.get('insights',[])[:3]: st.markdown(f"- {line}")
+    for line in insights.get('insights', [])[:3]:
+        st.markdown(f"- {line}")
+
