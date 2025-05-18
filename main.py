@@ -131,35 +131,27 @@ if st.sidebar.button("Generate Report"):
         txn_count=('Transaction ID', 'count')
     ).reset_index()
 
+    category_summary = df.groupby("Category").agg(total_sales=(amount_col, 'sum')).sort_values("total_sales", ascending=False).reset_index()
+
     sku_prompt = f"""
-You are a data-driven retail analyst. Follow the example schema:
-{json.dumps({
-    "sku": "Parle-G Biscuit (500g)",
-    "sales": 3000,
-    "quantity": 100,
-    "velocity": 150,
-    "days_supply": 0.7,
-    "recommendations": [
-        "Current stock may be too high — reduce to ~3 days of supply to lower holding costs.",
-        "Schedule a 10% promo during peak hours to boost sales.",
-        "Place at checkout for visibility to maximize impulse buys."
-    ]
-}, indent=2)}
+You are a data-driven retail analyst. Follow the example response structure.
+Return exactly 3 insights per section. In the final 'insights' section, include at least one point related to payment behavior.
+Output only valid JSON with these keys: category_insights, product_insights, insights.
 
-Top SKUs context:
-{json.dumps(top_context, indent=2)}
+Category Summary:
+{json.dumps(category_summary.to_dict(orient="records")[:5], indent=2)}
 
-Slow SKUs context:
-{json.dumps(bottom_context, indent=2)}
-
-Product-Level Summary:
-{json.dumps(product_summary.to_dict(orient="records"), indent=2)}
+Product Summary:
+{json.dumps(product_summary.to_dict(orient="records")[:5], indent=2)}
 
 Payment Summary:
-{json.dumps(payment_summary.to_dict(orient="records"), indent=2)}
+{json.dumps(payment_summary.to_dict(orient="records")[:5], indent=2)}
 
-Return a JSON with these keys: top_recos, bottom_recos, insights, product_insights, payment_insights.
-Avoid technical terms like 'days_supply'; instead say things like 'stock may be too high'.
+Top SKU Context:
+{json.dumps(top_context[:5], indent=2)}
+
+Slow SKU Context:
+{json.dumps(bottom_context[:5], indent=2)}
 """
 
     with st.spinner("Generating SKU recommendations and AI insights..."):
@@ -187,14 +179,27 @@ Avoid technical terms like 'days_supply'; instead say things like 'stock may be 
             for rec in item.get("recommendations", []): st.write(f"- {rec}")
 
     st.markdown("---")
-    st.markdown("### AI Forecasts & Strategy Nudges")
-    for insight in sku_data.get("insights", [])[:5]:
-        st.markdown(f"- {insight}")
+    st.markdown("### Category Insights")
+    for insight in sku_data.get("category_insights", [])[:3]:
+        if isinstance(insight, dict):
+            st.markdown(f"- {insight.get('insight', '')}")
 
     st.markdown("### Product Insights")
     for insight in sku_data.get("product_insights", [])[:3]:
-        st.markdown(f"- {insight}")
+        if isinstance(insight, dict):
+            st.markdown(f"- {insight.get('insight', '')}")
+
+    st.markdown("### AI Forecasts & Strategy Nudges")
+    for insight in sku_data.get("insights", [])[:3]:
+        if isinstance(insight, str):
+            st.markdown(f"- {insight.strip()}")
+
+    st.markdown("### Product Insights")
+    for insight in sku_data.get("product_insights", [])[:3]:
+        if isinstance(insight, dict):
+            st.markdown(f"- {insight.get('insight', '')}")
 
     st.markdown("### Payment Insights")
     for insight in sku_data.get("payment_insights", [])[:3]:
-        st.markdown(f"- {insight}")
+        if isinstance(insight, dict):
+            st.markdown(f"- {insight.get('insight', '')}")
