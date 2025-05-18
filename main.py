@@ -41,7 +41,7 @@ if store_type:
     store_col = next((c for c in df_all.columns if "store" in c.lower()), None)
     amount_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["amount","price","total"])), None)
     qty_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["remaining","stock","quantity","qty"])), None)
-    item_col = next((c for c in df_all.columns if c not in [store_col, amount_col, qty_col, "Timestamp"] and df_all[c].dtype == object), None)
+    item_col = next((c for c in df_all.columns if any(k in c.lower() for k in ["product name","product","sku"]) and df_all[c].dtype == object), None)
 
     store_name = st.sidebar.selectbox("Store Name", sorted(df_all[store_col].dropna().unique()))
     if st.sidebar.button("Generate Report"):
