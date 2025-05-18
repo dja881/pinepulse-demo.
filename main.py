@@ -101,7 +101,15 @@ if st.sidebar.button("Generate Report"):
         y=alt.Y(f"{item_col}:N", sort='-x', title=None)
     ).properties(height=300)
     st.altair_chart(chart_top, use_container_width=True)
-    with col2:
+
+with col2:
+    st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
+    chart_bot = alt.Chart(bottom_df).mark_bar().encode(
+        x=alt.X("sales:Q", title="Sales"),
+        y=alt.Y(f"{item_col}:N", sort='x', title=None)
+    ).properties(height=300)
+    st.altair_chart(chart_bot, use_container_width=True)
+
     st.subheader(f"Bottom {top_n} Movers (Cold SKUs)")
     chart_bot = alt.Chart(bottom_df).mark_bar().encode(
         x=alt.X("sales:Q", title="Sales"),
