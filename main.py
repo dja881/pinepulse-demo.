@@ -18,7 +18,6 @@ st.title('📊 PinePulse - Weekly Store Pulse')
 DATA_DIR = os.path.join(os.getcwd(), 'data')
 csv_paths = {
     'Kirana':  os.path.join(DATA_DIR, 'Kirana_Store_Transactions_v2.csv'),
-    'Chemist': os.path.join(DATA_DIR, 'Chemist_Store_Transactions_v2.csv'),
     'Cafe':    os.path.join(DATA_DIR, 'Cafe_Store_Transactions_v2.csv'),
     'Clothes': os.path.join(DATA_DIR, 'Clothes_Store_Transactions_v2.csv')
 }
