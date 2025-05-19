@@ -7,52 +7,60 @@ import altair as alt
 import json
 import re
 
-# --- CONFIG FLAG: USE REAL PINECONE? ---
+# ← Toggle to True once you have pinecone-client installed & configured
 USE_PINECONE = False
 
-# --- FAKE PINECONE STUB ---
-class FakeIndex:
-    def __init__(self, name):
-        self.name = name
-        self.store = {"top": [], "bottom": []}
-    def upsert(self, vectors, namespace):
-        # just stash the records
-        for (id, emb, metadata) in vectors:
-            self.store[namespace].append((id, metadata))
-    def query(self, vector, top_k, include_metadata=True):
-        # return the first top_k records as “similar”
-        results = []
-        for namespace in ("top","bottom"):
-            for idx, (id, meta) in enumerate(self.store[namespace][:top_k]):
-                results.append({"id": id, "score": 1.0, "metadata": meta})
-        return {"matches": results[:top_k]}
+if USE_PINECONE:
+    from pinecone import Pinecone, ServerlessSpec, PineconeApiException
 
-class FakePineconeClient:
-    def __init__(self):
-        self.indexes = {}
-    def list_indexes(self):
-        return list(self.indexes.keys())
-    def create_index(self, name, dimension, metric, spec):
-        self.indexes[name] = FakeIndex(name)
-    def Index(self, name):
-        return self.indexes[name]
+    # --- INITIALIZE REAL PINECONE CLIENT ---
+    pc = Pinecone(api_key=st.secrets["pinecone"]["api_key"])
+    spec = ServerlessSpec(cloud="aws", region=st.secrets["pinecone"]["environment"])
+
+    # Safe index creation (ignore ALREADY_EXISTS)
+    try:
+        existing = pc.list_indexes()
+        if "pinepulse-context" not in existing:
+            pc.create_index(
+                name="pinepulse-context",
+                dimension=1536,
+                metric="cosine",
+                spec=spec
+            )
+    except PineconeApiException as e:
+        if e.error.code != "ALREADY_EXISTS":
+            raise
+
+    index = pc.Index("pinepulse-context")
+
+else:
+    # --- FAKE PINECONE STUB ---
+    class FakeIndex:
+        def __init__(self, name):
+            self.name = name
+            self.store = {"top": [], "bottom": []}
+        def upsert(self, vectors, namespace):
+            self.store[namespace].extend(vectors)
+        def query(self, vector, top_k, include_metadata=True):
+            return {"matches": []}
+
+    class FakePineconeClient:
+        def __init__(self):
+            self.indexes = {}
+        def list_indexes(self):
+            return list(self.indexes.keys())
+        def create_index(self, name, **_):
+            self.indexes[name] = FakeIndex(name)
+        def Index(self, name):
+            return self.indexes[name]
+
+    pc = FakePineconeClient()
+    pc.create_index("pinepulse-context")
+    index = pc.Index("pinepulse-context")
 
 # --- INITIALIZE AI CLIENT ---
 openai_api_key = st.secrets["openai"]["api_key"]
 client = openai.OpenAI(api_key=openai_api_key)
-
-# --- INITIALIZE (REAL or FAKE) PINECONE ---
-if USE_PINECONE:
-    from pinecone import Pinecone, ServerlessSpec
-    pc = Pinecone(api_key=st.secrets["pinecone"]["api_key"])
-    spec = ServerlessSpec(cloud="aws", region=st.secrets["pinecone"]["environment"])
-    if "pinepulse-context" not in pc.list_indexes():
-        pc.create_index(name="pinepulse-context", dimension=1536, metric="cosine", spec=spec)
-    index = pc.Index("pinepulse-context")
-else:
-    pc = FakePineconeClient()
-    pc.create_index(name="pinepulse-context", dimension=None, metric=None, spec=None)
-    index = pc.Index("pinepulse-context")
 
 # --- APP CONFIG ---
 st.set_page_config(page_title="PinePulse Dashboard", layout="wide")
@@ -61,10 +69,10 @@ st.title("📊 PinePulse - Weekly Store Pulse")
 # --- DATA LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), "data")
 csv_paths = {
-    "Kirana": os.path.join(DATA_DIR, "Kirana_Store_Transactions_v2.csv"),
+    "Kirana":  os.path.join(DATA_DIR, "Kirana_Store_Transactions_v2.csv"),
     "Chemist": os.path.join(DATA_DIR, "Chemist_Store_Transactions_v2.csv"),
     "Cafe":    os.path.join(DATA_DIR, "Cafe_Store_Transactions_v2.csv"),
-    "Clothes": os.path.join(DATA_DIR, "Clothes_Store_Transactions_v2.csv")
+    "Clothes": os.path.join(DATA_DIR, "Clothes_Store_Transactions_v2.csv"),
 }
 
 @st.cache_data
@@ -111,9 +119,10 @@ cat_col    = "Category"
 st.markdown("### Data Preview")
 st.dataframe(df_all.head(10))
 
-# --- REPORT GENERATION ---
+# --- MAIN REPORT ---
 if st.sidebar.button("Generate Report"):
     df = df_all.copy()
+
     # Metrics
     total_sales  = df[amount_col].sum()
     trans_count  = len(df)
@@ -125,28 +134,27 @@ if st.sidebar.button("Generate Report"):
     st.markdown("---")
 
     # Summaries
-    sku_sales = df.groupby(item_col).agg(sales=(amount_col,"sum")).reset_index()
-    top_n     = max(1, math.ceil(len(sku_sales)*0.3))
+    sku_sales = df.groupby(item_col).agg(sales=(amount_col, "sum")).reset_index()
+    top_n     = max(1, math.ceil(len(sku_sales) * 0.3))
     top_df    = sku_sales.nlargest(top_n, "sales")
     bottom_df = sku_sales.nsmallest(top_n, "sales")
-    category_summary = df.groupby(cat_col).agg(total_sales=(amount_col,"sum")).reset_index()
+    category_summary = df.groupby(cat_col).agg(total_sales=(amount_col, "sum")).reset_index()
 
-    # Inventory
+    # Inventory context
     if qty_col:
-        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:"quantity"})
+        inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col: "quantity"})
     else:
-        inv = pd.DataFrame({item_col: top_df[item_col], "quantity":[None]*len(top_df)})
+        inv = pd.DataFrame({item_col: top_df[item_col], "quantity": [None]*len(top_df)})
 
     def build_ctx(sub_df, tag):
         ctx = sub_df.merge(inv, on=item_col, how="left")
-        ctx["velocity"]    = (ctx["sales"]/days).round(1)
+        ctx["velocity"]    = (ctx["sales"] / days).round(1)
         ctx["days_supply"] = ctx.apply(
-            lambda r: round(r["quantity"]/r["velocity"],1)
+            lambda r: round(r["quantity"] / r["velocity"],1) 
                       if r["quantity"] and r["velocity"] else None,
             axis=1
         )
         records = ctx.to_dict("records")
-        # UPSELL: upsert into (real or fake) Pinecone
         for i, rec in enumerate(records):
             emb = client.embeddings.create(
                 input=json.dumps(rec),
@@ -158,21 +166,21 @@ if st.sidebar.button("Generate Report"):
     top_ctx = build_ctx(top_df, tag="top")
     bot_ctx = build_ctx(bottom_df, tag="bottom")
 
-    # PROMPT & AI
+    # Prompt & AI call
     schema = {
-        "category_top_insights":    ["…3 bullet templates…"],
-        "category_bottom_insights": ["…3 bullet templates…"],
-        "product_top_insights":     ["…3 bullet templates…"],
-        "product_bottom_insights":  ["…3 bullet templates…"],
-        "strategy_nudges":          ["…5 analytical bullet templates…"]
+        "category_top_insights":    ["…3 templates…"],
+        "category_bottom_insights": ["…3 templates…"],
+        "product_top_insights":      ["…3 templates…"],
+        "product_bottom_insights":   ["…3 templates…"],
+        "strategy_nudges":           ["…5 analytical templates…"]
     }
     prompt = f"""
 You are a data-driven retail analyst. Output ONLY JSON with these keys:
-  • category_top_insights, category_bottom_insights,
-    product_top_insights, product_bottom_insights,
-    strategy_nudges (5 bullets)
+  • category_top_insights, category_bottom_insights
+  • product_top_insights, product_bottom_insights
+  • strategy_nudges (5 bullets)
 
-Each bullet must reference real numbers and give one-sentence action.
+Each bullet must reference real numbers and include one-sentence action.
 
 Schema example:
 {json.dumps(schema, indent=2)}
@@ -204,7 +212,10 @@ Cold SKUs context:
     cat_chart = (
         alt.Chart(category_summary)
            .mark_bar()
-           .encode(x=alt.X("total_sales:Q"), y=alt.Y(f"{cat_col}:N", sort="-x"))
+           .encode(
+               x=alt.X("total_sales:Q", title="Sales"),
+               y=alt.Y(f"{cat_col}:N", sort="-x")
+           )
            .properties(height=300)
     )
     st.altair_chart(cat_chart, use_container_width=True)
