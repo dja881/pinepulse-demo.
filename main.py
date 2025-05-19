@@ -17,11 +17,11 @@ pinecone_env = st.secrets['pinecone']['environment']
 pinecone.init(api_key=pinecone_api_key, environment=pinecone_env)
 index_name = 'pinepulse-context'
 if index_name not in pinecone.list_indexes():
-    pinecone.create_index(index_name, dimension=1536)
+    pinecone.create_index(name=index_name, dimension=1536)
 index = pinecone.Index(index_name)
 
 # --- APP CONFIG ---
-st.set_page_config(page_title='PinePulse Dashboard', layout='wide')
+st.set_page_config(page_title='📊 PinePulse - Weekly Store Pulse', layout='wide')
 st.title('📊 PinePulse - Weekly Store Pulse')
 
 # --- DATA LOADING ---
@@ -114,37 +114,136 @@ if st.sidebar.button('Generate Report'):
         return ctx.to_dict('records')
 
     top_ctx = build_ctx(top_df)
-    bot_ctx = build_ctx(bottom_df)
+    bottom_ctx = build_ctx(bottom_df)
 
     # --- PINECONE UPSERT CONTEXT ---
     embedding_model = 'text-embedding-ada-002'
     vectors = []
-    for rec in top_ctx + bot_ctx:
-        vec_resp = client.embeddings.create(model=embedding_model, input=json.dumps(rec))
-        vector = vec_resp['data'][0]['embedding']
+    for rec in top_ctx + bottom_ctx:
+        resp_embed = client.embeddings.create(model=embedding_model, input=json.dumps(rec))
+        vector = resp_embed['data'][0]['embedding']
         vectors.append((rec[item_col], vector, rec))
     index.upsert(vectors=vectors)
 
-    # --- OPTIONAL: RETRIEVE RELATED CONTEXT ---
-    # query_text = 'Retrieve relevant store context'
-    # q_resp = client.embeddings.create(model=embedding_model, input=[query_text])
-    # q_vec = q_resp['data'][0]['embedding']
-    # results = index.query(vector=q_vec, top_k=5, include_metadata=True)
-    # retrieved = [match['metadata'] for match in results['matches']]
-
-    # --- REFINED AI PROMPT (WITH PINECONE CONTEXT) ---
+    # --- REFINED AI PROMPT ---
     schema_example = {
         "category_top_insights": [
-            "Identify a high-growth category, explain the trend using actual sales and daily averages, and recommend a marketing tactic.",
-            "Identify a slowing category, describe its sales drop, and suggest an immediate action.",
-            "Recommend a bundle or cross-sell for the leading category based on recent performance."
+            "Identify a high-growth category, explain the trend with actual sales and average daily sales, and recommend an action.",
+            "Spot a category with slowing momentum, describe its decline in plain English, and suggest an immediate tactic.",
+            "Recommend one cross-sell or bundle opportunity for the leading category based on recent performance."
         ],
         "category_bottom_insights": [
-            "Point out a category with excess inventory relative to sales pace, and propose a clearance strategy.",
-            "Highlight a low-performing category with its sales figure, and recommend a targeted discount or campaign.",
-            "Suggest one channel or promotion to boost lagging category performance."
+            "Highlight a low-performing category with its sales figure, and propose a clearance strategy.",
+            "Call out a category with excess stock relative to its sales pace, and recommend a discount or campaign.",
+            "Suggest one marketing channel to boost the lagging category."
         ],
         "product_top_insights": [
-            "Pick a top SKU nearing stock-out, describe remaining stock in plain English, and recommend reorder timing.",
-            "Identify a best-selling SKU with its average daily sold units, and suggest a bundling option.",
+            "Select a top SKU nearing stock-out, describe remaining stock simply, and recommend reorder timing.",
+            "Identify a best-selling SKU with its average daily sold units, and suggest a bundle or upsell.",
+            "Recommend a pricing tweak for a fast-moving SKU based on payment method trends."
+        ],
+        "product_bottom_insights": [
+            "Identify a slow-moving SKU with surplus stock days, describe in plain English, and recommend a promo.",
+            "Highlight a cold SKU by its recent sales count, and suggest a targeted marketing channel.",
+            "Recommend an inventory adjustment like changing reorder frequency for a low-sales SKU."
+        ],
+        "insights": [
+            "Forecast a temperature-driven surge in Cold Drinks next month and recommend increasing stock by 30%.",
+            "Leverage the upcoming festival season by bundling Ethnic Wear with Accessories, anticipating a 25% demand uptick.",
+            "Expect monsoon to dampen Footwear sales; initiate a weather-themed promotion to maintain growth.",
+            "Note a 15% jump in digital wallet payments; launch a wallet-exclusive flash sale for high-margin items.",
+            "Prepare for peak summer by boosting Ice Cream inventory 40% ahead of average and running a seasonal offer."
+        ]
+    }
 
+    prompt = f"""
+You are a data-driven retail analyst. Output ONLY valid JSON matching these keys:
+  • category_top_insights: 3 bullet strings
+  • category_bottom_insights: 3 bullet strings
+  • product_top_insights: 3 bullet strings
+  • product_bottom_insights: 3 bullet strings
+  • insights: 5 bullet strings
+
+Each bullet must:
+  - Use plain English for metrics (e.g., 'average daily sales of 50 units', 'stock will last five days')
+  - Reference actual numbers from the data
+  - Include a one-sentence, actionable recommendation
+
+Schema example:
+{json.dumps(schema_example, indent=2)}
+
+Category summary:
+{json.dumps(category_summary.to_dict('records'), indent=2)}
+
+Top SKUs:
+{json.dumps(top_ctx, indent=2)}
+
+Cold SKUs:
+{json.dumps(bottom_ctx, indent=2)}
+"""
+
+    resp = client.chat.completions.create(
+        model='gpt-4.1-mini',
+        messages=[
+            {'role': 'system', 'content': 'Output only JSON.'},
+            {'role': 'user', 'content': prompt}
+        ],
+        temperature=0.2,
+        max_tokens=1200
+    )
+
+    # Parse AI response
+    raw = resp.choices[0].message.content
+    match = re.search(r"\{[\s\S]*\}", raw)
+    json_str = match.group(0) if match else raw
+    try:
+        data = json.loads(json_str)
+    except Exception as e:
+        st.error(f'Failed to parse insights: {e}')
+        data = {key: [] for key in schema_example.keys()}
+
+    # 1. Category Performance
+    st.header('Category Performance')
+    cat_chart = alt.Chart(category_summary).mark_bar().encode(
+        x='total_sales:Q', y=alt.Y(f"{cat_col}:N", sort='-x')
+    ).properties(height=300)
+    st.altair_chart(cat_chart, use_container_width=True)
+
+    st.subheader('Top Category Insights')
+    for line in data.get('category_top_insights', []):
+        st.markdown(f'- {line}')
+
+    st.subheader('Bottom Category Insights')
+    for line in data.get('category_bottom_insights', []):
+        st.markdown(f'- {line}')
+
+    st.markdown('---')
+
+    # 2. SKU Performance
+    st.header('SKU Movers')
+    lhs, rhs = st.columns(2)
+    with lhs:
+        st.subheader('Top SKUs')
+        top_chart = alt.Chart(top_df).mark_bar().encode(
+            x='sales:Q', y=alt.Y(f"{item_col}:N", sort='-x')
+        ).properties(height=300)
+        st.altair_chart(top_chart, use_container_width=True)
+        st.subheader('Top SKU Insights')
+        for line in data.get('product_top_insights', []):
+            st.markdown(f'- {line}')
+    with rhs:
+        st.subheader('Cold SKUs')
+        cold_chart = alt.Chart(bottom_df).mark_bar().encode(
+            x='sales:Q', y=alt.Y(f"{item_col}:N", sort='x')
+        ).properties(height=300)
+        st.altair_chart(cold_chart, use_container_width=True)
+        st.subheader('Bottom SKU Insights')
+        for line in data.get('product_bottom_insights', []):
+            st.markdown(f'- {line}')
+
+    st.markdown('---')
+
+    # 3. AI Forecasts & Strategy Nudges
+    st.header('AI Forecasts & Strategy Nudges')
+    for line in data.get('insights', []):
+        st.markdown(f'- {line}')
