@@ -106,32 +106,34 @@ if st.sidebar.button('Generate Report'):
     top_ctx = build_ctx(top_df)
     bot_ctx = build_ctx(bottom_df)
 
-    # --- REFINED AI PROMPT (NO INTERNAL FIELD NAMES) ---
+    # --- REFINED AI PROMPT (NO RAW OUTPUT, 5 INSIGHTS) ---
     schema_example = {
         "category_top_insights": [
-            "Identify a high-growth category, explain the trend using actual sales numbers and average daily sales, and recommend a marketing tactic.",
-            "Identify a slowing category, explain the decline with plain-English stock duration, and recommend an action.",
-            "Recommend a bundle or cross-sell opportunity for the leading category using recent performance data."
+            "Identify a high-growth category, explain the trend using actual sales and daily averages, and recommend a marketing tactic.",
+            "Identify a slowing category, describe its sales drop, and suggest an immediate action.",
+            "Recommend a bundle or cross-sell for the leading category based on recent performance."
         ],
         "category_bottom_insights": [
-            "Point out a category with excess stock based on current sales pace, and suggest a clearance strategy.",
-            "Highlight a low-performing category with sales figures, and recommend a targeted discount or campaign.",
-            "Suggest one channel or promotion to boost lagging category performance using recent metrics."
+            "Point out a category with excess inventory relative to sales pace, and propose a clearance strategy.",
+            "Highlight a low-performing category with its sales figure, and recommend a targeted discount or campaign.",
+            "Suggest one channel or promotion to boost lagging category performance."
         ],
         "product_top_insights": [
-            "Pick a top SKU nearing stock-out, describe remaining days of stock in plain English, and recommend reorder timing.",
-            "Identify a best-selling SKU, reference its average daily units sold, and suggest a bundling option.",
-            "Suggest a price tweak for a high-turnover SKU, referencing payment method trends."
+            "Pick a top SKU nearing stock-out, describe remaining stock in plain English, and recommend reorder timing.",
+            "Identify a best-selling SKU with its average daily sold units, and suggest a bundling option.",
+            "Suggest a price tweak for a high-turnover SKU based on payment trends."
         ],
         "product_bottom_insights": [
-            "Pick a slow-moving SKU with high inventory days, describe stock duration simply, and recommend a promotion.",
-            "Highlight a cold SKU by its recent sales figure, and suggest a targeted marketing channel to clear it.",
-            "Recommend an inventory tactic like reducing reorder frequency for a low-sales SKU."
+            "Pick a slow-moving SKU with surplus stock days, describe simply, and recommend a promotion.",
+            "Highlight a cold SKU by its recent sales, and suggest a targeted marketing channel.",
+            "Recommend an inventory tactic like adjusting reorder frequency for a low-sales SKU."
         ],
         "insights": [
-            "Recommend a pricing adjustment based on payment-method share.",
-            "Recommend a marketing channel or discount strategy for low-performing items.",
-            "Recommend an inventory optimization tactic to improve turnover or reduce costs."
+            "Forecast a 20% uptick in Cold Drinks next month with rising temperatures; recommend increasing stock by 30%.",
+            "Leverage the upcoming festival season by bundling Ethnic Wear with Accessories, anticipating a 25% surge in demand.",
+            "Expect monsoon-driven drop in Footwear sales; initiate weather-resistant promotions to maintain month-over-month growth.",
+            "Digital wallet transactions have increased 15% over the past two weeks; launch a wallet-exclusive flash sale to capture more high-margin orders.",
+            "Prepare for Summer Festival by boosting Ice Cream inventory 40% above average and running a 'Buy 2 Get 1' seasonal offer."
         ]
     }
 
@@ -141,14 +143,14 @@ You are a data-driven retail analyst. Output ONLY valid JSON matching these keys
   • category_bottom_insights: 3 bullet strings
   • product_top_insights: 3 bullet strings
   • product_bottom_insights: 3 bullet strings
-  • insights: 3 bullet strings
+  • insights: 5 bullet strings
 
 Each bullet must:
-  - Use plain English for metrics (e.g., 'average daily sales of 50 units', 'stock will last 5 days')
+  - Use plain English for metrics (e.g., 'average daily sales of 50 units', 'stock will last five days')
   - Reference actual numbers from the data
   - Include a one-sentence, actionable recommendation
 
-Avoid using internal field names like 'velocity' or 'days_supply'.
+Avoid showing raw JSON or internal field names.
 
 Schema example:
 {json.dumps(schema_example, indent=2)}
@@ -173,31 +175,21 @@ Cold SKUs:
         max_tokens=1200
     )
 
-    raw = resp.choices[0].message.content
-    st.text_area('Raw AI output', raw, height=200)
-
-    match = re.search(r"\{[\s\S]*\}", raw)
-    json_str = match.group(0) if match else raw
+    match = re.search(r"\{[\s\S]*\}", resp.choices[0].message.content)
+    json_str = match.group(0) if match else resp.choices[0].message.content
     try:
         data = json.loads(json_str)
     except Exception as e:
         st.error(f'Failed to parse insights: {e}')
-        data = {
-            'category_top_insights': [],
-            'category_bottom_insights': [],
-            'product_top_insights': [],
-            'product_bottom_insights': [],
-            'insights': []
-        }
+        data = {key: [] for key in ['category_top_insights','category_bottom_insights','product_top_insights','product_bottom_insights','insights']}
 
     # 1. Category Performance
     st.header('Category Performance')
-    # Category bar chart
-    cat_chart = alt.Chart(category_summary).mark_bar().encode(
-        x=alt.X('total_sales:Q', title='Sales'),
-        y=alt.Y(f'{cat_col}:N', sort='-x')
-    ).properties(height=300)
-    st.altair_chart(cat_chart, use_container_width=True)
+    st.altair_chart(
+        alt.Chart(category_summary).mark_bar().encode(
+            x='total_sales:Q', y=alt.Y(f'{cat_col}:N', sort='-x')
+        ).properties(height=300), use_container_width=True
+    )
     st.subheader('Top Category Insights')
     for line in data.get('category_top_insights', []): st.markdown(f'- {line}')
     st.subheader('Bottom Category Insights')
@@ -208,28 +200,16 @@ Cold SKUs:
     st.header('Top & Bottom SKU Movers')
     p1, p2 = st.columns(2)
     with p1:
-        # Top movers chart
         st.subheader('Top Movers')
-        top_chart = alt.Chart(top_df).mark_bar().encode(
-            x=alt.X('sales:Q', title='Sales'),
-            y=alt.Y(f'{item_col}:N', sort='-x')
-        ).properties(height=300)
-        st.altair_chart(top_chart, use_container_width=True)
+        st.altair_chart(
+            alt.Chart(top_df).mark_bar().encode(x='sales:Q', y=alt.Y(f'{item_col}:N', sort='-x')).properties(height=300),
+            use_container_width=True
+        )
         st.subheader('Top SKU Insights')
         for line in data.get('product_top_insights', []): st.markdown(f'- {line}')
     with p2:
-        # Cold movers chart
         st.subheader('Cold Movers')
-        cold_chart = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X('sales:Q', title='Sales'),
-            y=alt.Y(f'{item_col}:N', sort='x')
-        ).properties(height=300)
-        st.altair_chart(cold_chart, use_container_width=True)
-        st.subheader('Bottom SKU Insights')
-        for line in data.get('product_bottom_insights', []): st.markdown(f'- {line}')
-    st.markdown('---')
+        st.altair_chart(
+            alt.Chart(bottom_df).mark_bar().encode(x='sales:Q', y=alt.Y(f'{item_col}:N',...
 
-    # 3. AI Forecasts & Strategy Nudges
-    st.subheader('AI Forecasts & Strategy Nudges')
-    for line in data.get('insights', []): st.markdown(f'- {line}')
 
