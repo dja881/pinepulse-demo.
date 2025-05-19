@@ -6,28 +6,34 @@ import openai
 import altair as alt
 import json
 import re
-from pinecone import Pinecone, ServerlessSpec
+from pinecone import Pinecone, ServerlessSpec, PineconeApiException
 
 # --- INITIALIZE AI CLIENT ---
 openai_api_key = st.secrets["openai"]["api_key"]
 client = openai.OpenAI(api_key=openai_api_key)
 
 # --- INITIALIZE PINECONE CLIENT ---
-pinecone_api_key  = st.secrets["pinecone"]["api_key"]
-pinecone_region   = st.secrets["pinecone"]["environment"]
+pinecone_api_key = st.secrets["pinecone"]["api_key"]
+pinecone_region  = st.secrets["pinecone"]["environment"]
 pc = Pinecone(api_key=pinecone_api_key)
 spec = ServerlessSpec(cloud="aws", region=pinecone_region)
 
-# create index if needed
-if "pinepulse-context" not in pc.list_indexes():
-    pc.create_index(
-        name="pinepulse-context",
-        dimension=1536,
-        metric="cosine",
-        spec=spec
-    )
-index = pc.Index("pinepulse-context")
+# Safe index-creation (ignore ALREADY_EXISTS errors)
+try:
+    existing = pc.list_indexes()
+    if "pinepulse-context" not in existing:
+        pc.create_index(
+            name="pinepulse-context",
+            dimension=1536,
+            metric="cosine",
+            spec=spec
+        )
+except PineconeApiException as e:
+    if e.error.code != "ALREADY_EXISTS":
+        raise
 
+# Grab the index handle
+index = pc.Index("pinepulse-context")
 
 # --- APP CONFIG ---
 st.set_page_config(page_title="PinePulse Dashboard", layout="wide")
@@ -91,9 +97,9 @@ st.dataframe(df_all.head(10))
 if st.sidebar.button("Generate Report"):
     df = df_all.copy()
     # Metrics
-    total_sales   = df[amount_col].sum()
-    trans_count   = len(df)
-    unique_items  = df[item_col].nunique()
+    total_sales  = df[amount_col].sum()
+    trans_count  = len(df)
+    unique_items = df[item_col].nunique()
     c1, c2, c3 = st.columns(3)
     c1.metric("Total Sales",    f"₹{total_sales:,.0f}")
     c2.metric("Transactions",    trans_count)
@@ -128,7 +134,7 @@ if st.sidebar.button("Generate Report"):
 
     def build_ctx(sub_df, tag):
         ctx = sub_df.merge(inv, on=item_col, how="left")
-        ctx["velocity"]   = (ctx["sales"] / days).round(1)
+        ctx["velocity"]    = (ctx["sales"] / days).round(1)
         ctx["days_supply"] = ctx.apply(
             lambda r: round(r["quantity"] / r["velocity"], 1) if r["quantity"] and r["velocity"] else None,
             axis=1
@@ -140,16 +146,13 @@ if st.sidebar.button("Generate Report"):
                 input=json.dumps(rec),
                 model="text-embedding-ada-002"
             )["data"][0]["embedding"]
-            index.upsert(
-                vectors=[(f"{tag}_{i}", emb, rec)],
-                namespace=tag
-            )
+            index.upsert(vectors=[(f"{tag}_{i}", emb, rec)], namespace=tag)
         return records
 
     top_ctx = build_ctx(top_df,    tag="top")
     bot_ctx = build_ctx(bottom_df, tag="bottom")
 
-    # Prompt schema (now includes separate top/bottom for both)
+    # Prompt schema
     schema = {
         "category_top_insights":    ["…3 bullet templates…"],
         "category_bottom_insights": ["…3 bullet templates…"],
@@ -160,15 +163,15 @@ if st.sidebar.button("Generate Report"):
 
     prompt = f"""
 You are a data-driven retail analyst. Output ONLY valid JSON with these keys:
-  • category_top_insights   (3 bullets)  
-  • category_bottom_insights(3 bullets)  
-  • product_top_insights    (3 bullets)  
-  • product_bottom_insights (3 bullets)  
-  • strategy_nudges         (5 bullets, trend/season/festival-aware)
+  • category_top_insights    (3 bullets)
+  • category_bottom_insights (3 bullets)
+  • product_top_insights     (3 bullets)
+  • product_bottom_insights  (3 bullets)
+  • strategy_nudges          (5 bullets, trend/season/festival-aware)
 
 Each bullet should:
-  – reference real numbers (sales, stock left, velocity in plain English)  
-  – include a one-sentence, actionable recommendation  
+  – reference real numbers (sales, stock left, velocity in plain English)
+  – include a one-sentence, actionable recommendation
 
 Schema example:
 {json.dumps(schema, indent=2)}
@@ -193,7 +196,6 @@ Cold SKUs context:
         max_tokens=1200
     )
     raw = resp.choices[0].message.content
-    # parse JSON…
     match = re.search(r"\{[\s\S]*\}", raw)
     data  = json.loads(match.group(0)) if match else {}
 
