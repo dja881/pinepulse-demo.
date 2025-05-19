@@ -146,5 +146,5 @@ if st.sidebar.button('Generate Report'):
         ],
         "product_top_insights": [
             "Pick a top SKU nearing stock-out, describe remaining stock in plain English, and recommend reorder timing.",
-            "Identify a best-selling SKU with its average daily sold units, and suggest a bundling option.
+            "Identify a best-selling SKU with its average daily sold units, and suggest a bundling option.",
 
