@@ -5,6 +5,7 @@ import pandas as pd
 import openai
 import altair as alt
 import json
+import re
 
 # --- INITIALIZE AI CLIENT ---
 client = openai.OpenAI(api_key=st.secrets["openai"]["api_key"])
@@ -29,7 +30,6 @@ def load_data():
         if os.path.isfile(path):
             data[name] = pd.read_csv(path, parse_dates=["Timestamp"])
     return data
-
 all_data = load_data()
 
 # --- SIDEBAR CONFIGURATION ---
@@ -59,7 +59,6 @@ def detect_col(preferred, cols):
             if p.lower() in c.lower():
                 return c
     return None
-
 store_col = detect_col(["Store Name"], df_all.columns)
 amount_col = detect_col(["Total Amount", "Price per Unit"], df_all.columns)
 qty_col = detect_col(["Stock Remaining", "Quantity Sold"], df_all.columns)
@@ -74,6 +73,7 @@ if store_col and data_source == "Use Demo Store Data":
 st.markdown("### Preview: First 30 Rows of Data")
 st.dataframe(df_all.head(30), use_container_width=True)
 
+# --- GENERATE REPORT ---
 if st.sidebar.button("Generate Report"):
     df = df_all.copy()
     # KPIs
@@ -88,45 +88,24 @@ if st.sidebar.button("Generate Report"):
 
     # Summaries
     sku_sales = df.groupby(item_col).agg(sales=(amount_col, 'sum')).reset_index()
-    top_n = max(1, math.ceil(len(sku_sales)*0.3))
+    top_n = max(1, math.ceil(len(sku_sales) * 0.3))
     top_df = sku_sales.nlargest(top_n, 'sales')
     bottom_df = sku_sales.nsmallest(top_n, 'sales')
     category_summary = df.groupby('Category').agg(total_sales=(amount_col, 'sum')).reset_index()
 
     # Context for AI
-    inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'}) if qty_col else pd.DataFrame({item_col:top_df[item_col],'quantity':[None]*len(top_df)})
+    inv = df.groupby(item_col)[qty_col].sum().reset_index().rename(columns={qty_col:'quantity'}) if qty_col else pd.DataFrame({item_col: top_df[item_col], 'quantity': [None]*len(top_df)})
     def build_ctx(df_sku):
         ctx = df_sku.merge(inv, on=item_col, how='left')
-        ctx['velocity'] = (ctx['sales']/days).round(1)
+        ctx['velocity'] = (ctx['sales'] / days).round(1)
         ctx['days_supply'] = ctx.apply(lambda r: round(r['quantity']/r['velocity'],1) if r['quantity'] and r['velocity'] else None, axis=1)
         return ctx.to_dict('records')
     top_ctx = build_ctx(top_df)
     bot_ctx = build_ctx(bottom_df)
 
-        # --- EXAMPLE-DRIVEN AI PROMPT ---
-    example_json = {
-        "category_insights": [
-            "Snacks are leading in sales, indicating strong consumer preference.",
-            "Dairy category has high stock but moderate sales, posing a wastage risk.",
-            "Household items have seen a recent spike — likely due to end-of-month cleaning habits."
-        ],
-        "product_insights": [
-            "Parle-G has the highest repeat purchase rate — move it closer to billing counter.",
-            "Maggi is underperforming despite good stock — push through shelf positioning.",
-            "Amul Milk is consistently bought in singles — explore combo with bread."
-        ],
-        "insights": [
-            "Demand is peaking on weekends — staffing should match footfall trends.",
-            "UPI is used for 60%+ transactions — enable QR-based loyalty incentives.",
-            "Inventory turnover is faster than restocking — avoid stockouts for top 3 SKUs."
-        ]
-    }
-
+    # AI CALL + ROBUST PARSING
     prompt = f"""
-You are a data-driven retail analyst. Follow the format and tone of the example below. Return valid JSON with exactly these keys: category_insights, product_insights, insights. Each list must have 3 bullet points. Include at least one payment-related comment under 'insights'.
-
-Example:
-{json.dumps(example_json, indent=2)}
+You are a data-driven retail analyst. Return EXACTLY valid JSON with keys: category_insights, product_insights, insights. Each must have 3 items. Include one payment insight in 'insights'.
 
 Category Summary:
 {json.dumps(category_summary.to_dict('records')[:5], indent=2)}
@@ -145,26 +124,23 @@ Slow SKU Context:
 """
     resp = client.chat.completions.create(
         model='gpt-4.1-mini',
-        messages=[{'role':'system','content':'Output valid JSON only.'},{'role':'user','content':prompt}],
+        messages=[{'role':'system','content':'Output only JSON object, no markdown.'}, {'role':'user','content':prompt}],
         temperature=0.3,
         max_tokens=1200
     )
-    # Debug: show raw AI response
-    st.text(resp.choices[0].message.content)
+    # Debug raw output
+    raw = resp.choices[0].message.content
+    st.text_area("🚧 Raw AI output", raw, height=150)
+    # Extract JSON blob
+    m = re.search(r"\{[\s\S]*\}", raw)
+    json_str = m.group(0) if m else raw
     try:
-        insights = json.loads(resp.choices[0].message.content)
-        # Fallback: if category_insights or product_insights are empty, split from insights
-        all_ins = insights.get('insights', [])
-        if not insights.get('category_insights') and all_ins:
-            insights['category_insights'] = all_ins[:3]
-        if not insights.get('product_insights') and len(all_ins) > 3:
-            insights['product_insights'] = all_ins[3:6]
-    except Exception:
-        st.error('Failed to parse insights.')
-        insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
-        insights = {'category_insights':[], 'product_insights':[], 'insights':[]}
+        insights = json.loads(json_str)
+    except json.JSONDecodeError as e:
+        st.error(f"Failed to parse insights: {e}")
+        insights = {'category_insights': [], 'product_insights': [], 'insights': []}
 
-        # Category chart & insights
+    # Category chart & insights
     st.subheader("Category Performance")
     cat_chart = alt.Chart(category_summary).mark_bar().encode(
         x=alt.X('total_sales:Q', title='Total Sales'),
@@ -174,11 +150,7 @@ Slow SKU Context:
 
     st.markdown("### Category Insights")
     for entry in insights.get('category_insights', [])[:3]:
-        if isinstance(entry, dict):
-            text = entry.get('insight') or entry.get('text') or json.dumps(entry)
-        else:
-            text = entry
-        st.markdown(f"- {text}")
+        st.markdown(f"- {entry}")
     st.markdown("---")
 
     # Product chart & insights
@@ -189,27 +161,3 @@ Slow SKU Context:
         top_chart = alt.Chart(top_df).mark_bar().encode(
             x=alt.X('sales:Q', title='Sales'),
             y=alt.Y(f'{item_col}:N', sort='-x', title=None)
-        ).properties(height=300)
-        st.altair_chart(top_chart, use_container_width=True)
-    with p2:
-        st.markdown("**Cold Movers**")
-        bot_chart = alt.Chart(bottom_df).mark_bar().encode(
-            x=alt.X('sales:Q', title='Sales'),
-            y=alt.Y(f'{item_col}:N', sort='x', title=None)
-        ).properties(height=300)
-        st.altair_chart(bot_chart, use_container_width=True)
-
-    st.markdown("### Product Insights")
-    for entry in insights.get('product_insights', [])[:3]:
-        if isinstance(entry, dict):
-            text = entry.get('insight') or entry.get('text') or json.dumps(entry)
-        else:
-            text = entry
-        st.markdown(f"- {text}")
-    st.markdown("---")
-
-    # Final AI insights
-    st.markdown("### AI Forecasts & Strategy Nudges")
-    for line in insights.get('insights', [])[:3]:
-        st.markdown(f"- {line}")
-
