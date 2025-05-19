@@ -103,9 +103,30 @@ if st.sidebar.button("Generate Report"):
     top_ctx = build_ctx(top_df)
     bot_ctx = build_ctx(bottom_df)
 
-    # AI Prompt
+        # --- EXAMPLE-DRIVEN AI PROMPT ---
+    example_json = {
+        "category_insights": [
+            "Snacks are leading in sales, indicating strong consumer preference.",
+            "Dairy category has high stock but moderate sales, posing a wastage risk.",
+            "Household items have seen a recent spike — likely due to end-of-month cleaning habits."
+        ],
+        "product_insights": [
+            "Parle-G has the highest repeat purchase rate — move it closer to billing counter.",
+            "Maggi is underperforming despite good stock — push through shelf positioning.",
+            "Amul Milk is consistently bought in singles — explore combo with bread."
+        ],
+        "insights": [
+            "Demand is peaking on weekends — staffing should match footfall trends.",
+            "UPI is used for 60%+ transactions — enable QR-based loyalty incentives.",
+            "Inventory turnover is faster than restocking — avoid stockouts for top 3 SKUs."
+        ]
+    }
+
     prompt = f"""
-You are a data-driven retail analyst. Output only valid JSON with these keys: category_insights, product_insights, insights. Return exactly 3 insights in each array, and ensure one payment-related insight within the 'insights' section.
+You are a data-driven retail analyst. Follow the format and tone of the example below. Return valid JSON with exactly these keys: category_insights, product_insights, insights. Each list must have 3 bullet points. Include at least one payment-related comment under 'insights'.
+
+Example:
+{json.dumps(example_json, indent=2)}
 
 Category Summary:
 {json.dumps(category_summary.to_dict('records')[:5], indent=2)}
@@ -191,3 +212,4 @@ Slow SKU Context:
     st.markdown("### AI Forecasts & Strategy Nudges")
     for line in insights.get('insights', [])[:3]:
         st.markdown(f"- {line}")
+
