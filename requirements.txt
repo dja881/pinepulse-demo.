@@ -2,6 +2,3 @@
  pandas
  altair
  openai
-- pinecone>=6.0.0
-+ pinecone-client>=2.4.1
-
