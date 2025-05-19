@@ -202,14 +202,26 @@ Cold SKUs:
     with p1:
         st.subheader('Top Movers')
         st.altair_chart(
-            alt.Chart(top_df).mark_bar().encode(x='sales:Q', y=alt.Y(f'{item_col}:N', sort='-x')).properties(height=300),
-            use_container_width=True
+            alt.Chart(top_df).mark_bar().encode(
+                x='sales:Q',
+                y=alt.Y(f'{item_col}:N', sort='-x')
+            ).properties(height=300), use_container_width=True
         )
         st.subheader('Top SKU Insights')
         for line in data.get('product_top_insights', []): st.markdown(f'- {line}')
     with p2:
         st.subheader('Cold Movers')
         st.altair_chart(
-            alt.Chart(bottom_df).mark_bar().encode(x='sales:Q', y=alt.Y(f'{item_col}:N',...
+            alt.Chart(bottom_df).mark_bar().encode(
+                x='sales:Q',
+                y=alt.Y(f'{item_col}:N', sort='x')
+            ).properties(height=300), use_container_width=True
+        )
+        st.subheader('Bottom SKU Insights')
+        for line in data.get('product_bottom_insights', []): st.markdown(f'- {line}')
+    st.markdown('---')
 
+    # 3. AI Forecasts & Strategy Nudges
+    st.subheader('AI Forecasts & Strategy Nudges')
+    for line in data.get('insights', []): st.markdown(f'- {line}')
 
