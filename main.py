@@ -1,4 +1,3 @@
-```python
 import os
 import math
 import streamlit as st
@@ -233,5 +232,4 @@ Cold SKUs:
     # 3. AI Forecasts & Strategy Nudges
     st.subheader('AI Forecasts & Strategy Nudges')
     for line in data.get('insights', []): st.markdown(f'- {line}')
-```
 
