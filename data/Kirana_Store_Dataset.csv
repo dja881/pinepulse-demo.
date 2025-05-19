@@ -1,0 +1,201 @@
+Transaction ID,Timestamp,Store Name,Product Name,SKU,Category,Quantity Sold,Price per Unit,Total Amount,Stock Remaining,Payment Mode,Card Type
+TXN0001,2025-04-21 08:05:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,1,13.44,13.44,80,UPI,
+TXN0002,2025-05-03 11:18:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,4,80.05,320.2,76,Cash,
+TXN0003,2025-04-29 08:47:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,61.57,61.57,91,Credit Card,Visa
+TXN0004,2025-05-14 07:20:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,22.97,45.94,41,UPI,
+TXN0005,2025-05-05 15:22:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,3,78.49,235.47,104,UPI,
+TXN0006,2025-05-02 10:38:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,72.65,145.3,154,UPI,
+TXN0007,2025-04-21 13:51:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,79.54,159.08,57,UPI,
+TXN0008,2025-05-16 13:06:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,42.14,42.14,183,UPI,
+TXN0009,2025-05-18 08:58:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,86.75,86.75,76,UPI,
+TXN0010,2025-05-04 08:52:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,115.72,115.72,135,Debit Card,RuPay
+TXN0011,2025-04-23 16:38:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,2,116.73,233.46,93,UPI,
+TXN0012,2025-05-16 10:36:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,1,86.75,86.75,93,Cash,
+TXN0013,2025-05-11 09:12:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,3,98.5,295.5,145,UPI,
+TXN0014,2025-04-20 12:46:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,108.62,108.62,30,Cash,
+TXN0015,2025-04-29 17:58:28.623503,Kirana - Indiranagar,Surf Excel,SUR04,Household,1,19.22,19.22,156,Credit Card,Mastercard
+TXN0016,2025-05-05 10:32:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,1,38.68,38.68,17,UPI,
+TXN0017,2025-04-28 16:03:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,118.93,237.86,108,UPI,
+TXN0018,2025-05-12 14:25:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,16.88,16.88,164,UPI,
+TXN0019,2025-04-23 10:33:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,2,110.6,221.2,189,Cash,
+TXN0020,2025-04-28 07:37:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,97.15,97.15,181,Credit Card,Mastercard
+TXN0021,2025-04-30 15:14:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,2,31.36,62.72,21,Credit Card,Visa
+TXN0022,2025-04-19 18:23:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,116.78,116.78,127,Debit Card,Mastercard
+TXN0023,2025-05-07 17:00:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,67.31,67.31,70,Credit Card,Visa
+TXN0024,2025-04-21 12:59:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,2,66.54,133.08,100,UPI,
+TXN0025,2025-05-13 16:54:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,2,91.73,183.46,70,Credit Card,RuPay
+TXN0026,2025-05-18 18:28:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,109.99,109.99,46,UPI,
+TXN0027,2025-05-10 17:54:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,113.79,113.79,150,UPI,
+TXN0028,2025-05-03 14:37:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,101.01,101.01,29,UPI,
+TXN0029,2025-04-25 10:14:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,3,36.75,110.25,39,Cash,
+TXN0030,2025-05-16 12:11:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,47.28,47.28,129,Credit Card,Visa
+TXN0031,2025-05-13 12:48:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,3,21.29,63.87,194,UPI,
+TXN0032,2025-04-22 16:36:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,106.13,106.13,36,UPI,
+TXN0033,2025-05-14 14:23:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,44.89,44.89,117,Cash,
+TXN0034,2025-04-26 16:47:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,98.89,197.78,127,UPI,
+TXN0035,2025-04-27 17:20:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,3,44.12,132.36,137,UPI,
+TXN0036,2025-04-21 18:34:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,1,67.42,67.42,184,UPI,
+TXN0037,2025-04-30 14:40:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,3,108.25,324.75,166,Debit Card,RuPay
+TXN0038,2025-04-30 15:51:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,3,91.97,275.91,170,UPI,
+TXN0039,2025-04-23 10:00:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,17.53,35.06,100,Cash,
+TXN0040,2025-05-14 10:12:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,4,97.69,390.76,20,UPI,
+TXN0041,2025-05-06 09:00:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,80.32,160.64,133,Cash,
+TXN0042,2025-05-01 18:26:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,1,107.42,107.42,137,UPI,
+TXN0043,2025-05-04 14:06:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,67.16,67.16,161,UPI,
+TXN0044,2025-05-09 08:51:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,4,49.33,197.32,30,Cash,
+TXN0045,2025-04-20 09:23:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,10.84,10.84,141,Cash,
+TXN0046,2025-04-20 07:42:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,4,106.85,427.4,185,UPI,
+TXN0047,2025-04-21 08:08:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,36.71,73.42,88,UPI,
+TXN0048,2025-04-26 15:29:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,114.96,114.96,40,UPI,
+TXN0049,2025-05-18 09:24:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,4,54.39,217.56,130,Cash,
+TXN0050,2025-05-08 17:17:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,55.91,55.91,112,Debit Card,Visa
+TXN0051,2025-05-11 06:38:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,103.81,103.81,44,UPI,
+TXN0052,2025-04-20 11:12:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,107.08,214.16,70,Credit Card,Mastercard
+TXN0053,2025-05-07 07:01:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,2,72.76,145.52,36,UPI,
+TXN0054,2025-04-28 13:06:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,14.34,14.34,46,Cash,
+TXN0055,2025-04-30 11:48:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,2,63.14,126.28,53,UPI,
+TXN0056,2025-05-13 14:48:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,64.11,64.11,134,UPI,
+TXN0057,2025-05-07 07:31:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,2,105.94,211.88,95,Credit Card,Visa
+TXN0058,2025-05-06 13:26:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,13.15,13.15,97,Cash,
+TXN0059,2025-04-19 17:47:28.623503,Kirana - Indiranagar,Surf Excel,SUR04,Household,2,38.76,77.52,80,Credit Card,Mastercard
+TXN0060,2025-05-10 13:12:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,1,16.09,16.09,19,Cash,
+TXN0061,2025-05-11 17:47:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,101.18,202.36,142,Credit Card,Visa
+TXN0062,2025-05-02 10:02:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,5,28.21,141.05,23,UPI,
+TXN0063,2025-04-27 08:14:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,2,86.14,172.28,26,UPI,
+TXN0064,2025-05-13 12:18:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,110.11,110.11,21,Debit Card,RuPay
+TXN0065,2025-05-07 13:05:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,5,51.98,259.9,106,UPI,
+TXN0066,2025-05-02 06:29:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,43.35,86.7,188,UPI,
+TXN0067,2025-05-08 08:18:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,16.06,16.06,72,UPI,
+TXN0068,2025-05-09 11:43:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,3,109.09,327.27,33,Cash,
+TXN0069,2025-05-10 16:08:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,1,67.02,67.02,46,UPI,
+TXN0070,2025-05-03 17:18:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,51.5,103.0,49,UPI,
+TXN0071,2025-05-17 09:23:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,111.65,111.65,198,UPI,
+TXN0072,2025-04-24 12:36:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,17.79,17.79,80,Cash,
+TXN0073,2025-04-21 16:27:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,3,49.38,148.14,135,UPI,
+TXN0074,2025-05-02 15:58:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,2,111.05,222.1,86,UPI,
+TXN0075,2025-05-07 17:05:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,55.22,110.44,95,UPI,
+TXN0076,2025-04-21 14:37:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,3,14.03,42.09,23,UPI,
+TXN0077,2025-04-28 09:51:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,117.84,117.84,163,Cash,
+TXN0078,2025-05-12 09:08:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,52.23,104.46,99,Credit Card,Visa
+TXN0079,2025-04-19 13:45:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,65.36,65.36,40,UPI,
+TXN0080,2025-05-07 13:13:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,117.64,117.64,187,UPI,
+TXN0081,2025-05-16 15:21:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,39.86,39.86,136,UPI,
+TXN0082,2025-04-27 14:08:28.623503,Kirana - Indiranagar,Surf Excel,SUR04,Household,1,105.47,105.47,180,UPI,
+TXN0083,2025-05-16 12:47:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,105.36,210.72,48,Cash,
+TXN0084,2025-04-24 17:16:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,4,22.57,90.28,181,Credit Card,RuPay
+TXN0085,2025-05-03 13:03:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,54.02,54.02,72,Cash,
+TXN0086,2025-05-05 16:22:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,1,109.98,109.98,15,Debit Card,RuPay
+TXN0087,2025-05-02 15:47:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,42.9,85.8,32,Cash,
+TXN0088,2025-04-28 12:59:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,3,77.91,233.73,149,UPI,
+TXN0089,2025-04-25 09:30:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,10.47,10.47,119,UPI,
+TXN0090,2025-05-17 07:37:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,1,75.62,75.62,161,UPI,
+TXN0091,2025-05-18 13:48:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,5,13.78,68.9,33,Credit Card,Visa
+TXN0092,2025-04-19 18:34:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,69.16,138.32,137,UPI,
+TXN0093,2025-05-04 08:12:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,3,88.35,265.05,68,UPI,
+TXN0094,2025-05-12 09:39:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,101.7,203.4,124,UPI,
+TXN0095,2025-05-17 15:09:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,3,17.42,52.26,149,Credit Card,Mastercard
+TXN0096,2025-05-16 07:02:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,19.99,19.99,192,UPI,
+TXN0097,2025-04-22 10:46:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,1,112.32,112.32,182,UPI,
+TXN0098,2025-05-04 11:58:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,57.61,115.22,151,UPI,
+TXN0099,2025-05-16 09:34:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,60.19,60.19,163,Credit Card,Visa
+TXN0100,2025-04-24 16:30:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,1,81.71,81.71,200,Credit Card,Mastercard
+TXN0101,2025-05-13 14:54:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,4,96.45,385.8,121,Credit Card,Visa
+TXN0102,2025-05-12 11:34:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,79.06,158.12,119,UPI,
+TXN0103,2025-04-30 13:11:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,1,104.99,104.99,94,Credit Card,Mastercard
+TXN0104,2025-04-26 17:52:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,25.38,25.38,20,Cash,
+TXN0105,2025-04-21 10:30:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,3,64.89,194.67,46,UPI,
+TXN0106,2025-05-09 12:13:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,5,81.55,407.75,103,UPI,
+TXN0107,2025-05-17 14:33:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,5,19.93,99.65,67,UPI,
+TXN0108,2025-05-03 09:15:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,1,31.62,31.62,182,UPI,
+TXN0109,2025-04-21 18:33:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,116.73,116.73,78,UPI,
+TXN0110,2025-05-10 08:48:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,71.82,71.82,61,UPI,
+TXN0111,2025-04-24 17:52:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,5,97.23,486.15,38,Cash,
+TXN0112,2025-04-28 10:54:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,37.84,75.68,95,UPI,
+TXN0113,2025-05-09 14:44:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,4,100.32,401.28,90,UPI,
+TXN0114,2025-05-12 12:40:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,2,58.47,116.94,42,UPI,
+TXN0115,2025-05-18 19:23:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,49.25,49.25,92,UPI,
+TXN0116,2025-04-23 07:13:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,78.44,78.44,70,UPI,
+TXN0117,2025-05-18 17:05:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,2,36.79,73.58,171,UPI,
+TXN0118,2025-04-29 16:29:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,1,55.52,55.52,169,Cash,
+TXN0119,2025-05-01 09:17:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,5,66.79,333.95,26,UPI,
+TXN0120,2025-04-30 09:23:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,1,67.43,67.43,22,UPI,
+TXN0121,2025-05-04 09:56:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,78.05,156.1,26,Cash,
+TXN0122,2025-04-27 10:22:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,40.78,40.78,177,Cash,
+TXN0123,2025-04-23 14:05:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,5,85.84,429.2,81,Credit Card,RuPay
+TXN0124,2025-05-05 11:38:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,1,33.36,33.36,44,UPI,
+TXN0125,2025-05-18 16:46:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,48.72,48.72,71,UPI,
+TXN0126,2025-04-29 18:40:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,26.37,26.37,87,UPI,
+TXN0127,2025-05-03 15:27:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,41.41,41.41,25,UPI,
+TXN0128,2025-05-01 15:50:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,60.6,60.6,106,Debit Card,RuPay
+TXN0129,2025-05-14 10:51:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,5,85.89,429.45,163,Credit Card,RuPay
+TXN0130,2025-05-18 17:19:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,2,56.78,113.56,113,UPI,
+TXN0131,2025-04-20 15:13:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,2,106.24,212.48,166,UPI,
+TXN0132,2025-05-10 17:36:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,36.53,36.53,173,Cash,
+TXN0133,2025-04-20 14:01:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,33.66,33.66,133,UPI,
+TXN0134,2025-05-18 12:05:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,27.51,27.51,176,Credit Card,Visa
+TXN0135,2025-05-09 15:28:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,3,95.44,286.32,182,Cash,
+TXN0136,2025-05-07 14:45:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,3,64.9,194.7,56,Credit Card,Visa
+TXN0137,2025-04-22 17:45:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,71.91,143.82,90,Cash,
+TXN0138,2025-04-24 12:24:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,105.52,211.04,156,UPI,
+TXN0139,2025-05-15 07:17:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,1,106.5,106.5,92,UPI,
+TXN0140,2025-05-03 12:16:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,111.55,223.1,86,UPI,
+TXN0141,2025-04-22 13:20:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,11.47,11.47,42,UPI,
+TXN0142,2025-04-24 16:45:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,92.04,92.04,68,Credit Card,Visa
+TXN0143,2025-05-18 09:24:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,88.77,88.77,135,UPI,
+TXN0144,2025-05-12 12:02:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,39.12,39.12,169,Cash,
+TXN0145,2025-05-18 06:47:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,3,34.54,103.62,188,UPI,
+TXN0146,2025-04-21 17:41:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,109.26,109.26,125,UPI,
+TXN0147,2025-04-26 15:31:28.623503,Kirana - Indiranagar,Surf Excel,SUR04,Household,3,69.41,208.23,20,Cash,
+TXN0148,2025-05-16 18:30:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,2,63.9,127.8,114,UPI,
+TXN0149,2025-05-06 18:48:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,14.52,14.52,170,Debit Card,RuPay
+TXN0150,2025-05-03 13:08:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,84.13,168.26,42,Credit Card,Mastercard
+TXN0151,2025-05-07 11:02:28.623503,Kirana - Indiranagar,Surf Excel,SUR04,Household,1,62.63,62.63,137,Cash,
+TXN0152,2025-04-27 14:19:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,1,108.71,108.71,33,Cash,
+TXN0153,2025-04-20 16:37:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,17.77,17.77,197,UPI,
+TXN0154,2025-05-18 11:05:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,4,107.4,429.6,44,Cash,
+TXN0155,2025-04-29 18:56:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,2,105.39,210.78,197,UPI,
+TXN0156,2025-05-16 07:24:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,80.7,80.7,160,UPI,
+TXN0157,2025-04-28 14:39:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,2,83.15,166.3,131,UPI,
+TXN0158,2025-05-10 14:18:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,41.77,41.77,105,Cash,
+TXN0159,2025-05-07 08:47:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,2,76.75,153.5,16,UPI,
+TXN0160,2025-05-16 10:27:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,3,40.0,120.0,135,UPI,
+TXN0161,2025-05-14 10:09:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,63.36,126.72,47,UPI,
+TXN0162,2025-04-23 09:25:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,71.77,71.77,168,Cash,
+TXN0163,2025-05-11 10:34:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,3,88.92,266.76,178,Credit Card,Mastercard
+TXN0164,2025-05-05 09:40:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,35.11,70.22,170,UPI,
+TXN0165,2025-04-19 14:49:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,1,65.24,65.24,42,UPI,
+TXN0166,2025-05-13 16:32:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,2,73.34,146.68,154,UPI,
+TXN0167,2025-05-10 19:22:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,1,66.66,66.66,87,UPI,
+TXN0168,2025-05-13 15:16:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,84.22,168.44,113,UPI,
+TXN0169,2025-05-02 10:24:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,116.27,232.54,163,UPI,
+TXN0170,2025-05-05 07:33:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,3,69.53,208.59,84,UPI,
+TXN0171,2025-05-05 11:20:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,74.12,74.12,63,UPI,
+TXN0172,2025-04-25 14:54:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,1,28.14,28.14,20,Debit Card,Visa
+TXN0173,2025-05-12 11:40:28.623503,Kirana - Indiranagar,Curd,CUR01,Dairy,2,29.96,59.92,79,Cash,
+TXN0174,2025-05-02 13:28:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,74.6,149.2,83,UPI,
+TXN0175,2025-04-23 11:35:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,1,110.04,110.04,176,Credit Card,RuPay
+TXN0176,2025-05-06 10:42:28.623503,Kirana - Indiranagar,Amul Milk,AMU01,Dairy,1,41.89,41.89,128,Cash,
+TXN0177,2025-05-10 11:23:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,14.69,14.69,59,Credit Card,RuPay
+TXN0178,2025-05-14 11:55:28.623503,Kirana - Indiranagar,Cheese Slices,CHE01,Dairy,2,102.69,205.38,111,UPI,
+TXN0179,2025-04-29 11:17:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,1,72.33,72.33,176,UPI,
+TXN0180,2025-05-14 13:35:28.623503,Kirana - Indiranagar,Colgate,COL04,Household,2,13.43,26.86,133,UPI,
+TXN0181,2025-05-17 10:08:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,14.27,14.27,44,UPI,
+TXN0182,2025-04-19 09:34:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,10.04,20.08,52,UPI,
+TXN0183,2025-05-02 16:37:28.623503,Kirana - Indiranagar,Parle-G,PAR02,Snacks,2,47.71,95.42,136,UPI,
+TXN0184,2025-05-04 16:56:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,2,110.71,221.42,192,UPI,
+TXN0185,2025-04-19 06:40:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,3,69.58,208.74,125,UPI,
+TXN0186,2025-04-28 15:58:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,4,66.23,264.92,200,Cash,
+TXN0187,2025-05-15 14:55:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,97.32,97.32,111,UPI,
+TXN0188,2025-05-07 14:45:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,2,16.5,33.0,88,UPI,
+TXN0189,2025-05-16 06:49:28.623503,Kirana - Indiranagar,Bisleri Water,BIS00,Beverages,1,63.7,63.7,95,Credit Card,RuPay
+TXN0190,2025-04-27 11:03:28.623503,Kirana - Indiranagar,Real Juice,REA00,Beverages,2,105.14,210.28,154,UPI,
+TXN0191,2025-04-28 14:19:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,1,22.71,22.71,62,UPI,
+TXN0192,2025-04-21 10:40:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,79.74,79.74,143,UPI,
+TXN0193,2025-05-02 14:17:28.623503,Kirana - Indiranagar,Tur Dal,TUR03,Staples,1,52.14,52.14,13,Cash,
+TXN0194,2025-05-14 09:56:28.623503,Kirana - Indiranagar,Maggi,MAG02,Snacks,2,72.35,144.7,141,Debit Card,Mastercard
+TXN0195,2025-04-24 18:53:28.623503,Kirana - Indiranagar,Dettol,DET04,Household,2,78.21,156.42,31,UPI,
+TXN0196,2025-05-07 10:56:28.623503,Kirana - Indiranagar,Tata Salt,TAT03,Staples,1,12.18,12.18,116,UPI,
+TXN0197,2025-05-10 18:49:28.623503,Kirana - Indiranagar,Pepsi,PEP00,Beverages,2,33.99,67.98,105,UPI,
+TXN0198,2025-04-25 12:10:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,3,41.81,125.43,82,UPI,
+TXN0199,2025-05-09 06:39:28.623503,Kirana - Indiranagar,Aashirvaad Atta,AAS03,Staples,1,113.01,113.01,86,Cash,
+TXN0200,2025-04-23 18:07:28.623503,Kirana - Indiranagar,Kurkure,KUR02,Snacks,1,27.56,27.56,85,UPI,
