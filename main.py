@@ -1,3 +1,4 @@
+```python
 import os
 import math
 import streamlit as st
@@ -110,7 +111,7 @@ if st.sidebar.button('Generate Report'):
     schema_example = {
         "category_top_insights": [
             "Identify a high-growth category, explain the trend using actual sales numbers and average daily sales, and recommend a marketing tactic.",
-            "Identify a slowing category, explain the decline with sales figures and stock duration, and recommend an action.",
+            "Identify a slowing category, explain the decline with plain-English stock duration, and recommend an action.",
             "Recommend a bundle or cross-sell opportunity for the leading category using recent performance data."
         ],
         "category_bottom_insights": [
@@ -192,6 +193,12 @@ Cold SKUs:
 
     # 1. Category Performance
     st.header('Category Performance')
+    # Category bar chart
+    cat_chart = alt.Chart(category_summary).mark_bar().encode(
+        x=alt.X('total_sales:Q', title='Sales'),
+        y=alt.Y(f'{cat_col}:N', sort='-x')
+    ).properties(height=300)
+    st.altair_chart(cat_chart, use_container_width=True)
     st.subheader('Top Category Insights')
     for line in data.get('category_top_insights', []): st.markdown(f'- {line}')
     st.subheader('Bottom Category Insights')
@@ -202,9 +209,23 @@ Cold SKUs:
     st.header('Top & Bottom SKU Movers')
     p1, p2 = st.columns(2)
     with p1:
+        # Top movers chart
+        st.subheader('Top Movers')
+        top_chart = alt.Chart(top_df).mark_bar().encode(
+            x=alt.X('sales:Q', title='Sales'),
+            y=alt.Y(f'{item_col}:N', sort='-x')
+        ).properties(height=300)
+        st.altair_chart(top_chart, use_container_width=True)
         st.subheader('Top SKU Insights')
         for line in data.get('product_top_insights', []): st.markdown(f'- {line}')
     with p2:
+        # Cold movers chart
+        st.subheader('Cold Movers')
+        cold_chart = alt.Chart(bottom_df).mark_bar().encode(
+            x=alt.X('sales:Q', title='Sales'),
+            y=alt.Y(f'{item_col}:N', sort='x')
+        ).properties(height=300)
+        st.altair_chart(cold_chart, use_container_width=True)
         st.subheader('Bottom SKU Insights')
         for line in data.get('product_bottom_insights', []): st.markdown(f'- {line}')
     st.markdown('---')
@@ -212,3 +233,5 @@ Cold SKUs:
     # 3. AI Forecasts & Strategy Nudges
     st.subheader('AI Forecasts & Strategy Nudges')
     for line in data.get('insights', []): st.markdown(f'- {line}')
+```
+
