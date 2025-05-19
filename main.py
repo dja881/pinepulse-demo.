@@ -12,7 +12,7 @@ client = openai.OpenAI(api_key=st.secrets['openai']['api_key'])
 
 # --- APP CONFIG ---
 st.set_page_config(page_title='PinePulse Dashboard', layout='wide')
-st.title('📊 PinePulse - Weekly Store Pulse')
+st.title('📊 PinePulse - Your Stores Pulse')
 
 # --- DATA LOADING ---
 DATA_DIR = os.path.join(os.getcwd(), 'data')
